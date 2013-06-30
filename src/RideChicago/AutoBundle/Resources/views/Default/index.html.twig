@@ -1,1 +1,13 @@
-Hello {{name}}!
+<!doctype html>
+<html>
+	<head>
+		{% javascripts 
+			'@RideChicagoAutoBundle/Resources/public/js/libs/ext/ext-all-dev.js' 
+		%}
+			<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+	</head>
+	<body>
+		{{name}}!
+	</body>
+</html>
