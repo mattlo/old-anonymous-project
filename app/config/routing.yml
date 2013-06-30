@@ -1,0 +1,4 @@
+ride_chicago_auto:
+    resource: "@RideChicagoAutoBundle/Resources/config/routing.yml"
+    prefix:   /
+
