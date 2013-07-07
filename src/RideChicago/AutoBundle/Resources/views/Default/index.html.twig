@@ -1,13 +1,19 @@
 <!doctype html>
 <html>
 	<head>
+		{% stylesheets 
+			'ext/resources/ext-theme-gray/ext-theme-gray-all.css'
+		%}
+			<link rel="stylesheet" href="{{ asset_url }}" />
+		{% endstylesheets %}
 		{% javascripts 
-			'@RideChicagoAutoBundle/Resources/public/js/libs/ext/ext-all-dev.js' 
+			'ext/ext-all-debug.js'
+			'@RideChicagoAutoBundle/Resources/public/js/src/admin/main.js'
 		%}
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 	</head>
 	<body>
-		{{name}}!
+		
 	</body>
 </html>

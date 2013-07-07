@@ -6,6 +6,7 @@
 /build/
 /vendor/
 /bin/
+/web/js
 /composer.phar
 nbproject
 !src
