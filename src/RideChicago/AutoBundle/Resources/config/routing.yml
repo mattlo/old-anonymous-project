@@ -1,3 +1,11 @@
 ride_chicago_auto_homepage:
     pattern:  /
     defaults: { _controller: RideChicagoAutoBundle:Default:index }
+    
+    
+    
+# API routes    
+
+navigation:
+  pattern: /api/navigation
+  defaults: {_controller: RideChicagoAutoBundle:Services\Navigation:index, _format: json}

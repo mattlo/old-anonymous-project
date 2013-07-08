@@ -1,0 +1,8 @@
+.x-tree-panel a {
+	color: #990000;
+}
+
+.x-tree-panel .folder {
+	font-weight: bold;
+	color: #333;
+}

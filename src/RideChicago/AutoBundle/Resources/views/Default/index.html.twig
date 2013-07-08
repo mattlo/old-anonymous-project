@@ -3,12 +3,24 @@
 	<head>
 		{% stylesheets 
 			'ext/resources/ext-theme-gray/ext-theme-gray-all.css'
+			'@RideChicagoAutoBundle/Resources/public/css/ext-override.css'
+			'@RideChicagoAutoBundle/Resources/public/css/admin/admin.css'
 		%}
 			<link rel="stylesheet" href="{{ asset_url }}" />
 		{% endstylesheets %}
+			
 		{% javascripts 
 			'ext/ext-all-debug.js'
-			'@RideChicagoAutoBundle/Resources/public/js/src/admin/main.js'
+		%}
+			<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+			
+		{% javascripts 
+			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionWest.js'
+			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionCenter.js'
+			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionNorth.js'
+			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/Navigation.js'
+			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/Viewport.js'
 		%}
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}

@@ -1,0 +1,40 @@
+.main-header {
+
+}
+
+.main-header .x-panel-body {
+	padding: 10px;
+	font-size: 20px;
+	line-height: 22px;
+	letter-spacing: 1px;
+	color: #fff;
+	text-shadow: 0 1px #000;
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient(top, #D92E2E 0%, #960000 100%);
+
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(top, #D92E2E 0%, #960000 100%);
+
+	/* Opera */ 
+	background-image: -o-linear-gradient(top, #D92E2E 0%, #960000 100%);
+
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #D92E2E), color-stop(1, #960000));
+
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(top, #D92E2E 0%, #960000 100%);
+
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: linear-gradient(to bottom, #D92E2E 0%, #960000 100%);
+}
+
+.main-header .x-panel-body .account {
+	font-size: 14px;
+	float: right;
+	letter-spacing: 0px;
+}
+
+.main-header .x-panel-body a {
+	color: #fff;
+	
+}
