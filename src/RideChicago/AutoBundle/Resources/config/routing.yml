@@ -2,6 +2,10 @@ ride_chicago_auto_homepage:
     pattern:  /
     defaults: { _controller: RideChicagoAutoBundle:Default:index }
     
+auto_admin_index:
+    pattern:  /admin
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Index:index }
+    
     
     
 # API routes    
