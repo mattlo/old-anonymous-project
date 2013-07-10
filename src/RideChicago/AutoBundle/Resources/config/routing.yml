@@ -6,10 +6,22 @@ auto_admin_index:
     pattern:  /admin
     defaults: { _controller: RideChicagoAutoBundle:Admin\Index:index }
     
-    
+auto_admin_login:
+    pattern:  /login
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Login:index }
     
 # API routes    
 
 navigation:
   pattern: /api/navigation
   defaults: {_controller: RideChicagoAutoBundle:Services\Navigation:index, _format: json}
+  
+# Security Routes
+  
+login_path:
+  pattern: /admin/login
+login_check_path:
+  pattern: /admin/login_check
+  methods:  [POST]
+logout_path:
+  pattern: /admin/logout

@@ -9,6 +9,10 @@
 	letter-spacing: 1px;
 	color: #fff;
 	text-shadow: 0 1px #000;
+}
+
+.main-header .x-panel-body,
+.red-header {
 	/* IE10 Consumer Preview */ 
 	background-image: -ms-linear-gradient(top, #D92E2E 0%, #960000 100%);
 

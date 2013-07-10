@@ -7,6 +7,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/demo/secured")
@@ -32,11 +33,12 @@ class SecuredController extends Controller
     }
 
     /**
-     * @Route("/login_check", name="_security_check")
+     * @Route("/login_check", name="_security_check", defaults={"_format"="json"})
      */
     public function securityCheckAction()
     {
         // The security layer will intercept this request
+	//	return new Response('Hello world!');
     }
 
     /**

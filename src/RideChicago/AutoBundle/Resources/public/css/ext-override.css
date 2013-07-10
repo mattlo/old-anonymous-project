@@ -6,3 +6,10 @@
 	font-weight: bold;
 	color: #333;
 }
+
+.x-tip,
+.x-tip-body,
+.x-tip-body span{
+	width: auto !important;
+	max-width: 200px !important;
+}

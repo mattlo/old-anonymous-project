@@ -15,15 +15,18 @@
 			<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 			
-		{% javascripts 
-			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionWest.js'
-			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionCenter.js'
-			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionNorth.js'
-			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/Navigation.js'
-			'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/Viewport.js'
-		%}
-			<script type="text/javascript" src="{{ asset_url }}"></script>
-		{% endjavascripts %}
+		{% block pageJavaScriptCore %}	
+			{% javascripts 
+				'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionWest.js'
+				'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionCenter.js'
+				'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/RegionNorth.js'
+				'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/Navigation.js'
+				'@RideChicagoAutoBundle/Resources/public/js/src/admin/common/view/Viewport.js'
+				'@RideChicagoAutoBundle/Resources/public/js/src/admin/loader/navigation.js'
+			%}
+				<script type="text/javascript" src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock %}
 			
 		{% block pageJavaScript %} {% endblock %}
 		

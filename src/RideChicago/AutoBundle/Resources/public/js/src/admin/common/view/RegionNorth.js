@@ -7,5 +7,5 @@ Ridechicago.admin.common.view.RegionNorth = Ext.create('Ext.panel.Panel', {
 	collapsible: false,
 	margin: '0',
 	cls: 'main-header',
-	html: 'AutoRideChicago.com Administration<span class="account">Account Profile: Matt Lo | <a href="">Logout</a></span>'
+	html: 'AutoRideChicago.com Administration<span class="account">Account Profile: Matt Lo | <a href="/admin/logout">Logout</a></span>'
 });
