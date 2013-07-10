@@ -4,14 +4,19 @@ Ext.onReady(function () {
 	// initializer
 	Ridechicago.admin.common.view.Viewport = Ext.create('Ext.Viewport', {
 		layout: 'border',
-		items: [
-			Ridechicago.admin.common.view.RegionNorth,
-			Ridechicago.admin.common.view.RegionWest,
-			Ridechicago.admin.common.view.RegionCenter
-		]
+		items: function  () { // create item frames
+			var o = [],
+				panes = ['North', 'West', 'Center', 'East', 'South'];
+			
+			Ext.each(panes, function (pane) {
+				var prop = 'Region' + pane;
+				
+				if (typeof Ridechicago.admin.common.view[prop] !== 'undefined') {
+					o.push(Ridechicago.admin.common.view[prop])
+				}
+			});
+			
+			return o;
+		}()
 	});
-
-	// load in navigation
-	Ridechicago.admin.common.view.RegionWest.add(Ext.create('Ridechicago.admin.common.Navigation'));
-	Ridechicago.admin.common.view.RegionWest.doLayout();
 });
