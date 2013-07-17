@@ -12,7 +12,11 @@ auto_admin_login:
     
 auto_admin_users_view:
     pattern:  /admin/users
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Users\ViewUsers:index }
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Users\ViewUsers:index }    
+    
+auto_admin_users_add:
+    pattern:  /admin/users/add
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Users\AddUser:index }
     
 # API routes    
 

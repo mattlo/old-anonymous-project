@@ -14,3 +14,8 @@
 	width: auto !important;
 	max-width: 200px !important;
 }
+
+#usersAddSubmit {
+	left: 0 !important;
+	right: auto !important;
+}
