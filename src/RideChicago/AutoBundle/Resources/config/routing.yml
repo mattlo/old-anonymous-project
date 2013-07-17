@@ -16,7 +16,23 @@ auto_admin_users_view:
     
 auto_admin_users_add:
     pattern:  /admin/users/add
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Users\AddUser:index }
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Users\AddUser:index }  
+    
+auto_admin_classes_view:
+    pattern:  /admin/classes
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\ClassSchedules:index }
+        
+auto_admin_classes_add:
+    pattern:  /admin/classes/add
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\AddClass:index }
+        
+auto_admin_classestypes_view:
+    pattern:  /admin/class-types
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\ClassTypes:index }
+        
+auto_admin_classestypes_add:
+    pattern:  /admin/class-types/add
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\AddClassType:index }
     
 # API routes    
 
