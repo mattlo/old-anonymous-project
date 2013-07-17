@@ -48,6 +48,10 @@ classtypes_get:
   pattern: /api/class-types
   defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:get, _format: json}  
   
+class_sch_get:
+  pattern: /api/classes
+  defaults: {_controller: RideChicagoAutoBundle:Services\Classes:get, _format: json}  
+  
 # Security Routes
   
 login_path:

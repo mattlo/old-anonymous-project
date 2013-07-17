@@ -19,3 +19,16 @@
 	left: 0 !important;
 	right: auto !important;
 }
+
+/* @TODO move all app styles to SCSS */
+.is-inactive td {
+	background: #ffeaea !important;
+	font-style: italic !important;
+	color: #555;
+}
+
+.is-inactive td:first-child,
+.is-inactive td:last-child {
+	font-style: normal !important;
+	color: #000;
+}
