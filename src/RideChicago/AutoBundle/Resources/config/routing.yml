@@ -10,11 +10,19 @@ auto_admin_login:
     pattern:  /login
     defaults: { _controller: RideChicagoAutoBundle:Admin\Login:index }
     
+auto_admin_users_view:
+    pattern:  /admin/users
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Users\ViewUsers:index }
+    
 # API routes    
 
 navigation:
   pattern: /api/navigation
   defaults: {_controller: RideChicagoAutoBundle:Services\Navigation:index, _format: json}
+  
+users_get:
+  pattern: /api/users
+  defaults: {_controller: RideChicagoAutoBundle:Services\Users:get, _format: json}  
   
 # Security Routes
   

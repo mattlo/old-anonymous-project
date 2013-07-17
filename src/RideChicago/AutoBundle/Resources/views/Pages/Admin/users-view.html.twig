@@ -1,0 +1,10 @@
+{% extends "RideChicagoAutoBundle::Pages/Admin/Templates/layout.html.twig" %}
+
+{% block pageJavaScript %}
+	{% javascripts 
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/Users.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/users-view/users-view.js'
+	%}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
