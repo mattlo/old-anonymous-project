@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AddClassTypeController extends Controller {
 	public function indexAction() {
-		return $this->render('RideChicagoAutoBundle:Pages/Admin:users-add.html.twig');
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:classes-add-type.html.twig');
 	}
 }
 
