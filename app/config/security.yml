@@ -24,7 +24,7 @@ security:
             anonymous:  ~
 
         secured_area:
-            pattern:    ^/admin(/|/*)
+            pattern:    ^(/admin(/|/*)|/api(/|/*))
             form_login:
                 success_handler: authentication_handler
                 failure_handler: authentication_handler
