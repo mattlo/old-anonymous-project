@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User implements UserInterface {
-
+	
 	/**
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
@@ -37,7 +37,7 @@ class User implements UserInterface {
 	/**
 	 * @ORM\Column(type="integer")
 	 */
-	protected $status;
+	protected $status = 1;
 	
 	/**
 	 * @ORM\Column(type="string")
@@ -70,6 +70,14 @@ class User implements UserInterface {
 	
 	public function setRole($role) {
 		$this->role = $role;
+	}
+	
+	public function getStatus() {
+		return $this->status;
+	}
+	
+	public function setStatus($status) {
+		$this->status = $status;
 	}
 
 	public function getSalt() {

@@ -12,10 +12,14 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
     columns: [
 		new Ext.grid.RowNumberer(),
 		{text: 'User Name', dataIndex: 'username', flex: 1},
-		{text: 'Status', dataIndex: 'status'},
-		{text: 'Security', dataIndex: 'security'},
+		{text: 'Status', dataIndex: 'status', renderer: function (value) {
+			return (value === 0 ? 'Inactive' : 'Active')
+		}},
+		{text: 'Security', dataIndex: 'roles', renderer: function (value) {
+			return value.join(', ').replace(/^role_/i, '');
+		}},
 		{text: '', dataIndex: 'utilities', width: 100, renderer: function (value, col, store) {
-			return '<a href="">Remove</a> | <a href="">Delete</a>';
+			return '<a href="/admin/users/edit/' + store.get('id') + '">Edit</a> | <a class="removeAction" href="">Delete</a>';
 		}}
     ]
 }));

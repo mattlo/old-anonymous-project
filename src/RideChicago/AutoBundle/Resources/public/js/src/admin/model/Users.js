@@ -1,8 +1,9 @@
 Ext.regModel('Ridechicago.admin.model.Users', {
     fields: [
+		'id',
 		'username',
 		'status',
-		'security'
+		'roles'
 	],
  
     proxy: {
