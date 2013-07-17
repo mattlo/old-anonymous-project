@@ -13,7 +13,17 @@ class NavigationController extends Controller {
 			array('data' => array (
 				'data' => array (
 					
-					static::mkLeaf('Dashboard', '/admin'),
+					static::mkLeaf('Dashboard', '/admin'),	
+					
+					static::mkLeaf(
+						'Student Management',
+						null,
+						array (
+							static::mkLeaf('View Registrations', '/'),
+							static::mkLeaf('Register a Student', '/'),
+							static::mkLeaf('Calendar', '/')
+						)
+					),	
 					
 					static::mkLeaf(
 						'Class Management Tools',
@@ -33,16 +43,6 @@ class NavigationController extends Controller {
 							static::mkLeaf('View Users', '/admin/users'),
 							static::mkLeaf('Create New User', '/admin/users/add'),
 							static::mkLeaf('Email List Tool', '/admin/emails')
-						)
-					),	
-					
-					static::mkLeaf(
-						'Student Management',
-						null,
-						array (
-							static::mkLeaf('View Registrations', '/'),
-							static::mkLeaf('Register a Student', '/'),
-							static::mkLeaf('Calendar', '/')
 						)
 					),	
 					
