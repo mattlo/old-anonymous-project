@@ -42,7 +42,11 @@ navigation:
   
 users_get:
   pattern: /api/users
-  defaults: {_controller: RideChicagoAutoBundle:Services\Users:get, _format: json}  
+  defaults: {_controller: RideChicagoAutoBundle:Services\Users:get, _format: json}    
+  
+classtypes_get:
+  pattern: /api/class-types
+  defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:get, _format: json}  
   
 # Security Routes
   
