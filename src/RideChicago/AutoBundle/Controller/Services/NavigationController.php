@@ -13,15 +13,15 @@ class NavigationController extends Controller {
 			array('data' => array (
 				'data' => array (
 					
-					static::mkLeaf('Dashboard', '/'),
+					static::mkLeaf('Dashboard', '/admin'),
 					
 					static::mkLeaf(
 						'User Management',
 						null,
 						array (
-							static::mkLeaf('View Users', '/'),
-							static::mkLeaf('Create New User', '/'),
-							static::mkLeaf('Email List Tool', '/')
+							static::mkLeaf('View Users', '/admin/users'),
+							static::mkLeaf('Create New User', '/admin/users/add'),
+							static::mkLeaf('Email List Tool', '/admin/emails')
 						)
 					),	
 					
