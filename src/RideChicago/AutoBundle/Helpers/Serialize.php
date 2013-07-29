@@ -36,10 +36,15 @@ abstract class Serialize {
 		return $serializer->serialize($object, 'xml');
 	}
 	
+	/**
+	 * Serializes object to a data array
+	 * @param mixed $object
+	 * @return Array
+	 */
 	static public function getArrayFromObject($object) {
-		$normalizer = new GetSetMethodNormalizer();
+		$serializer = new Serializer(array(new GetSetMethodNormalizer()));
 		
-		return $normalizer->normalize($object);
+		return $serializer->normalize($object);
 	}
 }
 
