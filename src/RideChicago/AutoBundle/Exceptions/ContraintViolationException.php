@@ -47,6 +47,18 @@ class ContraintViolationException extends \Exception {
 		
 		return $output;
 	}
+	
+	/**
+	 * @return array
+	 */
+	public function getErrorsWithProperties() {
+		$output = array();
+		foreach($this->_errorList as $violation) {
+			$output[$violation->getPropertyPath()] = $violation->getMessage();
+		}
+		
+		return $output;
+	}
 }
 
 ?>

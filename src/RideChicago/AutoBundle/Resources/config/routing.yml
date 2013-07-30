@@ -3,7 +3,7 @@ ride_chicago_auto_homepage:
     defaults: { _controller: RideChicagoAutoBundle:Default:index }
     
 auto_admin_index:
-    pattern:  /admin
+    pattern:  /admin/
     defaults: { _controller: RideChicagoAutoBundle:Admin\Index:index }
     
 auto_admin_login:
@@ -42,7 +42,12 @@ navigation:
   
 users_get:
   pattern: /api/users
-  defaults: {_controller: RideChicagoAutoBundle:Services\Users:get, _format: json}    
+  defaults: {_controller: RideChicagoAutoBundle:Services\Users:get, _format: json} 
+  
+users_create:
+  pattern: /api/users/create
+  defaults: {_controller: RideChicagoAutoBundle:Services\Users:create, _format: json}    
+  methods: [POST]
   
 classtypes_get:
   pattern: /api/class-types

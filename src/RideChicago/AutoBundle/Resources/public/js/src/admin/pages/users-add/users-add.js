@@ -18,6 +18,8 @@ var securityStore = Ext.create('Ext.data.Store', {
     ]
 });
 
+var PASSWORD_CONFIRM_ERR_MSG = '';
+
 
 Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 	frame: true,
@@ -31,10 +33,11 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 		emptyText: 'Email Address',
 		name: 'username',
 		msgTarget: 'under',
-		vtype: 'email',
+		//vtype: 'email',
 		validateOnChange: false,
 		allowBlank: false,
-		width: 500
+		width: 500,
+		id: 'usernameInput'
 	}, {
 		xtype: 'textfield',
 		fieldLabel: 'Password',
@@ -43,14 +46,32 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 		msgTarget: 'under',
 		inputType: 'password',
 		allowBlank: false,
-		width: 500
+		width: 500,
+		minLength: 6,
+		maxLength: 100,
+		id: 'passwordInput'
+	}, {
+		xtype: 'textfield',
+		fieldLabel: 'Password Confirmation',
+		emptyText: 'Password Confirmation',
+		name: 'password',
+		msgTarget: 'under',
+		inputType: 'password',
+		allowBlank: false,
+		width: 500,
+		id: 'passwordConfirmInput',
+		validator: function (value) {
+			return RideChicago.pages.useradd.Validation.PasswordConfirm(value, 'passwordInput');
+		}
 	}, {
 		xtype: 'combobox',
 		fieldLabel: 'Choose Security Role',
 		store: securityStore,
 		queryMode: 'local',
 		displayField: 'roleDisplay',
-		valueField: 'roleValue'
+		valueField: 'roleValue',
+		editable: false,
+		name: 'role'
 	}],
 	
 	buttons: [{
@@ -58,20 +79,22 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 		text: 'Create User',
 		formBind: true,
 		handler: function(){
-//			this.up('form').getForm().submit({
-//				url: '/api/users/add',
-//				submitEmptyText: false,
-//				waitMsg: 'Validating...',
-//				success: function (ins, response) {
-//					try {
-//						var data = Ext.JSON.decode(response.responseText);
-//						window.location = data.location;
-//					} catch (e) {
-//						// assume
-//						window.location = '/admin';
-//					}
-//				}
-//			});
+			this.up('form').getForm().submit({
+				url: '/api/users/create',
+				submitEmptyText: false,
+				waitMsg: 'Loading...',
+				success: function (ins, response) {
+					Ext.MessageBox.show({
+						title: 'User Management',
+						msg: Ext.getCmp('usernameInput').getValue() + ' was successfully created!',
+						icon: Ext.MessageBox.INFO,
+						buttons: Ext.MessageBox.OK,
+						fn: function() {
+							window.location = '/admin/users';
+						}
+					});
+				}
+			});
 		}
 	}]
 }));

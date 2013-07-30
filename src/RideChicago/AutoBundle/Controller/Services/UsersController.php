@@ -2,15 +2,23 @@
 
 namespace RideChicago\AutoBundle\Controller\Services;
 
+use \Exception;
+use \PDOException;
+
 use RideChicago\AutoBundle\Helpers\ServiceOutput;
 use RideChicago\AutoBundle\Helpers\Serialize;
+use RideChicago\AutoBundle\Helpers\ValidationThrower;
 use RideChicago\AutoBundle\Entity\User;
+use RideChicago\AutoBundle\Exceptions\ContraintViolationException;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\Request;
 
 class UsersController extends Controller {
 	
+	/**
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
 	public function getAction () {
 		// get users
 		$users = $this->getDoctrine()
@@ -18,6 +26,43 @@ class UsersController extends Controller {
 			->findAll();
 		
 		return ServiceOutput::render($this, Serialize::getArrayFromObject($users));
+	}
+	
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function createAction(Request $request) {
+		try {
+			$user = new User();
+
+			// get encoder
+			$factory = $this->get('security.encoder_factory');
+
+			// set encoders
+			$encoder = $factory->getEncoder($user);
+			$password = $encoder->encodePassword($request->request->get('password'), $user->getSalt());
+
+			// stage info
+			$user->setUsername($request->request->get('username'));
+			$user->setPassword($password);
+			$user->setRole($request->request->get('role'));
+			
+			// validate
+			$validator = $this->get('validator');
+			ValidationThrower::check($validator->validate($user));
+
+			// get ORM manager
+			$ormManager = $this->getDoctrine()->getManager();
+
+			// save
+			$ormManager->persist($user);
+			$ormManager->flush();
+		} catch (ContraintViolationException $e) {
+			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
+		}
+		
+		return ServiceOutput::render($this);
 	}
 }
 

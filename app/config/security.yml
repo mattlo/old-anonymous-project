@@ -1,7 +1,7 @@
 security:
     encoders:
         RideChicago\AutoBundle\Entity\User:
-            algorithm: sha1
+            algorithm: sha512
             iterations: 1
             encode_as_base64: false
 

@@ -23,12 +23,19 @@ abstract class ServiceOutput {
 	 */
 	static public function prepare($data, $success = true) {
 		$dateCreated = new DateTime();
+		$output = array();
 		
-		return array (
-			'success' => ($success === true ? 'true' : 'false'),
-			'data' => $data,
-			'date_created' => $dateCreated->format(DateTime::ISO8601)
-		);
+		if ($success === true) {
+			$output['success'] = true;
+			$output['data'] = $data;
+		} else {
+			$output['success'] = false;
+			$output['errors'] = $data;
+		}
+		
+		$output['date_created'] = $dateCreated->format(DateTime::ISO8601);
+		
+		return $output;
 	}
 	
 	/**

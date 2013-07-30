@@ -14,6 +14,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface {
 	
+	// opted for a constant than a self generating salt
+	const SALT = 'Th3Gr3atMl0';
+	
 	/**
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
@@ -22,7 +25,7 @@ class User implements UserInterface {
 	protected $id;
 
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", unique=true, length=255)
 	 * @Assert\NotBlank()
 	 * @Assert\Email()
 	 */
@@ -83,7 +86,7 @@ class User implements UserInterface {
 	}
 
 	public function getSalt() {
-		return null;
+		return self::SALT;
 	}
 	
 	public function eraseCredentials() {
