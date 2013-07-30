@@ -38,7 +38,7 @@ abstract class ServiceOutput {
 	 * @param boolean $success
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	static public function render($controller, array $data, $success = true) {
+	static public function render($controller, array $data = array(), $success = true) {
 		return $controller->render(
 			self::JSON_TEMPLATE, 
 			array(self::TPL_VAR => self::prepare($data, $success))
