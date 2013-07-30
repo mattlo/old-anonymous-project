@@ -36,11 +36,13 @@ class User implements UserInterface {
 	
 	/**
 	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank()
 	 */
 	protected $status = 1;
 	
 	/**
 	 * @ORM\Column(type="string")
+	 * @Assert\NotBlank()
 	 */
 	protected $role = 'ROLE_ADMIN';
 
