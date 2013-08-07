@@ -76,8 +76,6 @@ class UsersController extends Controller {
 		$user = $this->getDoctrine()
 			->getRepository('RideChicagoAutoBundle:User')
 			->findOneById($request->request->get('id'));
-		
-		print_r($user);
 
 		// get ORM manager
 		$ormManager = $this->getDoctrine()->getManager();
