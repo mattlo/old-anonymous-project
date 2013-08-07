@@ -19,11 +19,53 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 			return value.join(', ').replace(/^role_/i, '');
 		}},
 		{text: '', dataIndex: 'utilities', width: 100, renderer: function (value, col, store) {
-			return '<a href="/admin/users/edit/' + store.get('id') + '">Edit</a> | <a class="removeAction" href="">Delete</a>';
+			var deleteBtn = '';
+			
+			deleteBtn = ' | <a class="users-delete" data-id="' + store.get('id') + '" data-username="' + store.get('username') + '" href="">Delete</a>';
+		
+			return '<a class="users-edit" href="/admin/users/edit/' + store.get('id') + '">Edit</a>' + deleteBtn;
 		}}
     ]
 }));
 
-//usersStore.load({params: {
-//	id: 1
-//}});
+Ext.onReady(function () {
+	Ext.getBody().on('click', function(event, target){
+		event.preventDefault();
+	}, null, {
+		delegate: '.users-edit'
+	});
+
+	Ext.getBody().on('click', function(event, target){
+		event.preventDefault();
+		
+		// element clicked
+		var a = Ext.get(target),
+			username = a.getAttribute('data-username'),
+			id = a.getAttribute('data-id');
+		
+		Ext.MessageBox.confirm('Confirm', 'Are you sure you want to delete <strong>' + username + '</strong>?', function (btn) {
+			if (btn === 'yes') {
+				Ext.Ajax.request({
+					url: '/api/users/delete',
+					method: 'POST',
+					params: {
+						id: id
+					},
+					success: function(){
+						Ext.MessageBox.show({
+							title: 'User Management',
+							msg: username + ' was successfully removed from the system.',
+							icon: Ext.MessageBox.INFO,
+							buttons: Ext.MessageBox.OK,
+							fn: function() {
+								window.location = '/admin/users';
+							}
+						});
+					}
+				});
+			}
+		});
+	}, null, {
+		delegate: '.users-delete'
+	});
+});

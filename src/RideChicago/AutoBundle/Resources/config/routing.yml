@@ -47,6 +47,11 @@ users_get:
 users_create:
   pattern: /api/users/create
   defaults: {_controller: RideChicagoAutoBundle:Services\Users:create, _format: json}    
+  methods: [POST]  
+  
+users_delete:
+  pattern: /api/users/delete
+  defaults: {_controller: RideChicagoAutoBundle:Services\Users:delete, _format: json}    
   methods: [POST]
   
 classtypes_get:

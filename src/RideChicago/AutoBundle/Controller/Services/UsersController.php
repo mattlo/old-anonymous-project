@@ -64,6 +64,29 @@ class UsersController extends Controller {
 		
 		return ServiceOutput::render($this);
 	}
+	
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function deleteAction(Request $request) {
+		//@TODO add a failsafe so you cannot delete yourself
+		// find provided user
+		// get users
+		$user = $this->getDoctrine()
+			->getRepository('RideChicagoAutoBundle:User')
+			->findOneById($request->request->get('id'));
+		
+		print_r($user);
+
+		// get ORM manager
+		$ormManager = $this->getDoctrine()->getManager();
+		// save
+		$ormManager->remove($user);
+		$ormManager->flush();
+		
+		return ServiceOutput::render($this);
+	}
 }
 
 ?>

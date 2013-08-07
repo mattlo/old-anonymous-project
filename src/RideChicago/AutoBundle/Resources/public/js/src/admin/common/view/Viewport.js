@@ -4,6 +4,7 @@ Ext.onReady(function () {
 	// initializer
 	Ridechicago.admin.common.view.Viewport = Ext.create('Ext.Viewport', {
 		layout: 'border',
+		autoScroll: true,
 		items: function  () { // create item frames
 			var o = [],
 				panes = ['North', 'West', 'Center', 'East', 'South'];

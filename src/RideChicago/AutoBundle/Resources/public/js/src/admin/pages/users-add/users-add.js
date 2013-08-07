@@ -22,18 +22,18 @@ var PASSWORD_CONFIRM_ERR_MSG = '';
 
 
 Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
-	frame: true,
 	bodyPadding: 5,
 	waitMsgTarget: true,
+	autoScroll: true,
 	fieldDefaults: {labelAlign:'left', labelWidth: 150},
 	
 	items: [{
 		xtype: 'textfield',
-		fieldLabel: 'Email Address',
-		emptyText: 'Email Address',
+		fieldLabel: 'Username',
+		emptyText: 'Use email only',
 		name: 'username',
 		msgTarget: 'under',
-		//vtype: 'email',
+		vtype: 'email',
 		validateOnChange: false,
 		allowBlank: false,
 		width: 500,

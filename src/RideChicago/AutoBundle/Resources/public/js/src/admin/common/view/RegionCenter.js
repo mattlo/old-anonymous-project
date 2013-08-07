@@ -6,5 +6,6 @@ Ridechicago.admin.common.view.RegionCenter = Ext.create('Ext.panel.Panel', {
 	split: false,
 	defaultType: 'container',
 	collapsible: false,
-	margin: '5'
+	margin: '5',
+	autoScroll: true,
 });
