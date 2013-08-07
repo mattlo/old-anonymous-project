@@ -10,6 +10,7 @@ use RideChicago\AutoBundle\Helpers\Serialize;
 use RideChicago\AutoBundle\Helpers\ValidationThrower;
 use RideChicago\AutoBundle\Entity\User;
 use RideChicago\AutoBundle\Exceptions\ContraintViolationException;
+use RideChicago\AutoBundle\Helpers\Logger;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,6 +25,8 @@ class UsersController extends Controller {
 		$users = $this->getDoctrine()
 			->getRepository('RideChicagoAutoBundle:User')
 			->findAll();
+		
+		Logger::info($this, 'fetching ' . count($users) . ' users');
 		
 		return ServiceOutput::render($this, Serialize::getArrayFromObject($users));
 	}

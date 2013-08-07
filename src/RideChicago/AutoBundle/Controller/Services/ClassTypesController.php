@@ -46,6 +46,10 @@ class ClassTypesController extends Controller {
 			)
 		);
 	}
+	
+	public function createAction() {
+		
+	}
 }
 
 ?>
