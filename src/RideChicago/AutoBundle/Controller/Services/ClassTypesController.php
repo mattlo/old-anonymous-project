@@ -13,6 +13,9 @@ use RideChicago\AutoBundle\Helpers\ValidationThrower;
 
 class ClassTypesController extends Controller {
 	
+	const INCREMENT = 1;
+	const DECREMENT = -1;
+	
 	public function getAction () {
 		// get class
 		$classTypes = $this->getDoctrine()
@@ -86,7 +89,6 @@ class ClassTypesController extends Controller {
 	}
 	
 	/**
-	 * @TODO fix resorting bug
 	 * Reorder items
 	 * @param \Symfony\Component\HttpFoundation\Request $request
 	 * @return \Symfony\Component\HttpFoundation\Response
@@ -97,50 +99,58 @@ class ClassTypesController extends Controller {
 		$ormManager = $this->getDoctrine()->getManager();
 		$repository = $this->getDoctrine()->getRepository('RideChicagoAutoBundle:ClassType');
 		
+		Logger::info($this, 'Reordering using params (id: ' . $id . ', newIndex: ' . $newIndex . ')');
+		
 		// get classtype
 		$targetClassType = $repository->find($id);
 		
 		// assign old index
 		$oldIndex = $targetClassType->getIndexOrder();
-
-		// remove out old target order
-		$queryDecr = $repository->createQueryBuilder('ct')
-			->where('ct.indexOrder >= :oldIndex')
-			->setParameter('oldIndex', $oldIndex)
-			->getQuery();
 		
-		foreach($queryDecr->getResult() as $record) {
-			$record->setIndexOrder(($record->getIndexOrder()) - 1);
+		$query = $repository->createQueryBuilder('ct');
+		
+		Logger::debug($this, "\n" . 'starting reorder action' . "\n");
+		
+		// determine direction
+		if ($newIndex > $oldIndex) {
+			Logger::debug($this, 'moving from top to bottom');
+			
+			$query
+				->where('ct.indexOrder > :oldIndex')
+				->andWhere('ct.indexOrder <= :newIndex');
+			$value = self::DECREMENT;
+		} else {
+			Logger::debug($this, 'moving from bottom to top');
+			
+			$query
+				->where('ct.indexOrder < :oldIndex')
+				->andWhere('ct.indexOrder >= :newIndex');
+			$value = self::INCREMENT;
 		}
 		
-		// make room for new index
-		$queryIncr = $repository->createQueryBuilder('ct')
-			->where('ct.indexOrder >= :newIndex')
-			->setParameter('newIndex', $newIndex)
-			->getQuery();
+		// finalize query
+		$query	
+			->setParameter('oldIndex', $oldIndex)
+			->setParameter('newIndex', $newIndex);
 		
-		foreach($queryIncr->getResult() as $record) {
-			$record->setIndexOrder(($record->getIndexOrder()) + 1);
+		Logger::debug($this, 'closing out target orderIndex node');
+		foreach($query->getQuery()->getResult() as $record) {
+			$indexValue = ($record->getIndexOrder()) + (1 * $value);
+			
+			Logger::debug($this, 'reordering node id ' . $record->getId() . '; current ' . $record->getIndexOrder() . ' to ' . $indexValue);
+			$record->setIndexOrder($indexValue);
 		}
 		
 		// set new index
+		Logger::debug($this, 'setting target node ' . $targetClassType->getId() . 'indexOrder new ' . $newIndex);
 		$targetClassType->setIndexOrder($newIndex);
 
 		// save all
 		$ormManager->flush();
 		
-		Logger::info($this, 'Reordering using params (id: ' . $id . ', newIndex: ' . $newIndex . ')');
+		Logger::debug($this, 'end reorder action' . "\n");
 		
 		return ServiceOutput::render($this);
-		
-		/*
-		 
-		 * 1,2,3,4
-		 * 1,2,4
-		 * 1,2,3 {NEW)
-		 * 1,NULL,2,3
-		 * 1,2,3,4 (NEW)
-		 */
 	}
 }
 
