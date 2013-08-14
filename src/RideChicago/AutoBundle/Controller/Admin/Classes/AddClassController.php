@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AddClassController extends Controller {
 	public function indexAction() {
-		return $this->render('RideChicagoAutoBundle:Pages/Admin:classes-add-schedule.html.twig');
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:classes-add.html.twig');
 	}
 }
 

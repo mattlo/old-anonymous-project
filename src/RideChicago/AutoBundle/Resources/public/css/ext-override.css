@@ -15,7 +15,8 @@
 	max-width: 200px !important;
 }
 
-#usersAddSubmit {
+#usersAddSubmit,
+.btnAlignment {
 	left: 0 !important;
 	right: auto !important;
 }

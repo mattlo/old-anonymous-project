@@ -20,7 +20,7 @@ auto_admin_users_add:
     
 auto_admin_classes_view:
     pattern:  /admin/classes
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\ClassSchedules:index }
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\Class:index }
         
 auto_admin_classes_add:
     pattern:  /admin/classes/add
@@ -57,6 +57,16 @@ users_delete:
 classtypes_get:
   pattern: /api/class-types
   defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:get, _format: json}    
+  
+classtypes_reorder:
+  pattern: /api/class-types/reorder
+  defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:reorder, _format: json}    
+  methods: [POST]  
+  
+classtypes_create:
+  pattern: /api/class-types/create
+  defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:create, _format: json}    
+  methods: [POST]
 
 class_sch_get:
   pattern: /api/classes

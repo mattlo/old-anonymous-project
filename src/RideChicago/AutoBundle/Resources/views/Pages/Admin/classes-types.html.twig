@@ -2,8 +2,10 @@
 
 {% block pageJavaScript %}
 	{% javascripts 
-		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/ClassTypes.js'
-		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/classes-type-add/classes-type-add.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/StatusStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/EnrollmentStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/classtypes/ClassTypes.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/classes-type/classes-type.js'
 	%}
 		<script type="text/javascript" src="{{ asset_url }}"></script>
 	{% endjavascripts %}

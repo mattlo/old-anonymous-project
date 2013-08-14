@@ -2,9 +2,6 @@
 
 namespace RideChicago\AutoBundle\Controller\Services;
 
-use \Exception;
-use \PDOException;
-
 use RideChicago\AutoBundle\Helpers\ServiceOutput;
 use RideChicago\AutoBundle\Helpers\Serialize;
 use RideChicago\AutoBundle\Helpers\ValidationThrower;
