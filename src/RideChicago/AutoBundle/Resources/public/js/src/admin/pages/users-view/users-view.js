@@ -31,12 +31,6 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 Ext.onReady(function () {
 	Ext.getBody().on('click', function(event, target){
 		event.preventDefault();
-	}, null, {
-		delegate: '.users-edit'
-	});
-
-	Ext.getBody().on('click', function(event, target){
-		event.preventDefault();
 		
 		// element clicked
 		var a = Ext.get(target),

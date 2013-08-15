@@ -12,27 +12,31 @@ auto_admin_login:
     
 auto_admin_users_view:
     pattern:  /admin/users
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Users\ViewUsers:index }    
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:userView }
     
 auto_admin_users_add:
     pattern:  /admin/users/add
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Users\AddUser:index }  
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:userAdd }  
+        
+auto_admin_users_update:
+    pattern:  /admin/users/edit/{id}
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:userUpdate }  
     
 auto_admin_classes_view:
     pattern:  /admin/classes
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\Class:index }
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classView }
         
 auto_admin_classes_add:
     pattern:  /admin/classes/add
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\AddClass:index }
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classAdd }
         
 auto_admin_classestypes_view:
     pattern:  /admin/class-types
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\ClassTypes:index }
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classTypesView }
         
 auto_admin_classestypes_add:
     pattern:  /admin/class-types/add
-    defaults: { _controller: RideChicagoAutoBundle:Admin\Classes\AddClassType:index }
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classTypesAdd }
     
 # API routes    
 
@@ -43,10 +47,21 @@ navigation:
 users_get:
   pattern: /api/users
   defaults: {_controller: RideChicagoAutoBundle:Services\Users:get, _format: json} 
+    
+users_get_single:
+  pattern: /api/users/{id}
+  defaults: {_controller: RideChicagoAutoBundle:Services\Users:get, _format: json} 
+  requirements:
+    id: \d+
   
 users_create:
   pattern: /api/users/create
   defaults: {_controller: RideChicagoAutoBundle:Services\Users:create, _format: json}    
+  methods: [POST]  
+  
+users_update:
+  pattern: /api/users/update
+  defaults: {_controller: RideChicagoAutoBundle:Services\Users:update, _format: json}    
   methods: [POST]  
   
 users_delete:
