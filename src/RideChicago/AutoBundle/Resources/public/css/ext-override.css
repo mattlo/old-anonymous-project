@@ -37,3 +37,10 @@
 label.fieldDescription {
 	color: #666;
 }
+
+.enable-multirow .x-grid-row .x-grid-cell-inner {
+    white-space: normal;
+}
+.enable-multirow .x-grid-row-over .x-grid-cell-inner {
+    white-space: normal;
+}

@@ -1,3 +1,5 @@
+// @DEPRECATED FILE, still used in ClassTypes create/modify/update
+
 Ext.namespace('Ridechicago.admin.model.classtypes');
 
 Ridechicago.admin.model.classtypes.CLASSTYPES_PROXY_URL = '/api/class-types';

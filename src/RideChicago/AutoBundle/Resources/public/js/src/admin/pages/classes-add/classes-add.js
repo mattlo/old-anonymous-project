@@ -1,25 +1,8 @@
 Ridechicago.admin.common.view.RegionCenter.setTitle('Classes - Add Class');
 
 var classTypeStore = Ext.create('Ext.data.Store', {
-	fields: ['roleDisplay', 'roleValue'],
-	data: [
-		{
-			roleDisplay: 'Basic Licensing Class',
-			roleValue: '0'
-		},
-		{
-			roleDisplay: 'Motorcycle Instructor Training',
-			roleValue: '1'
-		},
-		{
-			roleDisplay: 'Refresher Class - $95',
-			roleValue: '2'
-		},
-		{
-			roleDisplay: 'Winter Storage',
-			roleValue: '3'
-		}
-	]
+	model: Ridechicago.admin.model.ClassTypes,
+	autoLoad: true
 });
 
 function dayChkBoxConfigGenerator(name) {
@@ -28,10 +11,37 @@ function dayChkBoxConfigGenerator(name) {
 			i;
 
 	for (i = 0; i < days.length; ++i) {
+		var onchange = (function (_i) {
+			return function () {
+				var timeCmp= Ext.getCmp('dayConfig' + _i);
+				
+				if (this.checked === true) {
+					timeCmp.enable();
+				} else {
+					timeCmp.disable();
+				}
+			};
+		}(i));
+		
 		output.push({
 			boxLabel: days[i],
 			name: name,
-			inputValue: i
+			inputValue: i,
+			listeners: {
+				change: onchange
+			}
+		});
+		
+		output.push({
+			fieldLabel: 'Time',
+			xtype: 'timefield',
+			name: 'dayConfig' + i,
+			id: 'dayConfig' + i,
+			disabled: true,
+			labelWidth: 45,
+			minValue: Ext.Date.parse('05:00:00 AM', 'h:i:s A'),
+			maxValue: Ext.Date.parse('08:00:00 PM', 'h:i:s A'),
+			editable: false
 		});
 	}
 
@@ -50,11 +60,10 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			xtype: 'combobox',
 			fieldLabel: 'Class Association',
 			store: classTypeStore,
-			queryMode: 'local',
-			displayField: 'roleDisplay',
-			valueField: 'roleValue',
+			displayField: 'title',
+			valueField: 'id',
 			editable: false,
-			name: 'role',
+			name: 'classType',
 			msgTarget: 'under',
 			width: 500
 		}, {
@@ -122,15 +131,19 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			minValue: new Date(), // limited to the current date or prior
 			width: 350
 		}, {
-			xtype: 'displayfield',
+			xtype: 'datefield',
 			fieldLabel: 'Class Start Date',
-			value: 'Automatically Generated',
-			width: 500,
+			name: 'classStartDate',
+			msgTarget: 'under',
+			minValue: new Date(), // limited to the current date or prior
+			width: 350
 		}, {
-			xtype: 'displayfield',
-			fieldLabel: 'Class End Date',
-			value: 'Automatically Generated',
-			width: 500,
+			xtype: 'datefield',
+			fieldLabel: 'Registration Opens',
+			name: 'classEndDate',
+			msgTarget: 'under',
+			minValue: new Date(), // limited to the current date or prior
+			width: 350
 		}, {
 			xtype: 'fieldcontainer',
 			fieldLabel: 'Lead Instructor',
