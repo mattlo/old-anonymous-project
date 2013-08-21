@@ -32,13 +32,13 @@ class Classroom {
 	protected $class_days;
 	
 	/**
-	 * @ORM\Column(type="decimal", scale=6, precision=2)
+	 * @ORM\Column(type="decimal", scale=2, precision=6)
 	 * @Assert\NotBlank()
 	 */
 	protected $price = 0;
 	
 	/**
-	 * @ORM\Column(type="decimal", scale=6, precision=2)
+	 * @ORM\Column(type="decimal", scale=2, precision=6)
 	 * @Assert\NotBlank()
 	 */
 	protected $deposit = 0;
