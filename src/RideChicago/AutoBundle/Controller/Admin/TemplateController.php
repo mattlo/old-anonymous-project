@@ -36,6 +36,11 @@ class TemplateController extends Controller {
 	
 	public function classTypesAddAction() {
 		return $this->render('RideChicagoAutoBundle:Pages/Admin:classes-add-type.html.twig');
+	}	
+	
+	public function classTypesEditAction($id) {
+		$data = json_encode(array('id' => $id));
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:classes-edit-type.html.twig', array('staticData' => $data));
 	}
 	
 	

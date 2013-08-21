@@ -37,6 +37,10 @@ auto_admin_classestypes_view:
 auto_admin_classestypes_add:
     pattern:  /admin/class-types/add
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classTypesAdd }
+         
+auto_admin_classestypes_editd:
+    pattern:  /admin/class-types/edit/{id}
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classTypesEdit }
     
 # API routes    
 
@@ -73,6 +77,12 @@ classtypes_get:
   pattern: /api/class-types
   defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:get, _format: json}    
   
+classtypes_get_single:
+  pattern: /api/class-types/{id}
+  defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:get, _format: json}    
+  requirements:
+    id: \d+
+  
 classtypes_reorder:
   pattern: /api/class-types/reorder
   defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:reorder, _format: json}    
@@ -81,6 +91,16 @@ classtypes_reorder:
 classtypes_create:
   pattern: /api/class-types/create
   defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:create, _format: json}    
+  methods: [POST]
+  
+classtypes_update:
+  pattern: /api/class-types/update
+  defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:update, _format: json}    
+  methods: [POST]
+  
+classtypes_delete:
+  pattern: /api/class-types/delete
+  defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:delete, _format: json}    
   methods: [POST]
 
 class_sch_get:

@@ -16,11 +16,22 @@ class ClassTypesController extends Controller {
 	const INCREMENT = 1;
 	const DECREMENT = -1;
 	
-	public function getAction () {
+	/**
+	 * 
+	 * @param type $id
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function getAction ($id = null) {
+		if ($id !== null) {
+			$query = array('id' => $id);
+		} else {
+			$query = array();
+		}
+		
 		// get class
 		$classTypes = $this->getDoctrine()
 			->getRepository('RideChicagoAutoBundle:ClassType')
-			->findBy(array(), array('indexOrder' => 'ASC'));
+			->findBy($query, array('indexOrder' => 'ASC'));
 		
 		Logger::info($this, 'fetching ' . count($classTypes) . ' Class Types');
 		
@@ -42,6 +53,14 @@ class ClassTypesController extends Controller {
 			$classType->setTitle($request->request->get('title'));
 			$classType->setEnrollment($request->request->get('enrollment'));
 			$classType->setDescription($request->request->get('description'));
+			
+			// get last item
+			$lastClassType = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:ClassType')
+				->findOneBy(array(), array('indexOrder' => 'DESC'));
+			
+			// set indexOrder
+			$classType->setIndexOrder(count($lastClassType) > 0 ? $lastClassType->getIndexOrder() + 1 : 0);
 			
 			// validate
 			$validator = $this->get('validator');
@@ -66,10 +85,27 @@ class ClassTypesController extends Controller {
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
 	public function deleteAction(Request $request) {
+		// @TODO add class checking
+		
 		$classType = $this->getDoctrine()
 			->getRepository('RideChicagoAutoBundle:ClassType')
 			->findOneById($request->request->get('id'));
-
+		
+		// decrement all classtypes
+		$repository = $this->getDoctrine()->getRepository('RideChicagoAutoBundle:ClassType');
+		$query = $repository->createQueryBuilder('ct')
+			->where('ct.indexOrder > :index')
+			->setParameter('index', $classType->getIndexOrder());
+		
+		foreach($query->getQuery()->getResult() as $record) {
+			$indexValue = $record->getIndexOrder() - 1;
+			
+			Logger::debug($this, 'decremeting node id ' . $record->getId() . '; current ' . $record->getIndexOrder() . ' to ' . $indexValue);
+			$record->setIndexOrder($indexValue);
+		}
+		
+		Logger::info($this, 'deleting classtype ' . $classType->getId());
+				
 		// get ORM manager
 		$ormManager = $this->getDoctrine()->getManager();
 		// save
@@ -84,8 +120,38 @@ class ClassTypesController extends Controller {
 	 * @param \Symfony\Component\HttpFoundation\Request $request
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	public function editAction(Request $request) {
+	public function updateAction(Request $request) {
+		try {
+			$id = $request->request->get('id');
+			
+			$classType = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:ClassType')
+				->findOneBy(array('id' => $id));
+			
+			Logger::info($this, 'updating classtype: ' . $id);
+			
+			// stage info
+			$classType->setLastModified();
+			$classType->setStatus($request->request->get('status'));
+			$classType->setTitle($request->request->get('title'));
+			$classType->setEnrollment($request->request->get('enrollment'));
+			$classType->setDescription($request->request->get('description'));
+			
+			// validate
+			$validator = $this->get('validator');
+			ValidationThrower::check($validator->validate($classType));
+
+			// get ORM manager
+			$ormManager = $this->getDoctrine()->getManager();
+
+			// save
+			$ormManager->persist($classType);
+			$ormManager->flush();
+		} catch (ContraintViolationException $e) {
+			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
+		}
 		
+		return ServiceOutput::render($this);
 	}
 	
 	/**

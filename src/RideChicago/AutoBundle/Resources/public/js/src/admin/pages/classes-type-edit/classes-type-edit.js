@@ -1,4 +1,4 @@
-Ridechicago.admin.common.view.RegionCenter.setTitle('Class Management - Add Type');
+Ridechicago.admin.common.view.RegionCenter.setTitle('Class Management - Edit Type');
 
 Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 	bodyPadding: 5,
@@ -6,15 +6,16 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 	autoScroll: true,
 	fieldDefaults: {labelAlign:'left', labelWidth: 150},
 	
+	id: 'classTypesEditForm',
 	items: Ridechicago.admin.forms.ClassType,
 	
 	buttons: [{
 		cls: 'btnAlignment',
-		text: 'Create Class Type',
+		text: 'Update Class Type',
 		formBind: true,
 		handler: function(){
 			this.up('form').getForm().submit({
-				url: '/api/class-types/create',
+				url: '/api/class-types/update',
 				submitEmptyText: false,
 				waitMsg: 'Loading...',
 				success: function (ins, response) {
@@ -32,3 +33,21 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 		}
 	}]
 }));
+
+Ext.onReady(function () {
+	// get onpage JSON data
+	var rawData = Ext.get('pageContentData').dom.innerHTML;
+	
+	// convert to JSON
+	var data = Ext.JSON.decode(rawData);
+	
+	// get model
+	var classType = Ridechicago.admin.model.classtypes.ClassTypesModel;
+
+	// preload form
+	classType.load(data.id, {
+		success: function(classType) {
+			Ext.getCmp('classTypesEditForm').loadRecord(classType);
+		}
+	});
+});

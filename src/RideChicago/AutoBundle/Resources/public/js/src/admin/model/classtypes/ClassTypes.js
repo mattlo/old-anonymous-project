@@ -9,7 +9,8 @@ Ext.regModel('Ridechicago.admin.model.classtypes.ClassTypesModel', {
 		'enrollment',
 		'status',
 		{name: 'lastModified', type: Ext.data.Types.DATE2},
-		'indexOrder'
+		'indexOrder',
+		'description'
 	],
  
     proxy: {

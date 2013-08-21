@@ -6,8 +6,12 @@
 		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/EnrollmentStore.js'
 		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/ClassType.js'
 		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/classtypes/ClassTypes.js'
-		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/classes-type-add/classes-type-add.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/classes-type-edit/classes-type-edit.js'
 	%}
 		<script type="text/javascript" src="{{ asset_url }}"></script>
 	{% endjavascripts %}
+{% endblock %}
+		
+{% block content %}
+	<script type="application/json" id="pageContentData">{{ staticData|raw }}</script>
 {% endblock %}
