@@ -101,7 +101,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			mouseWheelEnabled: false
 		}, {
 			xtype: 'numberfield',
-			name: 'enrollmentSeats',
+			name: 'enrollment_seats',
 			msgTarget: 'under',
 			fieldLabel: 'Enrollment Seats',
 			maxValue: 99,
@@ -109,7 +109,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			width: 300
 		}, {
 			xtype: 'numberfield',
-			name: 'enrollmentWaitList',
+			name: 'enrollment_wait_list',
 			msgTarget: 'under',
 			fieldLabel: 'Enrollment Wait List',
 			maxValue: 99,
@@ -117,7 +117,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			width: 300
 		}, {
 			xtype: 'numberfield',
-			name: 'promoLimit',
+			name: 'promotion_limit',
 			msgTarget: 'under',
 			fieldLabel: 'Promo Limit',
 			maxValue: 999,
@@ -126,21 +126,21 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 		}, {
 			xtype: 'datefield',
 			fieldLabel: 'Registration Opens',
-			name: 'registrationOpenDate',
+			name: 'class_registration_start_date',
 			msgTarget: 'under',
 			minValue: new Date(), // limited to the current date or prior
 			width: 350
 		}, {
 			xtype: 'datefield',
 			fieldLabel: 'Class Start Date',
-			name: 'classStartDate',
+			name: 'class_start_date',
 			msgTarget: 'under',
 			minValue: new Date(), // limited to the current date or prior
 			width: 350
 		}, {
 			xtype: 'datefield',
 			fieldLabel: 'Registration Opens',
-			name: 'classEndDate',
+			name: 'class_end_date',
 			msgTarget: 'under',
 			minValue: new Date(), // limited to the current date or prior
 			width: 350
@@ -183,14 +183,14 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			items: [
 				{
 					boxLabel: 'Enabled',
-					name: 'size2',
-					inputValue: 'm',
-					id: 'radio12'
+					name: 'online_registration_status',
+					inputValue: '1',
+					id: 'online_registration_status_enabled'
 				}, {
 					boxLabel: 'Disabled',
-					name: 'size2',
-					inputValue: 'l',
-					id: 'radio22'
+					name: 'online_registration_status',
+					inputValue: '0',
+					id: 'online_registration_status_disabled'
 				}
 			]
 		}, {
@@ -205,27 +205,27 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			items: [
 				{
 					boxLabel: 'Enabled',
-					name: 'size23',
-					inputValue: 'm',
-					id: 'radio1233'
+					name: 'status',
+					inputValue: '1',
+					id: 'status_enabled'
 				}, {
 					boxLabel: 'Disabled',
-					name: 'size23',
-					inputValue: 'l',
-					id: 'radio223'
+					name: 'status',
+					inputValue: '0',
+					id: 'status_disabled'
 				}
 			]
 		},
 		{
 			xtype: 'textareafield',
 			grow: true,
-			name: 'message',
+			name: 'notes',
 			fieldLabel: 'Additional Notes',
 			width: 500
 		}
 	],
 	buttons: [{
-			id: 'usersAddSubmit',
+			cls: 'btnAlignment',
 			text: 'Add New Class',
 			formBind: true,
 			handler: function() {
