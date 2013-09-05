@@ -13,7 +13,7 @@ abstract class Logger {
 	}
 	
 	static public function debug($instance, $message, $context = array()) {
-		static::log($instance, MonoLogger::INFO, $message, $context);
+		static::log($instance, MonoLogger::DEBUG, $message, $context);
 	}
 	
 	static public function error($instance, $message, $context = array()) {
