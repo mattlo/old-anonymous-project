@@ -5,6 +5,7 @@ namespace RideChicago\AutoBundle\Entity;
 use \DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use RideChicago\AutoBundle\Entity\ClassType;
 
 /**
  * @ORM\Entity
@@ -108,6 +109,12 @@ class Classroom {
 	 * @Assert\NotBlank()
 	 */
 	protected $notes;
+	
+    /**
+     * @ORM\ManyToOne(targetEntity="ClassType")
+     * @ORM\JoinColumn(name="classtype_id", referencedColumnName="id")
+     */
+	protected $classtype;
 
 	/**
 	 * Set last_modified
@@ -460,4 +467,12 @@ class Classroom {
     {
         return $this->classtype_id;
     }
+	
+	public function setClasstype(ClassType $classtype) {
+		$this->classtype = $classtype;
+	}
+	
+	public function getClasstype() {
+		return $this->classtype;
+	}
 }
