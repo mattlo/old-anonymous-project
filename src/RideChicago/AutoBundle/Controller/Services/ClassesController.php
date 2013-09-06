@@ -62,7 +62,14 @@ class ClassesController extends Controller {
 			$classroom->setPrice($request->request->get('price'));
 			$classroom->setPromotionLimit($request->request->get('promotion_limit'));
 			$classroom->setStatus($request->request->get('status'));
-			$classroom->setClasstypeId($request->request->get('classtype_id'));
+			
+			// get classType
+			$classtype = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:ClassType')
+				->findOneById($request->request->get('classtype_id'));
+			
+			$classroom->setClasstype($classtype);
+			$classroom->setClasstypeId($classtype->getId());
 			
 			// set class room days
 			// iterate over checked days

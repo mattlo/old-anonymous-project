@@ -54,8 +54,8 @@ class ClassType {
 	 * @Assert\NotBlank()
 	 */
 	protected $last_modified;
-
-	/**
+	
+    /**
 	 * Get id
 	 *
 	 * @return integer 
