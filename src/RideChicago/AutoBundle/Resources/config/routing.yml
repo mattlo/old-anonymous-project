@@ -103,10 +103,14 @@ classtypes_delete:
   defaults: {_controller: RideChicagoAutoBundle:Services\ClassTypes:delete, _format: json}    
   methods: [POST]
 
-class_sch_get:
+classrooms_get:
   pattern: /api/classes
   defaults: {_controller: RideChicagoAutoBundle:Services\Classes:get, _format: json}  
   
+classrooms_create:
+  pattern: /api/classes/create
+  defaults: {_controller: RideChicagoAutoBundle:Services\Classes:create, _format: json}    
+  methods: [POST]
 # Security Routes
   
 login_path:

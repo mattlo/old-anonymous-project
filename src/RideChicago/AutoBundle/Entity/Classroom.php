@@ -84,6 +84,12 @@ class Classroom {
 	 * @Assert\NotBlank()
 	 */
 	protected $instructor_id;
+		
+	/**
+	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank()
+	 */
+	protected $classtype_id;
 	
 	/**
 	 * @ORM\Column(type="integer")
@@ -430,5 +436,28 @@ class Classroom {
     public function getNotes()
     {
         return $this->notes;
+    }
+
+    /**
+     * Set classtype_id
+     *
+     * @param integer $classtypeId
+     * @return Classroom
+     */
+    public function setClasstypeId($classtypeId)
+    {
+        $this->classtype_id = $classtypeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get classtype_id
+     *
+     * @return integer 
+     */
+    public function getClasstypeId()
+    {
+        return $this->classtype_id;
     }
 }

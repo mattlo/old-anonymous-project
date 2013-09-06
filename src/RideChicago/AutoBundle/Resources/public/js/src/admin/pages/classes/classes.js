@@ -1,4 +1,4 @@
-Ridechicago.admin.common.view.RegionCenter.setTitle('Class Management - View Classes');
+Ridechicago.admin.common.view.RegionCenter.setTitle('Class Management - View Classrooms');
 
 
 var classStore = Ext.create('Ext.data.Store', {

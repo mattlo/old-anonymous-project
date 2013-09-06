@@ -29,10 +29,10 @@ class NavigationController extends Controller {
 						'Class Management Tools',
 						null,
 						array (
-							static::mkLeaf('View Class Schedules', '/admin/classes'),
-							static::mkLeaf('Add New Class Schedule', '/admin/classes/add'),
-							static::mkLeaf('Manage Class Types', '/admin/class-types'),
-							static::mkLeaf('Create a New Class Type', '/admin/class-types/add')
+							static::mkLeaf('View Classrooms', '/admin/classes'),
+							static::mkLeaf('Create Classroom', '/admin/classes/add'),
+							static::mkLeaf('Manage Types', '/admin/class-types'),
+							static::mkLeaf('Create Type', '/admin/class-types/add')
 						)
 					),	
 					

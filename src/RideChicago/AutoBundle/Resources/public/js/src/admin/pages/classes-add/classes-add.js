@@ -1,4 +1,4 @@
-Ridechicago.admin.common.view.RegionCenter.setTitle('Classes - Add Class');
+Ridechicago.admin.common.view.RegionCenter.setTitle('Classes - Add Classroom');
 
 var classTypeStore = Ext.create('Ext.data.Store', {
 	model: Ridechicago.admin.model.ClassTypes,
@@ -7,13 +7,14 @@ var classTypeStore = Ext.create('Ext.data.Store', {
 
 function dayChkBoxConfigGenerator(name) {
 	var output = [],
-			days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-			i;
+		days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+		i,
+		fieldName = 'class_day_config_n';
 
 	for (i = 0; i < days.length; ++i) {
 		var onchange = (function (_i) {
 			return function () {
-				var timeCmp= Ext.getCmp('dayConfig' + _i);
+				var timeCmp= Ext.getCmp(fieldName + _i);
 				
 				if (this.checked === true) {
 					timeCmp.enable();
@@ -35,8 +36,8 @@ function dayChkBoxConfigGenerator(name) {
 		output.push({
 			fieldLabel: 'Time',
 			xtype: 'timefield',
-			name: 'dayConfig' + i,
-			id: 'dayConfig' + i,
+			name: fieldName + i,
+			id: fieldName + i,
 			disabled: true,
 			labelWidth: 45,
 			minValue: Ext.Date.parse('05:00:00 AM', 'h:i:s A'),
@@ -63,20 +64,23 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			displayField: 'title',
 			valueField: 'id',
 			editable: false,
-			name: 'classType',
+			name: 'classtype_id',
 			msgTarget: 'under',
+			allowBlank: false,
 			width: 500
 		}, {
 			xtype: 'displayfield',
 			fieldLabel: 'Class Code',
 			value: 'Automatically Generated',
-			width: 500,
+			width: 500
 		}, {
 			xtype: 'fieldcontainer',
 			fieldLabel: 'Class Days',
+			id: 'class_day_fieldcontainer',
 			msgTarget: 'under',
 			defaultType: 'checkboxfield',
-			items: dayChkBoxConfigGenerator('classDays')
+			allowBlank: false,
+			items: dayChkBoxConfigGenerator('class_day_keys[]')
 		}, {
 			xtype: 'numberfield',
 			name: 'price',
@@ -87,6 +91,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			width: 300,
 			hideTrigger: true,
 			keyNavEnabled: false,
+			allowBlank: false,
 			mouseWheelEnabled: false
 		}, {
 			xtype: 'numberfield',
@@ -98,6 +103,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			width: 300,
 			hideTrigger: true,
 			keyNavEnabled: false,
+			allowBlank: false,
 			mouseWheelEnabled: false
 		}, {
 			xtype: 'numberfield',
@@ -106,6 +112,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			fieldLabel: 'Enrollment Seats',
 			maxValue: 99,
 			minValue: 1,
+			allowBlank: false,
 			width: 300
 		}, {
 			xtype: 'numberfield',
@@ -114,6 +121,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			fieldLabel: 'Enrollment Wait List',
 			maxValue: 99,
 			minValue: 0,
+			allowBlank: false,
 			width: 300
 		}, {
 			xtype: 'numberfield',
@@ -122,6 +130,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			fieldLabel: 'Promo Limit',
 			maxValue: 999,
 			minValue: 1,
+			allowBlank: false,
 			width: 320
 		}, {
 			xtype: 'datefield',
@@ -129,6 +138,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			name: 'class_registration_start_date',
 			msgTarget: 'under',
 			minValue: new Date(), // limited to the current date or prior
+			allowBlank: false,
 			width: 350
 		}, {
 			xtype: 'datefield',
@@ -136,13 +146,15 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			name: 'class_start_date',
 			msgTarget: 'under',
 			minValue: new Date(), // limited to the current date or prior
+			allowBlank: false,
 			width: 350
 		}, {
 			xtype: 'datefield',
-			fieldLabel: 'Registration Opens',
+			fieldLabel: 'Class End Date',
 			name: 'class_end_date',
 			msgTarget: 'under',
 			minValue: new Date(), // limited to the current date or prior
+			allowBlank: false,
 			width: 350
 		}, {
 			xtype: 'fieldcontainer',
@@ -156,67 +168,44 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			items: [
 				{
 					boxLabel: 'Toyota',
-					name: 'size',
-					inputValue: 'm',
-					id: 'radio1'
+					name: 'instructor_id',
+					inputValue: '1',
+					id: 'radio1',
 				}, {
 					boxLabel: 'Sears Centre',
-					name: 'size',
-					inputValue: 'l',
+					name: 'instructor_id',
+					inputValue: '2',
 					id: 'radio2'
 				}, {
 					boxLabel: 'United',
-					name: 'size',
-					inputValue: 'xl',
+					name: 'instructor_id',
+					inputValue: '3',
 					id: 'radio3'
 				}
 			]
-		}, {
-			xtype: 'fieldcontainer',
+		}, 	{
+			xtype: 'combobox',
 			fieldLabel: 'Online Registration',
-			defaultType: 'radiofield',
-			defaults: {
-				flex: 1
-			},
-			width: 300,
-			layout: 'hbox',
-			items: [
-				{
-					boxLabel: 'Enabled',
-					name: 'online_registration_status',
-					inputValue: '1',
-					id: 'online_registration_status_enabled'
-				}, {
-					boxLabel: 'Disabled',
-					name: 'online_registration_status',
-					inputValue: '0',
-					id: 'online_registration_status_disabled'
-				}
-			]
+			store: Ridechicago.admin.model.stores.EnableStore,
+			displayField: 'text',
+			valueField: 'value',
+			editable: false,
+			name: 'online_registration_status',
+			msgTarget: 'under',
+			allowBlank: false,
+			width: 300
 		}, {
-			xtype: 'fieldcontainer',
+			xtype: 'combobox',
 			fieldLabel: 'Status',
-			defaultType: 'radiofield',
-			defaults: {
-				flex: 1
-			},
-			width: 300,
-			layout: 'hbox',
-			items: [
-				{
-					boxLabel: 'Enabled',
-					name: 'status',
-					inputValue: '1',
-					id: 'status_enabled'
-				}, {
-					boxLabel: 'Disabled',
-					name: 'status',
-					inputValue: '0',
-					id: 'status_disabled'
-				}
-			]
-		},
-		{
+			store: Ridechicago.admin.model.stores.StatusStore,
+			displayField: 'text',
+			valueField: 'value',
+			editable: false,
+			name: 'status',
+			msgTarget: 'under',
+			allowBlank: false,
+			width: 300
+		}, {
 			xtype: 'textareafield',
 			grow: true,
 			name: 'notes',
@@ -225,11 +214,26 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 		}
 	],
 	buttons: [{
-			cls: 'btnAlignment',
-			text: 'Add New Class',
-			formBind: true,
-			handler: function() {
-
-			}
-		}]
+		cls: 'btnAlignment',
+		text: 'Add New Classroom',
+		formBind: true,
+		handler: function() {
+			this.up('form').getForm().submit({
+				url: '/api/classes/create',
+				submitEmptyText: false,
+				waitMsg: 'Loading...',
+				success: function (ins, response) {
+					Ext.MessageBox.show({
+						title: 'Classroom Management',
+						msg: Ext.getCmp('titleInput').getValue() + ' was successfully created!',
+						icon: Ext.MessageBox.INFO,
+						buttons: Ext.MessageBox.OK,
+						fn: function() {
+							window.location = '/admin/class-types';
+						}
+					});
+				}
+			});
+		}
+	}]
 }));
