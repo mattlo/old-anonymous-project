@@ -29,7 +29,6 @@ class Profile {
 	
 	/**
 	 * @ORM\Column(type="string", length=1)
-	 * @Assert\NotBlank()
 	 */
 	protected $middle_initial;
 	
@@ -41,19 +40,16 @@ class Profile {
 	
 	/**
 	 * @ORM\Column(type="text")
-	 * @Assert\NotBlank()
 	 */
 	protected $address;
 	
 	/**
 	 * @ORM\Column(type="string", length=255)
-	 * @Assert\NotBlank()
 	 */
 	protected $phone;
 	
 	/**
 	 * @ORM\Column(type="string", length=255)
-	 * @Assert\NotBlank()
 	 */
 	protected $phone_alt;
 	

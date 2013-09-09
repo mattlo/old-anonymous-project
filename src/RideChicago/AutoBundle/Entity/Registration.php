@@ -22,7 +22,7 @@ class Registration {
 	 * @ORM\Column(type="integer")
 	 * @Assert\NotBlank()
 	 */
-	protected $status;
+	protected $status = 0;
 	
 	/**
 	 * @ORM\Column(type="integer")
@@ -40,19 +40,36 @@ class Registration {
 	 * @ORM\Column(type="integer")
 	 * @Assert\NotBlank()
 	 */
-	protected $lab_status;
+	protected $lab_status = 0;
 	
 	/**
 	 * @ORM\Column(type="integer")
 	 * @Assert\NotBlank()
 	 */
-	protected $class_status;
+	protected $class_status = 0;
 	
 	/**
 	 * @ORM\Column(type="string", length=255)
 	 * @Assert\NotBlank()
 	 */
 	protected $promotion_code;
+	
+	/**
+	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank()
+	 */
+	protected $customer_id;
+	
+    /**
+     * @ORM\ManyToOne(targetEntity="Customer")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     */
+	protected $customer;
+	
+	/**
+	 * @ORM\Column(type="text")
+	 */
+	protected $notes;
 	
 	/**
 	 * @ORM\Column(type="datetime")

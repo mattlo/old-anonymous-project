@@ -129,6 +129,8 @@ class Classroom {
 	protected $classtype;
 	
 	protected $code;
+	
+	protected $longname;
 
 	/**
 	 * Set last_modified
@@ -544,4 +546,8 @@ class Classroom {
     {
         return $this->enrollment_wait_list_used;
     }
+	
+	public function getLongName() {
+		return $this->classtype->getTitle() . ' - ' . $this->getCode();
+	}
 }

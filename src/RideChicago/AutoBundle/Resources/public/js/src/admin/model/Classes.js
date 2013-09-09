@@ -1,3 +1,7 @@
+Ext.namespace('Ridechicago.admin.model');
+
+Ridechicago.admin.model.CLASSES_PROXY_URL = '/api/classes';
+
 Ext.regModel('Ridechicago.admin.model.Classes', {
     fields: [
 		'id',
@@ -17,12 +21,15 @@ Ext.regModel('Ridechicago.admin.model.Classes', {
 		'notes',
 		'classtypeId',
 		'classtype',
-		'code'
+		'code',
+		'longName'
 	],
  
     proxy: {
         type: 'rest',
-        url : '/api/classes',
+        url : Ridechicago.admin.model.CLASSES_PROXY_URL,
+		appendId: true,
+		
         reader: {
 			type: 'json',
 			root: 'data'

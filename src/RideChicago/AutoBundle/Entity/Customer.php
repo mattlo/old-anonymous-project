@@ -27,7 +27,6 @@ class Customer {
 	
 	/**
 	 * @ORM\Column(type="string", length=255)
-	 * @Assert\NotBlank()
 	 */
 	protected $drivers_license;
 	
@@ -39,7 +38,6 @@ class Customer {
 	
 	/**
 	 * @ORM\Column(type="integer")
-	 * @Assert\NotBlank()
 	 */
 	protected $gender;
 	
