@@ -75,19 +75,19 @@ class Classroom {
 	protected $promotion_limit;
 		
 	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="date")
 	 * @Assert\NotBlank()
 	 */
 	protected $class_registration_start_date;
 	
 	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="date")
 	 * @Assert\NotBlank()
 	 */
 	protected $class_start_date;
 	
 	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="date")
 	 * @Assert\NotBlank()
 	 */
 	protected $class_end_date;
