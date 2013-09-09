@@ -43,13 +43,13 @@ class Customer {
 	
     /**
      * @ORM\ManyToOne(targetEntity="Profile")
-     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id", onDelete="CASCADE")
      */
 	protected $profile;
 	
     /**
      * @ORM\ManyToOne(targetEntity="Profile")
-     * @ORM\JoinColumn(name="billing_profile_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="billing_profile_id", referencedColumnName="id", onDelete="CASCADE")
      */
 	protected $billing_profile;
 	

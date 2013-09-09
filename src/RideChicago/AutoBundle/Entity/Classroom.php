@@ -125,7 +125,7 @@ class Classroom {
 	
     /**
      * @ORM\ManyToOne(targetEntity="ClassType")
-     * @ORM\JoinColumn(name="classtype_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="classtype_id", referencedColumnName="id", onDelete="CASCADE")
      */
 	protected $classtype;
 	

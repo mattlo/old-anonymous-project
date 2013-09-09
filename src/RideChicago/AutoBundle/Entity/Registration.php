@@ -26,7 +26,7 @@ class Registration {
 	
     /**
      * @ORM\ManyToOne(targetEntity="Classroom")
-     * @ORM\JoinColumn(name="classroom_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="classroom_id", referencedColumnName="id", onDelete="CASCADE")
      */
 	protected $classroom;
 	
@@ -50,7 +50,7 @@ class Registration {
 	
     /**
      * @ORM\ManyToOne(targetEntity="Customer")
-     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete="CASCADE")
      */
 	protected $customer;
 	
