@@ -77,77 +77,244 @@ class Registration {
 	 */
 	protected $date_created;
 	
-	public function getId() {
-		return $this->id;
-	}
 
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	public function getStatus() {
-		return $this->status;
-	}
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Registration
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
 
-	public function setStatus($status) {
-		$this->status = $status;
-		return $this;
-	}
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 
-	public function getClassroom_id() {
-		return $this->classroom_id;
-	}
+    /**
+     * Set classroom_id
+     *
+     * @param integer $classroomId
+     * @return Registration
+     */
+    public function setClassroomId($classroomId)
+    {
+        $this->classroom_id = $classroomId;
+    
+        return $this;
+    }
 
-	public function setClassroom_id($classroom_id) {
-		$this->classroom_id = $classroom_id;
-		return $this;
-	}
+    /**
+     * Get classroom_id
+     *
+     * @return integer 
+     */
+    public function getClassroomId()
+    {
+        return $this->classroom_id;
+    }
 
-	public function getClassroom() {
-		return $this->classroom;
-	}
+    /**
+     * Set lab_status
+     *
+     * @param integer $labStatus
+     * @return Registration
+     */
+    public function setLabStatus($labStatus)
+    {
+        $this->lab_status = $labStatus;
+    
+        return $this;
+    }
 
-	public function setClassroom($classroom) {
-		$this->classroom = $classroom;
-		return $this;
-	}
+    /**
+     * Get lab_status
+     *
+     * @return integer 
+     */
+    public function getLabStatus()
+    {
+        return $this->lab_status;
+    }
 
-	public function getLab_status() {
-		return $this->lab_status;
-	}
+    /**
+     * Set class_status
+     *
+     * @param integer $classStatus
+     * @return Registration
+     */
+    public function setClassStatus($classStatus)
+    {
+        $this->class_status = $classStatus;
+    
+        return $this;
+    }
 
-	public function setLab_status($lab_status) {
-		$this->lab_status = $lab_status;
-		return $this;
-	}
+    /**
+     * Get class_status
+     *
+     * @return integer 
+     */
+    public function getClassStatus()
+    {
+        return $this->class_status;
+    }
 
-	public function getClass_status() {
-		return $this->class_status;
-	}
+    /**
+     * Set promotion_code
+     *
+     * @param string $promotionCode
+     * @return Registration
+     */
+    public function setPromotionCode($promotionCode)
+    {
+        $this->promotion_code = $promotionCode;
+    
+        return $this;
+    }
 
-	public function setClass_status($class_status) {
-		$this->class_status = $class_status;
-		return $this;
-	}
+    /**
+     * Get promotion_code
+     *
+     * @return string 
+     */
+    public function getPromotionCode()
+    {
+        return $this->promotion_code;
+    }
 
-	public function getPromotion_code() {
-		return $this->promotion_code;
-	}
+    /**
+     * Set customer_id
+     *
+     * @param integer $customerId
+     * @return Registration
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->customer_id = $customerId;
+    
+        return $this;
+    }
 
-	public function setPromotion_code($promotion_code) {
-		$this->promotion_code = $promotion_code;
-		return $this;
-	}
+    /**
+     * Get customer_id
+     *
+     * @return integer 
+     */
+    public function getCustomerId()
+    {
+        return $this->customer_id;
+    }
 
-	public function getDate_created() {
-		return $this->date_created;
-	}
+    /**
+     * Set notes
+     *
+     * @param string $notes
+     * @return Registration
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+    
+        return $this;
+    }
 
-	public function setDate_created($date_created) {
-		$this->date_created = $date_created;
-		return $this;
-	}
+    /**
+     * Get notes
+     *
+     * @return string 
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Set date_created
+     *
+     * @param \DateTime $dateCreated
+     * @return Registration
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->date_created = $dateCreated;
+    
+        return $this;
+    }
+
+    /**
+     * Get date_created
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreated()
+    {
+        return $this->date_created->format(DateTime::ISO8601);
+    }
+
+    /**
+     * Set classroom
+     *
+     * @param \RideChicago\AutoBundle\Entity\Classroom $classroom
+     * @return Registration
+     */
+    public function setClassroom(\RideChicago\AutoBundle\Entity\Classroom $classroom = null)
+    {
+        $this->classroom = $classroom;
+    
+        return $this;
+    }
+
+    /**
+     * Get classroom
+     *
+     * @return \RideChicago\AutoBundle\Entity\Classroom 
+     */
+    public function getClassroom()
+    {
+        return $this->classroom;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \RideChicago\AutoBundle\Entity\Customer $customer
+     * @return Registration
+     */
+    public function setCustomer(\RideChicago\AutoBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+    
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \RideChicago\AutoBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
 }
-
-?>

@@ -62,67 +62,152 @@ class Profile {
 		$this->serializer = new Serializer($normalizers, $encoders);
 	}
 	
-	public function getId() {
-		return $this->id;
-	}
 
-	public function setId($id) {
-		$this->id = $id;
-		return $this;
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	public function getFirst_name() {
-		return $this->first_name;
-	}
+    /**
+     * Set first_name
+     *
+     * @param string $firstName
+     * @return Profile
+     */
+    public function setFirstName($firstName)
+    {
+        $this->first_name = $firstName;
+    
+        return $this;
+    }
 
-	public function setFirst_name($first_name) {
-		$this->first_name = $first_name;
-		return $this;
-	}
+    /**
+     * Get first_name
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->first_name;
+    }
 
-	public function getMiddle_initial() {
-		return $this->middle_initial;
-	}
+    /**
+     * Set middle_initial
+     *
+     * @param string $middleInitial
+     * @return Profile
+     */
+    public function setMiddleInitial($middleInitial)
+    {
+        $this->middle_initial = $middleInitial;
+    
+        return $this;
+    }
 
-	public function setMiddle_initial($middle_initial) {
-		$this->middle_initial = $middle_initial;
-		return $this;
-	}
+    /**
+     * Get middle_initial
+     *
+     * @return string 
+     */
+    public function getMiddleInitial()
+    {
+        return $this->middle_initial;
+    }
 
-	public function getLast_name() {
-		return $this->last_name;
-	}
+    /**
+     * Set last_name
+     *
+     * @param string $lastName
+     * @return Profile
+     */
+    public function setLastName($lastName)
+    {
+        $this->last_name = $lastName;
+    
+        return $this;
+    }
 
-	public function setLast_name($last_name) {
-		$this->last_name = $last_name;
-		return $this;
-	}
+    /**
+     * Get last_name
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->last_name;
+    }
 
-	public function getAddress() {
-		return $this->serializer->deserialize($this->address, 'RideChicago\AutoBundle\Entity\Address', 'json');
-	}
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return Profile
+     */
+    public function setAddress(Address $address)
+    {
+        $this->address = $this->serializer->serialize($address, 'json');
+    
+        return $this;
+    }
 
-	public function setAddress(Address $address) {
-		$this->address = $this->serializer->serialize($address, 'json');
-		return $this;
-	}
+    /**
+     * Get address
+     *
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->serializer->deserialize($this->address, 'RideChicago\AutoBundle\Entity\Address', 'json');
+    }
 
-	public function getPhone() {
-		return $this->phone;
-	}
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return Profile
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    
+        return $this;
+    }
 
-	public function setPhone($phone) {
-		$this->phone = $phone;
-		return $this;
-	}
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
 
-	public function getPhone_alt() {
-		return $this->phone_alt;
-	}
+    /**
+     * Set phone_alt
+     *
+     * @param string $phoneAlt
+     * @return Profile
+     */
+    public function setPhoneAlt($phoneAlt)
+    {
+        $this->phone_alt = $phoneAlt;
+    
+        return $this;
+    }
 
-	public function setPhone_alt($phone_alt) {
-		$this->phone_alt = $phone_alt;
-		return $this;
-	}
+    /**
+     * Get phone_alt
+     *
+     * @return string 
+     */
+    public function getPhoneAlt()
+    {
+        return $this->phone_alt;
+    }
 }
-?>

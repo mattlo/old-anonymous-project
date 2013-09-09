@@ -13,20 +13,20 @@ class Address {
 	
 	protected $postal_code;
 	
-	public function getAddress_line_1() {
+	public function getAddressLine1() {
 		return $this->address_line_1;
 	}
 
-	public function setAddress_line_1($address_line_1) {
+	public function setAddressLine1($address_line_1) {
 		$this->address_line_1 = $address_line_1;
 		return $this;
 	}
 
-	public function getAddress_line_2() {
+	public function getAddressLine2() {
 		return $this->address_line_2;
 	}
 
-	public function setAddress_line_2($address_line_2) {
+	public function setAddressLine2($address_line_2) {
 		$this->address_line_2 = $address_line_2;
 		return $this;
 	}
@@ -49,11 +49,11 @@ class Address {
 		return $this;
 	}
 
-	public function getPostal_code() {
+	public function getPostalCode() {
 		return $this->postal_code;
 	}
 
-	public function setPostal_code($postal_code) {
+	public function setPostalCode($postal_code) {
 		$this->postal_code = $postal_code;
 		return $this;
 	}
