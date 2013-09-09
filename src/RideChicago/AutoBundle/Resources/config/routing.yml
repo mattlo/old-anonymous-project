@@ -125,6 +125,15 @@ registrations_create:
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:create, _format: json}    
   methods: [POST]
   
+registrations_get:
+  pattern: /api/registration
+  defaults: {_controller: RideChicagoAutoBundle:Services\Registration:get, _format: json}    
+  
+registrations_get_from_classroom:
+  pattern: /api/registration/getFromClassroom/{id}
+  defaults: {_controller: RideChicagoAutoBundle:Services\Registration:getFromClassroom, _format: json}    
+  requirements:
+    id: \d+
   
 # Security Routes
   

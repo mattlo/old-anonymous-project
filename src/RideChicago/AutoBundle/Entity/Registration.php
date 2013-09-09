@@ -65,6 +65,9 @@ class Registration {
 	 */
 	protected $date_created;
 	
+	protected $classroom_id;
+	
+	protected $customer_id;
 
     /**
      * Get id

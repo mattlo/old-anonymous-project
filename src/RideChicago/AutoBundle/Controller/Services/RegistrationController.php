@@ -20,8 +20,29 @@ use \Exception;
 use \DateTime;
 
 class RegistrationController extends Controller {
-	public function getAction() {
+	public function getAction($id = null) {
+		if ($id !== null) {
+			$query = array('id' => $id);
+		} else {
+			$query = array();
+		}
 		
+		// get class
+		$registrations = $this->getDoctrine()
+			->getRepository('RideChicagoAutoBundle:Registration')
+			->findBy($query, array('id' => 'DESC'));
+		
+		Logger::info($this, 'fetching ' . count($registrations) . ' registrations');
+		return ServiceOutput::render($this, Serialize::getArrayFromObject($registrations));
+	}
+	
+	public function getFromClassroomAction($id = null) {
+		$registrations = $this->getDoctrine()
+			->getRepository('RideChicagoAutoBundle:Registration')
+			->findBy(array('classroom' => $id), array('id' => 'DESC'));
+		
+		Logger::info($this, 'fetching ' . count($registrations) . ' registrations');
+		return ServiceOutput::render($this, Serialize::getArrayFromObject($registrations));
 	}
 	
 	/**

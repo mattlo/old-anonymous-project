@@ -63,6 +63,10 @@ class Customer {
 	 * @Assert\NotBlank()
 	 */
 	protected $date_created;
+	
+	protected $profile_id;
+	
+	protected $billing_profile_id;
 
     /**
      * Get id

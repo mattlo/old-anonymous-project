@@ -56,10 +56,7 @@ class Profile {
 	protected $serializer = null;
 	
 	public function __construct() {
-		$encoders = array(new XmlEncoder(), new JsonEncoder());
-		$normalizers = array(new GetSetMethodNormalizer());
-
-		$this->serializer = new Serializer($normalizers, $encoders);
+		$this->initSerializer();
 	}
 	
 
@@ -162,6 +159,7 @@ class Profile {
      */
     public function getAddress()
     {
+		$this->initSerializer();
         return $this->serializer->deserialize($this->address, 'RideChicago\AutoBundle\Entity\Address', 'json');
     }
 
@@ -210,4 +208,11 @@ class Profile {
     {
         return $this->phone_alt;
     }
+	
+	public function initSerializer() {
+		$encoders = array(new XmlEncoder(), new JsonEncoder());
+		$normalizers = array(new GetSetMethodNormalizer());
+
+		$this->serializer = new Serializer($normalizers, $encoders);
+	}
 }
