@@ -54,7 +54,19 @@ class Classroom {
 	 * @ORM\Column(type="integer")
 	 * @Assert\NotBlank()
 	 */
+	protected $enrollment_seats_used = 0;
+	
+	/**
+	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank()
+	 */
 	protected $enrollment_wait_list;
+	
+	/**
+	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank()
+	 */
+	protected $enrollment_wait_list_used = 0;
 	
 	/**
 	 * @ORM\Column(type="integer")
@@ -115,6 +127,8 @@ class Classroom {
      * @ORM\JoinColumn(name="classtype_id", referencedColumnName="id")
      */
 	protected $classtype;
+	
+	protected $code;
 
 	/**
 	 * Set last_modified
@@ -304,7 +318,7 @@ class Classroom {
      */
     public function getClassRegistrationStartDate()
     {
-        return $this->class_registration_start_date;
+        return $this->class_registration_start_date->format(DateTime::ISO8601);
     }
 
     /**
@@ -327,7 +341,7 @@ class Classroom {
      */
     public function getClassStartDate()
     {
-        return $this->class_start_date;
+        return $this->class_start_date->format(DateTime::ISO8601);
     }
 
     /**
@@ -350,7 +364,7 @@ class Classroom {
      */
     public function getClassEndDate()
     {
-        return $this->class_end_date;
+        return $this->class_end_date->format(DateTime::ISO8601);
     }
 
     /**
@@ -475,4 +489,59 @@ class Classroom {
 	public function getClasstype() {
 		return $this->classtype;
 	}
+	
+	public function getCode() {
+		$code = substr($this->classtype->getTitle(), 0, 3);
+		$code = $code . '-' . $this->class_start_date->format('Mt');
+		$code = $code . '-' . $this->class_end_date->format('t');
+		$code = strtoupper($code);
+		
+		return $code;
+	}
+
+    /**
+     * Set enrollment_seats_used
+     *
+     * @param integer $enrollmentSeatsUsed
+     * @return Classroom
+     */
+    public function setEnrollmentSeatsUsed($enrollmentSeatsUsed)
+    {
+        $this->enrollment_seats_used = $enrollmentSeatsUsed;
+    
+        return $this;
+    }
+
+    /**
+     * Get enrollment_seats_used
+     *
+     * @return integer 
+     */
+    public function getEnrollmentSeatsUsed()
+    {
+        return $this->enrollment_seats_used;
+    }
+
+    /**
+     * Set enrollment_wait_list_used
+     *
+     * @param integer $enrollmentWaitListUsed
+     * @return Classroom
+     */
+    public function setEnrollmentWaitListUsed($enrollmentWaitListUsed)
+    {
+        $this->enrollment_wait_list_used = $enrollmentWaitListUsed;
+    
+        return $this;
+    }
+
+    /**
+     * Get enrollment_wait_list_used
+     *
+     * @return integer 
+     */
+    public function getEnrollmentWaitListUsed()
+    {
+        return $this->enrollment_wait_list_used;
+    }
 }

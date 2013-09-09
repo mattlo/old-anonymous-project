@@ -1,19 +1,23 @@
 Ext.regModel('Ridechicago.admin.model.Classes', {
     fields: [
 		'id',
-		'code',
-		'days',
-		'opens',
-		'start',
-		'end',
-		'class',
+		'lastModified',
+		'classDays',
 		'price',
-		'special',
+		'deposit',
+		'enrollmentSeats',
+		'enrollmentWaitList',
+		'promotionLimit',
+		{name: 'classRegistrationStartDate', type: Ext.data.Types.DATEONLY},
+		{name: 'classStartDate', type: Ext.data.Types.DATEONLY},
+		{name: 'classEndDate', type: Ext.data.Types.DATEONLY},
+		'instructorId',
+		'onlineRegistrationStatus',
 		'status',
-		'seats',
-		'waiting',
-		'instructor',
-		'notes'
+		'notes',
+		'classtypeId',
+		'classtype',
+		'code'
 	],
  
     proxy: {
