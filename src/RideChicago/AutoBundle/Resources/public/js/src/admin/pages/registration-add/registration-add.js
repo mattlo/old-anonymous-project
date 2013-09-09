@@ -9,7 +9,6 @@ Ridechicago.admin.forms.BillingAddress.unshift({
 		inputValue: '1',
 		id: 'billingFormTrigger',
 		name: 'billingFormTrigger',
-		value: 'true',
 		listeners: {
 			change: function () {
 				var checkbox = this;

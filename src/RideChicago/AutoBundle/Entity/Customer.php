@@ -49,7 +49,7 @@ class Customer {
 	
     /**
      * @ORM\ManyToOne(targetEntity="Profile")
-     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="billing_profile_id", referencedColumnName="id")
      */
 	protected $billing_profile;
 	
