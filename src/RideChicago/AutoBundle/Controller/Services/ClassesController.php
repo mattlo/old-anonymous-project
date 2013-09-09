@@ -50,7 +50,7 @@ class ClassesController extends Controller {
 			// stage info
 			$classroom->setLastModified();
 			$classroom->setClassStartDate(new DateTime($request->request->get('class_start_date')));
-			$classroom->setClassEndDate(new DateTime($request->request->get('class_start_date')));
+			$classroom->setClassEndDate(new DateTime($request->request->get('class_end_date')));
 			
 			$classroom->setClassRegistrationStartDate(new DateTime($request->request->get('class_registration_start_date')));
 			$classroom->setDeposit($request->request->get('deposit'));
