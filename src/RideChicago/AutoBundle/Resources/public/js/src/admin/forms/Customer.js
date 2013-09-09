@@ -74,6 +74,13 @@ Ridechicago.admin.forms.Customer = [{
 	validateOnChange: false,
 	width: 400
 }, {
+	xtype: 'textfield',
+	fieldLabel: 'City',
+	name: 'city',
+	msgTarget: 'under',
+	validateOnChange: false,
+	width: 400
+}, {
 	xtype: 'combobox',
 	fieldLabel: 'State',
 	store: Ridechicago.admin.model.stores.UsStatesStore,

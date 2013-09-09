@@ -117,11 +117,11 @@ classrooms_create:
   methods: [POST]
   
 registration_get:
-  pattern: /api/registrations
+  pattern: /api/registration
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:get, _format: json}  
   
 registrations_create:
-  pattern: /api/registrations/create
+  pattern: /api/registration/create
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:create, _format: json}    
   methods: [POST]
   

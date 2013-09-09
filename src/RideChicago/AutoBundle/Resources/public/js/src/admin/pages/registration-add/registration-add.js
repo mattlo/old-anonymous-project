@@ -8,6 +8,8 @@ Ridechicago.admin.forms.BillingAddress.unshift({
 		boxLabel: 'Use same information as above',
 		inputValue: '1',
 		id: 'billingFormTrigger',
+		name: 'billingFormTrigger',
+		value: 'true',
 		listeners: {
 			change: function () {
 				var checkbox = this;
