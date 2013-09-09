@@ -47,23 +47,11 @@ class Customer {
      */
 	protected $profile;
 	
-	/**
-	 * @ORM\Column(type="integer")
-	 * @Assert\NotBlank()
-	 */
-	protected $profile_id;
-	
     /**
      * @ORM\ManyToOne(targetEntity="Profile")
      * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
      */
 	protected $billing_profile;
-	
-	/**
-	 * @ORM\Column(type="integer")
-	 * @Assert\NotBlank()
-	 */
-	protected $billing_profile_id;
 	
 	/**
 	 * @ORM\Column(type="text")

@@ -24,12 +24,6 @@ class Registration {
 	 */
 	protected $status = 0;
 	
-	/**
-	 * @ORM\Column(type="integer")
-	 * @Assert\NotBlank()
-	 */
-	protected $classroom_id;
-	
     /**
      * @ORM\ManyToOne(targetEntity="Classroom")
      * @ORM\JoinColumn(name="classroom_id", referencedColumnName="id")
@@ -54,12 +48,6 @@ class Registration {
 	 */
 	protected $promotion_code;
 	
-	/**
-	 * @ORM\Column(type="integer")
-	 * @Assert\NotBlank()
-	 */
-	protected $customer_id;
-	
     /**
      * @ORM\ManyToOne(targetEntity="Customer")
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
@@ -69,7 +57,7 @@ class Registration {
 	/**
 	 * @ORM\Column(type="text")
 	 */
-	protected $notes;
+	protected $notes = '';
 	
 	/**
 	 * @ORM\Column(type="datetime")
