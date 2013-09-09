@@ -10,6 +10,7 @@ use RideChicago\AutoBundle\Helpers\Serialize;
 use RideChicago\AutoBundle\Helpers\ServiceOutput;
 use RideChicago\AutoBundle\Helpers\Logger;
 use RideChicago\AutoBundle\Helpers\ValidationThrower;
+use RideChicago\AutoBundle\Exceptions\ContraintViolationException;
 
 class ClassTypesController extends Controller {
 	

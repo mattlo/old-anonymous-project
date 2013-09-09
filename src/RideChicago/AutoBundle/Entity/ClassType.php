@@ -33,7 +33,6 @@ class ClassType {
 
 	/**
 	 * @ORM\Column(type="text")
-	 * @Assert\NotBlank()
 	 */
 	protected $description;
 
