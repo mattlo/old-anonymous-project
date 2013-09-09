@@ -225,7 +225,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 				success: function (ins, response) {
 					Ext.MessageBox.show({
 						title: 'Classroom Management',
-						msg: Ext.getCmp('titleInput').getValue() + ' was successfully created!',
+						msg: 'Classroom was successfully created!',
 						icon: Ext.MessageBox.INFO,
 						buttons: Ext.MessageBox.OK,
 						fn: function() {
