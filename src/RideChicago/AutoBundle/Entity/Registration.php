@@ -65,6 +65,11 @@ class Registration {
 	 */
 	protected $date_created;
 	
+	/**
+	 * @ORM\Column(type="boolean")
+	 */
+	protected $exam = false;
+	
 	protected $classroom_id;
 	
 	protected $customer_id;
@@ -307,5 +312,28 @@ class Registration {
     public function getCustomer()
     {
         return $this->customer;
+    }
+
+    /**
+     * Set exam
+     *
+     * @param boolean $exam
+     * @return Registration
+     */
+    public function setExam($exam)
+    {
+        $this->exam = $exam;
+    
+        return $this;
+    }
+
+    /**
+     * Get exam
+     *
+     * @return boolean 
+     */
+    public function getExam()
+    {
+        return $this->exam;
     }
 }

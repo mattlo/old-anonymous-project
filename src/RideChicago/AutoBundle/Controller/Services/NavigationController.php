@@ -19,7 +19,7 @@ class NavigationController extends Controller {
 						'Student Management',
 						null,
 						array (
-							static::mkLeaf('View Registrations', '/'),
+							static::mkLeaf('View Registrations', '/admin/registration'),
 							static::mkLeaf('Register a New Student', '/admin/registration/add'),
 							static::mkLeaf('Register an Existing Student', '/'),
 							static::mkLeaf('Calendar', '/')

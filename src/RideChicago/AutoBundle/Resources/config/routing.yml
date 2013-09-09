@@ -42,6 +42,10 @@ auto_admin_classestypes_update:
     pattern:  /admin/class-types/edit/{id}
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classTypesEdit }
     
+auto_admin_registration:
+    pattern:  /admin/registration
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:registrationView }   
+    
 auto_admin_registration_add:
     pattern:  /admin/registration/add
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:registrationAdd }

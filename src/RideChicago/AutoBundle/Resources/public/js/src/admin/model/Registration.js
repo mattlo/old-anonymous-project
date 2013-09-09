@@ -6,13 +6,15 @@ Ext.regModel('Ridechicago.admin.model.Registration', {
     fields: [
 		'id',
 		'status',
-		'classroom_id',
+		'classroomId',
 		'classroom',
-		'lab_status',
-		'class_status',
-		'promotion_code',
-		'customer_id',
+		'labStatus',
+		'classStatus',
+		'promotionCode',
+		'customerId',
 		'customer',
+		'notes',
+		'exam',
 		{name: 'date_created', type: Ext.data.Types.DATE2}
 	],
  
