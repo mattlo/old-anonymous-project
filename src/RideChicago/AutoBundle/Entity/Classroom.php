@@ -6,6 +6,7 @@ use \DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use RideChicago\AutoBundle\Entity\ClassType;
+use RideChicago\AutoBundle\Exceptions\DataRejectedException;
 
 /**
  * @ORM\Entity
@@ -549,5 +550,14 @@ class Classroom {
 	
 	public function getLongName() {
 		return $this->classtype->getTitle() . ' - ' . $this->getCode();
+	}
+	
+	public function incrementEnrollmentSeat() {
+		// validate
+		if ($this->enrollment_seats_used >= $this->enrollment_seats) {
+			throw new DataRejectedException('All enrollment seats are filled');
+		}
+		
+		++$this->enrollment_seats_used;
 	}
 }

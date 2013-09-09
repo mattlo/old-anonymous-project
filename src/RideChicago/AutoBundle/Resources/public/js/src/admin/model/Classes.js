@@ -11,6 +11,8 @@ Ext.regModel('Ridechicago.admin.model.Classes', {
 		'deposit',
 		'enrollmentSeats',
 		'enrollmentWaitList',
+		'enrollmentSeatsUsed',
+		'enrollmentWaitListUsed',
 		'promotionLimit',
 		{name: 'classRegistrationStartDate', type: Ext.data.Types.DATEONLY},
 		{name: 'classStartDate', type: Ext.data.Types.DATEONLY},

@@ -39,12 +39,19 @@ class RegistrationController extends Controller {
 			$dateCreated = new DateTime;
 			$useAdditionalProfile = ($request->request->get('billingFormTrigger') === null ? true : false);
 			
-			Logger::debug($this, 'Use Alternate Billing Profile: ' . $useAdditionalProfile);
+			Logger::debug($this, 'Use Alternate Billing Profile: ' . ($useAdditionalProfile === true ? 'true' : 'false'));
 			
 			// get classroom instance
 			$classroom = $this->getDoctrine()
 				->getRepository('RideChicagoAutoBundle:Classroom')
 				->findOneById($request->request->get('classroom_id'));
+			
+			Logger::debug($this, 'Current enrollment seats on target: ' . $classroom->getEnrollmentSeatsUsed() 
+				. ' out of ' . $classroom->getEnrollmentSeats());
+			
+			// attempt to increase enrollment seats
+			$classroom->incrementEnrollmentSeat();
+			Logger::debug($this, $classroom->getEnrollmentSeatsUsed());
 			
 			Logger::info($this, 'Setting main profile');
 			
@@ -133,13 +140,14 @@ class RegistrationController extends Controller {
 			
 			$ormManager->persist($customer);
 			$ormManager->persist($registration);
+			$ormManager->persist($classroom);
 			
 			
 			$ormManager->flush();
 		} catch (ContraintViolationException $e) {
 			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
 		} catch (DataRejectedException $e) {
-			return ServiceOutput::render($this, $e->getMessage(), false);
+			return ServiceOutput::render($this, array('classroom_id' => $e->getMessage()), false);
 		}
 		
 		Logger::info($this, 'Registration created successfully');

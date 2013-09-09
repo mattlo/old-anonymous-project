@@ -33,11 +33,11 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 		{text: 'Status', dataIndex: 'status', width: 70, renderer: function (value) {
 			return Ridechicago.admin.model.stores.StatusStore.findRecord('value', value).get('text');
 		}},
-		{text: 'Seats', dataIndex: 'enrollmentSeats', width: 40, renderer: function (value) {
-			return '0 /' + value;
+		{text: 'Seats', dataIndex: 'enrollmentSeats', width: 40, renderer: function (value, col, store) {
+			return store.get('enrollmentSeatsUsed') + ' /' + value;
 		}},
-		{text: 'Waiting', dataIndex: 'enrollmentWaitList', width: 50, renderer: function (value) {
-			return '0 /' + value;
+		{text: 'Waiting', dataIndex: 'enrollmentWaitList', width: 50, renderer: function (value, col, store) {
+			return store.get('enrollmentWaitListUsed') + ' /' + value;
 		}},
 		{text: 'Instructor', dataIndex: 'instructorId', width: 80},
 		{text: 'Notes', dataIndex: 'notes', width: 120, sortable: false},
