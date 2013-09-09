@@ -134,7 +134,7 @@ registrations_get:
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:get, _format: json}    
   
 registrations_get_from_classroom:
-  pattern: /api/registration/getFromClassroom/{id}
+  pattern: /api/registration/getfromclassroom/{id}
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:getFromClassroom, _format: json}    
   requirements:
     id: \d+
