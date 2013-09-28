@@ -63,6 +63,10 @@ class TemplateController extends Controller {
 	public function registrationAddAction() {
 		return $this->render('RideChicagoAutoBundle:Pages/Admin:registration-add.html.twig');
 	}
+	
+	public function registrationAddExistingAction() {
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:registration-add-existing.html.twig');
+	}
 }
 
 ?>

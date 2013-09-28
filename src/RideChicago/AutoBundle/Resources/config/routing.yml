@@ -49,6 +49,10 @@ auto_admin_registration:
 auto_admin_registration_add:
     pattern:  /admin/registration/add
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:registrationAdd }
+    
+auto_admin_registration_add_existing:
+    pattern:  /admin/registration/add-existing
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:registrationAddExisting }
 
 # API routes    
 

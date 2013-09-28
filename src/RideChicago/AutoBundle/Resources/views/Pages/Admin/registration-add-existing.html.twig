@@ -1,0 +1,19 @@
+{% extends "RideChicagoAutoBundle::Pages/Admin/Templates/layout.html.twig" %}
+
+{% block pageJavaScript %}
+	{% javascripts 
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/Classes.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/Registration.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/ClassStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/GenderStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/PassIncompleteStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/UsStatesStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/RegistrationStatusStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/Registration.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/Customer.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/BillingAddress.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/registration-add-existing/registration-add-existing.js'
+	%}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
