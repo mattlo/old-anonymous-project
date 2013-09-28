@@ -142,6 +142,16 @@ registrations_get_from_classroom:
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:getFromClassroom, _format: json}    
   requirements:
     id: \d+
+    
+customers_get:
+  pattern: /api/customer
+  defaults: {_controller: RideChicagoAutoBundle:Services\Customer:get, _format: json}    
+  
+customers_get_single:
+  pattern: /api/customer/{id}
+  defaults: {_controller: RideChicagoAutoBundle:Services\Customer:get, _format: json}    
+  requirements:
+    id: \d+
   
 # Security Routes
   

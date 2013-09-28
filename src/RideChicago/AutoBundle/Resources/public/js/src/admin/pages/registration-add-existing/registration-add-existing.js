@@ -3,12 +3,13 @@ Ridechicago.admin.common.view.RegionCenter.setTitle('Student Management - Regist
 Ridechicago.admin.forms.Registration.unshift({
 	xtype: 'combobox',
 	fieldLabel: 'Customer',
-	//store: Ridechicago.admin.model.stores.GenderStore,
+	store: Ridechicago.admin.model.stores.CustomerStore,
 	queryMode: 'local',
-	displayField: 'text',
-	valueField: 'value',
+	displayField: 'firstAndLastName',
+	valueField: 'id',
 	editable: false,
 	name: 'customer_id',
+	allowBlank: false,
 	width: 250
 });
 
@@ -24,13 +25,6 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			items: Ridechicago.admin.forms.Registration,
 			xtype: 'panel',
 			bodyPadding: 5
-		},
-		{
-			title: 'New Customer Form',
-			items: Ridechicago.admin.forms.Customer,
-			xtype: 'panel',
-			bodyPadding: 5,
-			margin: '10 0 0 0'
 		}
 	],
 	
