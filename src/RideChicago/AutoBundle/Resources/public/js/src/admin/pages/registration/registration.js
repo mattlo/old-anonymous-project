@@ -1,25 +1,20 @@
 Ridechicago.admin.common.view.RegionCenter.setTitle('Student Management - View');
 
-
-var regViewStore = Ext.create('Ext.data.Store', {
-    model: Ridechicago.admin.model.Registration,
-});
-
 // determine query type
 var queryParams = Ext.Object.fromQueryString(window.location.href.substr(window.location.href.indexOf('?') + 1));
 if (typeof queryParams.getfromclassroom !== 'undefined') {
-	regViewStore.proxy.url = '/api/registration/getfromclassroom/' + queryParams.getfromclassroom;
+	Ridechicago.admin.model.stores.RegistrationStore.proxy.url = '/api/registration/getfromclassroom/' + queryParams.getfromclassroom;
 }
 
-regViewStore.load();
+Ridechicago.admin.model.stores.RegistrationStore.load();
 
 
 Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
-    store: regViewStore,
+    store: Ridechicago.admin.model.stores.RegistrationStore,
 	border: false,
     columns: [
 		new Ext.grid.RowNumberer(),
-		
+		{text: 'Start Date', dataIndex: 'startDateDisplay', width: 150},
 		{text: 'Classroom', dataIndex: 'classroom', width: 150, renderer: function (value) {
 			return value.longName;
 		}},

@@ -45,6 +45,70 @@ class RegistrationController extends Controller {
 		return ServiceOutput::render($this, Serialize::getArrayFromObject($registrations));
 	}
 	
+	public function createFromExistingStudentAction(Request $request) {
+		Logger::info($this, 'Starting to create a registration from an existing student');
+		try {
+			$registration = new Registration;
+			$dateCreated = new DateTime;
+			$useAdditionalProfile = ($request->request->get('billingFormTrigger') === null ? true : false);
+			
+			Logger::debug($this, 'Use Alternate Billing Profile: ' . ($useAdditionalProfile === true ? 'true' : 'false'));
+			
+			// get classroom instance
+			$classroom = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:Classroom')
+				->findOneById($request->request->get('classroom_id'));
+			
+			Logger::debug($this, 'Current enrollment seats on target: ' . $classroom->getEnrollmentSeatsUsed() 
+				. ' out of ' . $classroom->getEnrollmentSeats());
+			
+			// attempt to increase enrollment seats
+			$classroom->incrementEnrollmentSeat();
+			Logger::debug($this, $classroom->getEnrollmentSeatsUsed());
+			
+			Logger::info($this, 'Setting main profile');
+			
+			// get existing customer
+			$customer = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:Customer')
+				->findOneById($request->request->get('customer_id'));
+			
+			Logger::info($this, 'Using Customer ID: ' . $customer->getId());
+			
+			// set registration
+			$registration->setStatus($request->request->get('status'));
+			$registration->setClassroom($classroom);
+			$registration->setClassStatus($request->request->get('class_status'));
+			$registration->setLabStatus($request->request->get('lab_status'));
+			$registration->setNotes($request->request->get('notes'));
+			$registration->setPromotionCode($request->request->get('promotion_code'));
+			$registration->setDateCreated($dateCreated);
+			
+			// bind customer to registration
+			$registration->setCustomer($customer);
+			
+			// validate
+			$validator = $this->get('validator');
+			ValidationThrower::check($validator->validate($registration));
+
+			// get ORM manager
+			$ormManager = $this->getDoctrine()->getManager();
+			
+			$ormManager->persist($registration);
+			$ormManager->persist($classroom);
+			
+			$ormManager->flush();
+		} catch (ContraintViolationException $e) {
+			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
+		} catch (DataRejectedException $e) {
+			return ServiceOutput::render($this, array('classroom_id' => $e->getMessage()), false);
+		}
+		
+		Logger::info($this, 'Registration created successfully');
+		
+		return ServiceOutput::render($this);
+	}
+	
 	/**
 	 * 
 	 * @param \Symfony\Component\HttpFoundation\Request $request

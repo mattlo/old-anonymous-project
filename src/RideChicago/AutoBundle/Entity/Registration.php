@@ -51,6 +51,7 @@ class Registration {
     /**
      * @ORM\ManyToOne(targetEntity="Customer")
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete="CASCADE")
+	 * @Assert\NotBlank()
      */
 	protected $customer;
 	

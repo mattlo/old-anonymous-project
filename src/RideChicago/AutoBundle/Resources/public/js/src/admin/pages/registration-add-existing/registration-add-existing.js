@@ -34,7 +34,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 		formBind: true,
 		handler: function(){
 			this.up('form').getForm().submit({
-				url: '/api/registration/create',
+				url: '/api/registration/createFromExistingStudent',
 				submitEmptyText: false,
 				waitMsg: 'Loading...',
 				success: function (ins, response) {

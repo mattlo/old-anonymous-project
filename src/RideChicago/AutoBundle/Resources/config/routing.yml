@@ -133,6 +133,11 @@ registrations_create:
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:create, _format: json}    
   methods: [POST]
   
+registrations_createFromExistingStudent:
+  pattern: /api/registration/createFromExistingStudent
+  defaults: {_controller: RideChicagoAutoBundle:Services\Registration:createFromExistingStudent, _format: json}    
+  methods: [POST]
+  
 registrations_get:
   pattern: /api/registration
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:get, _format: json}    
