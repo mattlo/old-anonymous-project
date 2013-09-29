@@ -229,7 +229,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 						icon: Ext.MessageBox.INFO,
 						buttons: Ext.MessageBox.OK,
 						fn: function() {
-							window.location = '/admin/class-types';
+							window.location = '/admin/classes';
 						}
 					});
 				}
