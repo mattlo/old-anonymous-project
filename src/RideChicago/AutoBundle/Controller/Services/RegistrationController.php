@@ -66,8 +66,6 @@ class RegistrationController extends Controller {
 			$classroom->incrementEnrollmentSeat();
 			Logger::debug($this, $classroom->getEnrollmentSeatsUsed());
 			
-			Logger::info($this, 'Setting main profile');
-			
 			// get existing customer
 			$customer = $this->getDoctrine()
 				->getRepository('RideChicagoAutoBundle:Customer')
@@ -78,10 +76,10 @@ class RegistrationController extends Controller {
 			// set registration
 			$registration->setStatus($request->request->get('status'));
 			$registration->setClassroom($classroom);
-			$registration->setClassStatus($request->request->get('class_status'));
-			$registration->setLabStatus($request->request->get('lab_status'));
+			$registration->setClassStatus($request->request->get('classStatus'));
+			$registration->setLabStatus($request->request->get('labStatus'));
 			$registration->setNotes($request->request->get('notes'));
-			$registration->setPromotionCode($request->request->get('promotion_code'));
+			$registration->setPromotionCode($request->request->get('promotionCode'));
 			$registration->setDateCreated($dateCreated);
 			
 			// bind customer to registration
@@ -101,7 +99,7 @@ class RegistrationController extends Controller {
 		} catch (ContraintViolationException $e) {
 			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
 		} catch (DataRejectedException $e) {
-			return ServiceOutput::render($this, array('classroom_id' => $e->getMessage()), false);
+			return ServiceOutput::render($this, array('classroomId' => $e->getMessage()), false);
 		}
 		
 		Logger::info($this, 'Registration created successfully');
@@ -129,7 +127,7 @@ class RegistrationController extends Controller {
 			// get classroom instance
 			$classroom = $this->getDoctrine()
 				->getRepository('RideChicagoAutoBundle:Classroom')
-				->findOneById($request->request->get('classroom_id'));
+				->findOneById($request->request->get('classroomId'));
 			
 			Logger::debug($this, 'Current enrollment seats on target: ' . $classroom->getEnrollmentSeatsUsed() 
 				. ' out of ' . $classroom->getEnrollmentSeats());
@@ -143,10 +141,10 @@ class RegistrationController extends Controller {
 			// set registration
 			$registration->setStatus($request->request->get('status'));
 			$registration->setClassroom($classroom);
-			$registration->setClassStatus($request->request->get('class_status'));
-			$registration->setLabStatus($request->request->get('lab_status'));
+			$registration->setClassStatus($request->request->get('classStatus'));
+			$registration->setLabStatus($request->request->get('labStatus'));
 			$registration->setNotes($request->request->get('notes'));
-			$registration->setPromotionCode($request->request->get('promotion_code'));
+			$registration->setPromotionCode($request->request->get('promotionCode'));
 			$registration->setDateCreated($dateCreated);
 			
 			// set profile
@@ -232,7 +230,7 @@ class RegistrationController extends Controller {
 		} catch (ContraintViolationException $e) {
 			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
 		} catch (DataRejectedException $e) {
-			return ServiceOutput::render($this, array('classroom_id' => $e->getMessage()), false);
+			return ServiceOutput::render($this, array('classroomId' => $e->getMessage()), false);
 		}
 		
 		Logger::info($this, 'Registration created successfully');
@@ -240,8 +238,68 @@ class RegistrationController extends Controller {
 		return ServiceOutput::render($this);
 	}
 	
-	public function updateAction() {
+	public function updateAction(Request $request) {
+		Logger::info($this, 'Updating existing registration on id ' . $request->request->get('id'));
+		try {
+			// get registration
+			$registration = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:Registration')
+				->findOneById($request->request->get('id'));
+			
+			// get classroom
+			$classroom = $registration->getClassroom();
+			
+			// get ORM manager
+			$ormManager = $this->getDoctrine()->getManager();
+			
+			// change enrollment if classroom is changed
+			if ($request->request->get('classroomId') != $classroom->getId()) {
+				// decrement old one
+				Logger::debug($this, 'decrementing classroomId ' . $classroom->getId() . '; current: ' . $classroom->getEnrollmentSeatsUsed());
+				
+				$classroom->decrementEnrollmentSeat();
+				
+				// retrieve new class
+				$newClassroom = $this->getDoctrine()
+					->getRepository('RideChicagoAutoBundle:Classroom')
+					->findOneById($request->request->get('classroomId'));
+				
+				// increment new one
+				Logger::debug($this, 'incrementing classroom_id ' . $newClassroom->getId());
+				$newClassroom->incrementEnrollmentSeat();
+				
+				// set
+				$registration->setClassroom($newClassroom);
+				
+				// commit both data changes
+				$ormManager->persist($classroom);
+				$ormManager->persist($newClassroom);
+			}
+			
+			// update registration
+			$registration->setStatus($request->request->get('status'));
+			$registration->setClassStatus($request->request->get('classStatus'));
+			$registration->setLabStatus($request->request->get('labStatus'));
+			$registration->setNotes($request->request->get('notes'));
+			$registration->setPromotionCode($request->request->get('promotionCode'));
+			
+			// validate
+			$validator = $this->get('validator');
+			ValidationThrower::check($validator->validate($registration));
+
+			// commit registration data
+			$ormManager->persist($registration);
+			
+			$ormManager->flush();
+		} catch (ContraintViolationException $e) {
+			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
+		} catch (DataRejectedException $e) {
+			return ServiceOutput::render($this, array('classroomId' => $e->getMessage()), false);
+		}
 		
+		Logger::info($this, 'Registration created successfully');
+		
+		return ServiceOutput::render($this);
 	}
 	
 	public function deleteAction() {

@@ -35,6 +35,9 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 		{text: 'Phone', dataIndex: 'phone', renderer: function (v, c, store) {
 			return store.get('customer').profile.phone;
 		}},
-		{text: 'Notes', dataIndex: 'notes', width: 150}
+		{text: 'Notes', dataIndex: 'notes', width: 150},
+		{text: '', sortable: false, dataIndex: 'utilities', width: 80, renderer: function (value, col, store) {
+			return '<a href="/admin/registration/update/' + store.get('id') + '">Edit</a>';
+		}}
     ]
 }));

@@ -20,7 +20,8 @@ Ridechicago.admin.forms.Registration = [{
 	editable: false,
 	allowBlank: false,
 	msgTarget: 'under',
-	name: 'classroom_id',
+	name: 'classroomId',
+	id: 'classroomId',
 	width: 500
 }, {
 	xtype: 'combobox',
@@ -32,7 +33,7 @@ Ridechicago.admin.forms.Registration = [{
 	editable: false,
 	allowBlank: false,
 	msgTarget: 'under',
-	name: 'class_status'
+	name: 'classStatus'
 }, {
 	xtype: 'combobox',
 	fieldLabel: 'Lab Status',
@@ -43,11 +44,11 @@ Ridechicago.admin.forms.Registration = [{
 	editable: false,
 	allowBlank: false,
 	msgTarget: 'under',
-	name: 'lab_status'
+	name: 'labStatus'
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Promo Code',
-	name: 'promotion_code',
+	name: 'promotionCode',
 	msgTarget: 'under'
 }, {
 	xtype: 'htmleditor',

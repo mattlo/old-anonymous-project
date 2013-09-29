@@ -71,8 +71,14 @@ class Registration {
 	 */
 	protected $exam = false;
 	
+	/**
+	 * @ORM\Column(type="integer")
+	 */
 	protected $classroom_id;
-	
+
+	/**
+	 * @ORM\Column(type="integer")
+	 */
 	protected $customer_id;
 
     /**

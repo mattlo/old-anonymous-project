@@ -560,4 +560,13 @@ class Classroom {
 		
 		++$this->enrollment_seats_used;
 	}
+	
+	public function decrementEnrollmentSeat() {
+		// validate
+		if ($this->enrollment_seats_used == 0) {
+			throw new DataRejectedException('Cannot decrement; no enrollment seats filled');
+		}
+		
+		--$this->enrollment_seats_used;
+	}
 }

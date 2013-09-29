@@ -53,6 +53,13 @@ auto_admin_registration_add:
 auto_admin_registration_add_existing:
     pattern:  /admin/registration/add-existing
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:registrationAddExisting }
+    
+    
+auto_admin_registration_update:
+    pattern:  /admin/registration/update/{id}
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:registrationUpdate }
+    requirements:
+        id: \d+
 
 # API routes    
 
@@ -140,13 +147,24 @@ registrations_createFromExistingStudent:
   
 registrations_get:
   pattern: /api/registration
-  defaults: {_controller: RideChicagoAutoBundle:Services\Registration:get, _format: json}    
+  defaults: {_controller: RideChicagoAutoBundle:Services\Registration:get, _format: json}   
   
+registrations_get_single: 
+  pattern: /api/registration/{id}
+  defaults: {_controller: RideChicagoAutoBundle:Services\Registration:get, _format: json}   
+  requirements:
+    id: \d+
+    
 registrations_get_from_classroom:
   pattern: /api/registration/getfromclassroom/{id}
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:getFromClassroom, _format: json}    
   requirements:
     id: \d+
+    
+registrations_update:
+  pattern: /api/registration/update
+  defaults: {_controller: RideChicagoAutoBundle:Services\Registration:update, _format: json}    
+  methods: [POST]
     
 customers_get:
   pattern: /api/customer
