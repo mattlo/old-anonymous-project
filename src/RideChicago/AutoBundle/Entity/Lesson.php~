@@ -24,7 +24,14 @@ class Lesson {
 	protected $status = 0;
 	
 	/**
+	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank()
+	 */
+	protected $duration = 0;
+	
+	/**
 	 * @ORM\Column(type="string", length=255)
+	 * @Assert\NotBlank()
 	 */
 	protected $promotion_code;
 	
@@ -69,10 +76,6 @@ class Lesson {
 	 * @Assert\NotBlank()
 	 */
 	protected $datetime;
-	
-	protected $date;
-	
-	protected $time;
 
     /**
      * Get id
@@ -290,38 +293,4 @@ class Lesson {
     {
         return $this->lesson_rate;
     }
-
-    /**
-     * Set datetime
-     *
-     * @param \DateTime $datetime
-     * @return Lesson
-     */
-    public function setDatetime($datetime)
-    {
-        $this->datetime = $datetime;
-		
-		$this->date = $datetime->format('Y/m/d');
-		$this->time = $datetime->format('h:i:s A');
-    
-        return $this;
-    }
-
-    /**
-     * Get datetime
-     *
-     * @return \DateTime 
-     */
-    public function getDatetime()
-    {
-        return $this->datetime;
-    }
-	
-	public function getDate() {
-		return $this->date;
-	}
-	
-	public function getTime() {
-		return $this->time;
-	}
 }

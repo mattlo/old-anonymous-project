@@ -1,0 +1,11 @@
+{% extends "RideChicagoAutoBundle::Pages/Admin/Templates/layout.html.twig" %}
+
+{% block pageJavaScript %}
+	{% javascripts 
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/LessonRate.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/LessonRate.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/lessonrate-add/lessonrate-add.js'
+	%}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}

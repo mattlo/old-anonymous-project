@@ -69,7 +69,7 @@ class RegistrationController extends Controller {
 			// get existing customer
 			$customer = $this->getDoctrine()
 				->getRepository('RideChicagoAutoBundle:Customer')
-				->findOneById($request->request->get('customer_id'));
+				->findOneById($request->request->get('customerId'));
 			
 			Logger::info($this, 'Using Customer ID: ' . $customer->getId());
 			
@@ -148,17 +148,17 @@ class RegistrationController extends Controller {
 			$registration->setDateCreated($dateCreated);
 			
 			// set profile
-			$mainProfile->setFirstName($request->request->get('first_name'));
-			$mainProfile->setLastName($request->request->get('last_name'));
-			$mainProfile->setMiddleInitial($request->request->get('middle_initial'));
+			$mainProfile->setFirstName($request->request->get('firstName'));
+			$mainProfile->setLastName($request->request->get('lastName'));
+			$mainProfile->setMiddleInitial($request->request->get('middleInitial'));
 			$mainProfile->setPhone($request->request->get('phone'));
-			$mainProfile->setPhoneAlt($request->request->get('phone_alt'));
+			$mainProfile->setPhoneAlt($request->request->get('phoneAlt'));
 			
 			// set address
-			$mainAddress->setAddressLine1($request->request->get('address_line_1'));
-			$mainAddress->setAddressLine2($request->request->get('address_line_2'));
+			$mainAddress->setAddressLine1($request->request->get('addressLine1'));
+			$mainAddress->setAddressLine2($request->request->get('addressLine2'));
 			$mainAddress->setCity($request->request->get('city'));
-			$mainAddress->setPostalCode($request->request->get('postal_code'));
+			$mainAddress->setPostalCode($request->request->get('postalCode'));
 			$mainAddress->setState($request->request->get('state'));
 					
 			// bind address to profile
@@ -175,17 +175,17 @@ class RegistrationController extends Controller {
 				$billingAddress = new Address;
 				
 				// set alternate profile
-				$billingProfile->setFirstName($request->request->get($billingPrefix . 'first_name'));
-				$billingProfile->setLastName($request->request->get($billingPrefix . 'last_name'));
-				$billingProfile->setMiddleInitial($request->request->get($billingPrefix . 'middle_initial'));
+				$billingProfile->setFirstName($request->request->get($billingPrefix . 'firstName'));
+				$billingProfile->setLastName($request->request->get($billingPrefix . 'lastName'));
+				$billingProfile->setMiddleInitial($request->request->get($billingPrefix . 'middleInitial'));
 				$billingProfile->setPhone($request->request->get($billingPrefix . 'phone'));
-				$billingProfile->setPhoneAlt($request->request->get($billingPrefix . 'phone_alt'));
+				$billingProfile->setPhoneAlt($request->request->get($billingPrefix . 'phoneAlt'));
 
 				// set address
-				$billingAddress->setAddressLine1($request->request->get($billingPrefix . 'address_line_1'));
-				$billingAddress->setAddressLine2($request->request->get($billingPrefix . 'address_line_2'));
+				$billingAddress->setAddressLine1($request->request->get($billingPrefix . 'addressLine1'));
+				$billingAddress->setAddressLine2($request->request->get($billingPrefix . 'addressLine2'));
 				$billingAddress->setCity($request->request->get($billingPrefix . 'city'));
-				$billingAddress->setPostalCode($request->request->get($billingPrefix . 'postal_code'));
+				$billingAddress->setPostalCode($request->request->get($billingPrefix . 'postalCode'));
 				$billingAddress->setState($request->request->get($billingPrefix . 'state'));
 				
 				// bind billing address to billing profile
@@ -197,9 +197,9 @@ class RegistrationController extends Controller {
 			// set customer
 			$customer->setEmail($request->request->get('email'));
 			$customer->setGender($request->request->get('gender'));
-			$customer->setDateOfBirth(new DateTime($request->request->get('date_of_birth')));
+			$customer->setDateOfBirth(new DateTime($request->request->get('dateOfBirth')));
 			$customer->setDateCreated($dateCreated);
-			$customer->setDriversLicense($request->request->get('drivers_license'));
+			$customer->setDriversLicense($request->request->get('driversLicense'));
 			
 			// bind customer to registration
 			$registration->setCustomer($customer);

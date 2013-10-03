@@ -12,7 +12,7 @@ Ridechicago.admin.forms.Customer = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'First Name',
-	name: 'first_name',
+	name: 'firstName',
 	msgTarget: 'under',
 	validateOnChange: false,
 	allowBlank: false,
@@ -20,7 +20,7 @@ Ridechicago.admin.forms.Customer = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Last Name',
-	name: 'last_name',
+	name: 'lastName',
 	msgTarget: 'under',
 	validateOnChange: false,
 	allowBlank: false,
@@ -28,7 +28,7 @@ Ridechicago.admin.forms.Customer = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Middle Initial',
-	name: 'middle_initial',
+	name: 'middleInitial',
 	msgTarget: 'qtip',
 	validateOnChange: false,
 	width: 200,
@@ -36,7 +36,7 @@ Ridechicago.admin.forms.Customer = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Driver License',
-	name: 'drivers_license',
+	name: 'driversLicense',
 	msgTarget: 'under',
 	validateOnChange: false,
 	allowBlank: false,
@@ -44,7 +44,7 @@ Ridechicago.admin.forms.Customer = [{
 }, {
 	xtype: 'datefield',
 	fieldLabel: 'Date of Birth',
-	name: 'date_of_birth',
+	name: 'dateOfBirth',
 	msgTarget: 'under',
 	validateOnChange: false,
 	allowBlank: false,
@@ -62,14 +62,14 @@ Ridechicago.admin.forms.Customer = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Address Line 1',
-	name: 'address_line_1',
+	name: 'addressLine1',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 400
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Address Line 2',
-	name: 'address_line_2',
+	name: 'addressLine2',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 400
@@ -93,7 +93,7 @@ Ridechicago.admin.forms.Customer = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Zip Code',
-	name: 'postal_code',
+	name: 'postalCode',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 300
@@ -107,7 +107,7 @@ Ridechicago.admin.forms.Customer = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Alternative Phone Number',
-	name: 'phone_alt',
+	name: 'phoneAlt',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 400

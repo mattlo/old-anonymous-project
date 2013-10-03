@@ -18,7 +18,7 @@ class LessonRate {
 	protected $id;
 	
 	/**
-	 * @ORM\Column(type="decimal", scale=2, precision=6)
+	 * @ORM\Column(type="integer")
 	 * @Assert\NotBlank()
 	 */
 	protected $duration;
@@ -28,8 +28,6 @@ class LessonRate {
 	 * @Assert\NotBlank()
 	 */
 	protected $price;
-	
-	protected $rate;
 
     /**
      * Get id
@@ -86,16 +84,4 @@ class LessonRate {
     {
         return $this->price;
     }
-	
-	public function getRate() {
-		$duration = $this->getDuration();
-		
-		if ($duration < 1) {
-			$unit = 'hour';
-		} else {
-			$unit = 'hours';
-		}
-		
-		return $duration . ' ' . $unit . ' for $' . $this->getPrice();
-	}
 }

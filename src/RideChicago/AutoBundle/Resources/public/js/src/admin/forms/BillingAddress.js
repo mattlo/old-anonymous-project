@@ -3,7 +3,7 @@ Ext.namespace('Ridechicago.admin.forms');
 Ridechicago.admin.forms.BillingAddress = [{
 	xtype: 'textfield',
 	fieldLabel: 'First Name',
-	name: 'billing_first_name',
+	name: 'billing_FirstName',
 	msgTarget: 'under',
 	validateOnChange: false,
 	allowBlank: false,
@@ -11,7 +11,7 @@ Ridechicago.admin.forms.BillingAddress = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Last Name',
-	name: 'billing_last_name',
+	name: 'billing_LastName',
 	msgTarget: 'under',
 	validateOnChange: false,
 	allowBlank: false,
@@ -19,7 +19,7 @@ Ridechicago.admin.forms.BillingAddress = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Middle Initial',
-	name: 'billing_middle_initial',
+	name: 'billing_middleInitial',
 	msgTarget: 'qtip',
 	validateOnChange: false,
 	width: 200,
@@ -27,14 +27,14 @@ Ridechicago.admin.forms.BillingAddress = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Address Line 1',
-	name: 'billing_address_line_1',
+	name: 'billing_addressLine1',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 400
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Address Line 2',
-	name: 'billing_address_line_2',
+	name: 'billing_addressLine2',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 400
@@ -51,7 +51,7 @@ Ridechicago.admin.forms.BillingAddress = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Zip Code',
-	name: 'billing_postal_code',
+	name: 'billing_postalCode',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 300
@@ -65,7 +65,7 @@ Ridechicago.admin.forms.BillingAddress = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Alternative Phone Number',
-	name: 'billing_phone_alt',
+	name: 'billing_phoneAlt',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 400

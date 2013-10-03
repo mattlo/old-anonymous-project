@@ -72,6 +72,38 @@ class TemplateController extends Controller {
 		$data = json_encode(array('id' => $id));
 		return $this->render('RideChicagoAutoBundle:Pages/Admin:registration-update.html.twig', array('staticData' => $data));
 	}
+	
+	# Lessons (hour rate services)
+	
+	public function lessonViewAction() {
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:lesson-view.html.twig');
+	}
+	
+	public function lessonAddAction () {
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:lesson-add.html.twig');
+	}
+		
+	public function lessonAddExistingAction () {
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:lesson-add-existing.html.twig');
+	}
+	
+	public function lessonUpdateAction($id) {
+		$data = json_encode(array('id' => $id));
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:lesson-update.html.twig', array('staticData' => $data));
+	}
+	
+	public function lessonRateViewAction() {
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:lessonrate-view.html.twig');
+	}
+	
+	public function lessonRateAddAction() {
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:lessonrate-add.html.twig');
+	}
+	
+	public function lessonRateUpdateAction ($id) {
+		$data = json_encode(array('id' => $id));
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:lessonrate-update.html.twig', array('staticData' => $data));
+	}
 }
 
 ?>

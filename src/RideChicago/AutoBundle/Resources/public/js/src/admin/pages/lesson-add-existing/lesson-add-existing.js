@@ -1,6 +1,6 @@
-Ridechicago.admin.common.view.RegionCenter.setTitle('Student Management - Register an existing Student');
+Ridechicago.admin.common.view.RegionCenter.setTitle('Add Lesson from existing Student');
 
-Ridechicago.admin.forms.Registration.unshift({
+Ridechicago.admin.forms.Lesson.unshift({
 	xtype: 'combobox',
 	fieldLabel: 'Customer',
 	store: Ridechicago.admin.model.stores.CustomerStore,
@@ -22,7 +22,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 	items: [
 		{
 			title: 'Registration Form',
-			items: Ridechicago.admin.forms.Registration,
+			items: Ridechicago.admin.forms.Lesson,
 			xtype: 'panel',
 			bodyPadding: 5
 		}
@@ -30,21 +30,21 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 	
 	buttons: [{
 		cls: 'btnAlignment',
-		text: 'Submit Student Application',
+		text: 'Schedule Lesson',
 		formBind: true,
 		handler: function(){
 			this.up('form').getForm().submit({
-				url: '/api/registration/createFromExistingStudent',
+				url: '/api/lesson/createFromExistingStudent',
 				submitEmptyText: false,
 				waitMsg: 'Loading...',
 				success: function (ins, response) {
 					Ext.MessageBox.show({
-						title: 'Registration Management',
-						msg: 'Registration was successfully created!',
+						title: 'Lesson Scheduler',
+						msg: 'Lesson created!',
 						icon: Ext.MessageBox.INFO,
 						buttons: Ext.MessageBox.OK,
 						fn: function() {
-							window.location = '/admin/registration';
+							window.location = '/admin/lesson';
 						}
 					});
 				}

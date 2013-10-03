@@ -54,12 +54,44 @@ auto_admin_registration_add_existing:
     pattern:  /admin/registration/add-existing
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:registrationAddExisting }
     
-    
 auto_admin_registration_update:
     pattern:  /admin/registration/update/{id}
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:registrationUpdate }
     requirements:
         id: \d+
+        
+auto_admin_lesson_add:
+    pattern: /admin/lesson/add
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:lessonAdd }
+            
+auto_admin_lesson_add_existing:
+    pattern: /admin/lesson/add-existing
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:lessonAddExisting }
+    
+auto_admin_lesson_update:
+    pattern: /admin/lesson/update/{id}
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:lessonUpdate }
+    requirements:
+        id: \d+
+    
+auto_admin_lesson_view:
+    pattern: /admin/lesson
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:lessonView }
+    
+auto_admin_lessonrate_add:
+    pattern: /admin/lessonrate/add
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:lessonRateAdd }
+   
+auto_admin_lessonrate_update:
+    pattern: /admin/lessonrate/update/{id}
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:lessonRateUpdate }
+    requirements:
+        id: \d+
+    
+auto_admin_lessonrate_view:
+    pattern: /admin/lessonrate
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:lessonRateView }
+
 
 # API routes    
 
@@ -175,6 +207,40 @@ customers_get_single:
   defaults: {_controller: RideChicagoAutoBundle:Services\Customer:get, _format: json}    
   requirements:
     id: \d+
+    
+lessons_get:
+  pattern: /api/lesson
+  defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:get, _format: json}    
+  
+lessons_update:
+  pattern: /api/lesson/update
+  defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:update, _format: json}    
+  methods: [POST]
+    
+lessons_create:
+  pattern: /api/lesson/create
+  defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:create, _format: json}    
+  methods: [POST]  
+  
+lessons_createFromExistingStudent:
+  pattern: /api/lesson/createFromExistingStudent
+  defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:createFromExistingStudent, _format: json}    
+  methods: [POST]
+    
+lessonrates_get:
+  pattern: /api/lessonrate
+  defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:get, _format: json}    
+  
+lessonrates_update:
+  pattern: /api/lessonrate/update
+  defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:update, _format: json}    
+  methods: [POST]
+    
+lessonrates_create:
+  pattern: /api/lessonrate/create
+  defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:create, _format: json}    
+  methods: [POST]
+    
   
 # Security Routes
   

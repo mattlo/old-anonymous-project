@@ -1,0 +1,50 @@
+<?php
+namespace RideChicago\AutoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="classes")
+ */
+class Classes {
+	
+	/**
+	 * @ORM\Id
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $id;
+	
+	/**
+	 * @ORM\Column(type="integer")
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	protected $order = 0;
+	
+	/**
+	 * @ORM\Column(type="string", length=255)
+	 * @Assert\NotBlank()
+	 */
+	protected $title;
+	
+	/**
+	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank()
+	 */
+	protected $enrollment;
+	
+	/**
+	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank()
+	 */
+	protected $status;
+	
+	/**
+	 * @ORM\Column(type="datetime")
+	 * @Assert\NotBlank()
+	 */
+	protected $last_modified;
+}
+?>

@@ -1,0 +1,16 @@
+{% extends "RideChicagoAutoBundle::Pages/Admin/Templates/layout.html.twig" %}
+
+{% block pageJavaScript %}
+	{% javascripts 
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/Lesson.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/LessonRate.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/Customer.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/LessonRateStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/CustomerStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/RegistrationStatusStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/Lesson.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/lesson-add-existing/lesson-add-existing.js'
+	%}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}

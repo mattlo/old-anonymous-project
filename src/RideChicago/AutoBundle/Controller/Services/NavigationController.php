@@ -19,8 +19,9 @@ class NavigationController extends Controller {
 						'Student Management',
 						null,
 						array (
-							static::mkLeaf('View Scheduled Lessons', '/admin/lessons'),
-							static::mkLeaf('Schedule a New Lesson', '/admin/lessons/add'),
+							static::mkLeaf('Schedule a New Lesson', '/admin/lesson/add'),
+							static::mkLeaf('Schedule Lesson from Existing Student', '/admin/lesson/add-existing'),
+							static::mkLeaf('View Scheduled Lessons', '/admin/lesson'),
 							static::mkLeaf('View Registrations', '/admin/registration'),
 							static::mkLeaf('Register a New Student', '/admin/registration/add'),
 							static::mkLeaf('Register an Existing Student', '/admin/registration/add-existing'),
@@ -32,8 +33,8 @@ class NavigationController extends Controller {
 						'Class Management Tools',
 						null,
 						array (
-							static::mkLeaf('Manage Lesson Rates', '/admin/lesson-rates'),
-							static::mkLeaf('Add Lesson Rate', '/admin/lesson-rates/add'),
+							static::mkLeaf('Manage Lesson Rates', '/admin/lessonrate'),
+							static::mkLeaf('Add Lesson Rate', '/admin/lessonrate/add'),
 							static::mkLeaf('View Classrooms', '/admin/classes'),
 							static::mkLeaf('Create Classroom', '/admin/classes/add'),
 							static::mkLeaf('Manage Types', '/admin/class-types'),
