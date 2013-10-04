@@ -211,6 +211,12 @@ customers_get_single:
 lessons_get:
   pattern: /api/lesson
   defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:get, _format: json}    
+    
+lessons_get_single:
+  pattern: /api/lesson/{id}
+  defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:get, _format: json}  
+  requirements:
+    id: \d+
   
 lessons_update:
   pattern: /api/lesson/update
@@ -229,7 +235,13 @@ lessons_createFromExistingStudent:
     
 lessonrates_get:
   pattern: /api/lessonrate
-  defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:get, _format: json}    
+  defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:get, _format: json}  
+  
+lessonrates_get_single:
+  pattern: /api/lessonrate/{id}
+  defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:get, _format: json}   
+  requirements:
+    id: \d+
   
 lessonrates_update:
   pattern: /api/lessonrate/update

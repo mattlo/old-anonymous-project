@@ -39,7 +39,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 	
 	items: [
 		{
-			title: 'Registration Form',
+			title: 'Lesson Form',
 			items: Ridechicago.admin.forms.Lesson,
 			xtype: 'panel',
 			bodyPadding: 5

@@ -1,4 +1,4 @@
-Ridechicago.admin.common.view.RegionCenter.setTitle('Add Lesson from existing Student');
+Ridechicago.admin.common.view.RegionCenter.setTitle('Update Scheduled Lesson');
 
 Ridechicago.admin.forms.Lesson.unshift({
 	xtype: 'combobox',
@@ -9,7 +9,9 @@ Ridechicago.admin.forms.Lesson.unshift({
 	valueField: 'id',
 	editable: false,
 	name: 'customerId',
+	id: 'customerId',
 	allowBlank: false,
+	disabled: true,
 	width: 400
 });
 
@@ -17,11 +19,12 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 	bodyPadding: 10,
 	waitMsgTarget: true,
 	autoScroll: true,
+	id: 'lessonUpdateForm',
 	fieldDefaults: {labelAlign:'left', labelWidth: 150},
 	
 	items: [
 		{
-			title: 'Lesson Form',
+			title: 'Lesson Update',
 			items: Ridechicago.admin.forms.Lesson,
 			xtype: 'panel',
 			bodyPadding: 5
@@ -30,17 +33,17 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 	
 	buttons: [{
 		cls: 'btnAlignment',
-		text: 'Schedule Lesson',
+		text: 'Update Scheduled Lesson',
 		formBind: true,
 		handler: function(){
 			this.up('form').getForm().submit({
-				url: '/api/lesson/createFromExistingStudent',
+				url: '/api/lesson/update',
 				submitEmptyText: false,
 				waitMsg: 'Loading...',
 				success: function (ins, response) {
 					Ext.MessageBox.show({
 						title: 'Lesson Scheduler',
-						msg: 'Lesson created!',
+						msg: 'Lesson updated!',
 						icon: Ext.MessageBox.INFO,
 						buttons: Ext.MessageBox.OK,
 						fn: function() {
@@ -52,3 +55,23 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 		}
 	}]
 }));
+
+Ext.onReady(function () {
+	// get onpage JSON data
+	var rawData = Ext.get('pageContentData').dom.innerHTML;
+	
+	// convert to JSON
+	var data = Ext.JSON.decode(rawData);
+	
+	// get model
+	var lesson = Ridechicago.admin.model.Lesson;
+
+	// preload form
+	lesson.load(data.id, {
+		success: function(data) {
+			Ext.getCmp('lessonUpdateForm').loadRecord(data);
+			Ext.getCmp('customerId').setValue(parseInt(data.get('customerId'), 10));
+			Ext.getCmp('lessonRateId').setValue(parseInt(data.get('lessonRateId'), 10));
+		}
+	});
+});

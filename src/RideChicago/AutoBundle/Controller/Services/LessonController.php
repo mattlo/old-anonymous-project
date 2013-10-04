@@ -25,13 +25,56 @@ class LessonController extends Controller {
 			$query = array();
 		}
 		
-		// get class
-		$lessons= $this->getDoctrine()
+		// get lesson
+		$lessons = $this->getDoctrine()
 			->getRepository('RideChicagoAutoBundle:Lesson')
 			->findBy($query, array('id' => 'DESC'));
 		
 		Logger::info($this, 'fetching ' . count($lessons) . ' lessons');
 		return ServiceOutput::render($this, Serialize::getArrayFromObject($lessons));
+	}
+	
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function updateAction(Request $request) {
+		try {
+			$lesson = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:Lesson')
+				->findOneById($request->request->get('id'));
+			
+			// set lesson
+			$lesson->setDatetime(new DateTime($request->request->get('date') . ' ' . $request->request->get('time')));
+			$lesson->setNotes($request->request->get('notes'));
+			$lesson->setPromotionCode($request->request->get('promotionCode'));
+			$lesson->setStatus($request->request->get('status'));
+			
+			// get lesson rate
+			$lessonRate = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:LessonRate')
+				->findOneById($request->request->get('lessonRateId'));
+			
+			// set lesson rate
+			$lesson->setLessonRate($lessonRate);
+			
+			// validate
+			$validator = $this->get('validator');
+			ValidationThrower::check($validator->validate($lesson));
+
+			// get ORM manager
+			$ormManager = $this->getDoctrine()->getManager();
+			
+			$ormManager->persist($lesson);
+			
+			$ormManager->flush();
+		} catch (ContraintViolationException $e) {
+			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
+		}
+		
+		Logger::info($this, 'Lesson updated successfully');
+		
+		return ServiceOutput::render($this);
 	}
 	
 	/**

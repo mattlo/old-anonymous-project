@@ -23,6 +23,7 @@ Ridechicago.admin.forms.Lesson = [{
 	allowBlank: false,
 	msgTarget: 'under',
 	name: 'lessonRateId',
+	id: 'lessonRateId',
 	width: 400
 }, {
 	width: 300,
@@ -38,7 +39,6 @@ Ridechicago.admin.forms.Lesson = [{
 	fieldLabel: 'Date',
 	name: 'date',
 	msgTarget: 'under',
-	minValue: new Date(), // limited to the current date or prior
 	allowBlank: false,
 	width: 350
 }, {
@@ -56,4 +56,7 @@ Ridechicago.admin.forms.Lesson = [{
 	height: 200,
 	allowBlank: false,
 	id: 'notes'
+}, {
+	xtype: 'hiddenfield',
+	name: 'id'
 }];

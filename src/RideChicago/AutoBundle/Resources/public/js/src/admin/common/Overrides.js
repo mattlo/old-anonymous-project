@@ -15,5 +15,13 @@ Ext.apply(Ext.data.Types, {
 		},
 		sortType: Ext.data.SortTypes.asDate,
 		type: 'dateonly'
+	},
+	TIMEONLY: {
+		convert: function (value) {
+			var date = new Date('1/1/1 ' + value);
+			return Ext.Date.format(date, 'h:i A');
+		},
+		sortType: Ext.data.SortTypes.asDate,
+		type: 'timeonly'
 	}
 });
