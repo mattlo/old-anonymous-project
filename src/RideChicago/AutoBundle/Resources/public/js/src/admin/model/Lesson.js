@@ -14,7 +14,7 @@ Ext.regModel('Ridechicago.admin.model.Lesson', {
 		'lessonRateId',
 		'date',
 		'time',
-		'datetime',
+		{name: 'datetime', type: Ext.data.Types.DATE2},
 		{name: 'dateCreated', type: Ext.data.Types.DATE2}
 	],
  

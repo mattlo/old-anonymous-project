@@ -1,0 +1,12 @@
+{% extends "RideChicagoAutoBundle::Pages/Admin/Templates/layout.html.twig" %}
+
+{% block pageJavaScript %}
+	{% javascripts 
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/Lesson.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/LessonStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/RegistrationStatusStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/lesson/lesson.js'
+	%}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}

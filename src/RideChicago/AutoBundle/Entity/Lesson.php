@@ -108,29 +108,6 @@ class Lesson {
     }
 
     /**
-     * Set duration
-     *
-     * @param integer $duration
-     * @return Lesson
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-    
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return integer 
-     */
-    public function getDuration()
-    {
-        return $this->duration;
-    }
-
-    /**
      * Set promotion_code
      *
      * @param string $promotionCode
@@ -314,14 +291,22 @@ class Lesson {
      */
     public function getDatetime()
     {
-        return $this->datetime;
+        return $this->getDate() . ' ' . $this->getTime();
     }
 	
 	public function getDate() {
-		return $this->date;
+		return $this->datetime->format('Y/m/d');
 	}
 	
 	public function getTime() {
-		return $this->time;
+		return $this->datetime->format('h:i:s A');
+	}
+	
+	public function setDate($v) {
+		$this->date = $v;
+	}
+	
+	public function setTime($v) {
+		$this->time = $v;
 	}
 }
