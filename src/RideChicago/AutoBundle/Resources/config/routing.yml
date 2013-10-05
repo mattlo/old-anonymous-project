@@ -2,6 +2,33 @@ ride_chicago_auto_homepage:
     pattern:  /
     defaults: { _controller: RideChicagoAutoBundle:Default:index }
     
+rca_classes:
+    pattern:  /classes
+    defaults: { _controller: RideChicagoAutoBundle:Default:classes }
+ 
+rca_schedule:
+    pattern:  /schedule
+    defaults: { _controller: RideChicagoAutoBundle:Default:schedule }
+
+rca_permits:
+    pattern:  /permits
+    defaults: { _controller: RideChicagoAutoBundle:Default:permits }
+
+ 
+rca_pricing:
+    pattern:  /pricing
+    defaults: { _controller: RideChicagoAutoBundle:Default:pricing }
+
+rca_faq:
+    pattern:  /faq
+    defaults: { _controller: RideChicagoAutoBundle:Default:faq }
+
+rca_contact:
+    pattern:  /contact
+    defaults: { _controller: RideChicagoAutoBundle:Default:contact }
+
+ 
+    
 auto_admin_index:
     pattern:  /admin/
     defaults: { _controller: RideChicagoAutoBundle:Admin\Index:index }
