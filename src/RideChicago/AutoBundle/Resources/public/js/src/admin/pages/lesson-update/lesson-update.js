@@ -72,6 +72,7 @@ Ext.onReady(function () {
 			Ext.getCmp('lessonUpdateForm').loadRecord(data);
 			Ext.getCmp('customerId').setValue(parseInt(data.get('customerId'), 10));
 			Ext.getCmp('lessonRateId').setValue(parseInt(data.get('lessonRateId'), 10));
+			Ext.getCmp('lessonType').setValue(parseInt(data.get('lessonType'), 10));
 		}
 	});
 });

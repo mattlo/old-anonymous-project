@@ -19,7 +19,7 @@ Ext.apply(Ext.data.Types, {
 	TIMEONLY: {
 		convert: function (value) {
 			var date = new Date('1/1/1 ' + value);
-			return Ext.Date.format(date, 'h:i A');
+			return Ext.Date.format(date, 'g:i A');
 		},
 		sortType: Ext.data.SortTypes.asDate,
 		type: 'timeonly'

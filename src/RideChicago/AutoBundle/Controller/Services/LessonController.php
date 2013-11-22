@@ -49,6 +49,7 @@ class LessonController extends Controller {
 			$lesson->setNotes($request->request->get('notes'));
 			$lesson->setPromotionCode($request->request->get('promotionCode'));
 			$lesson->setStatus($request->request->get('status'));
+			$lesson->setLessonType($request->request->get('lessonType'));
 			
 			// get lesson rate
 			$lessonRate = $this->getDoctrine()
@@ -100,6 +101,7 @@ class LessonController extends Controller {
 			$lesson->setNotes($request->request->get('notes'));
 			$lesson->setPromotionCode($request->request->get('promotionCode'));
 			$lesson->setStatus($request->request->get('status'));
+			$lesson->setLessonType($request->request->get('lessonType'));
 			
 			// get lesson rate
 			$lessonRate = $this->getDoctrine()
@@ -219,6 +221,7 @@ class LessonController extends Controller {
 			$lesson->setNotes($request->request->get('notes'));
 			$lesson->setPromotionCode($request->request->get('promotionCode'));
 			$lesson->setStatus($request->request->get('status'));
+			$lesson->setLessonType($request->request->get('lessonType'));
 			
 			// get lesson rate
 			$lessonRate = $this->getDoctrine()

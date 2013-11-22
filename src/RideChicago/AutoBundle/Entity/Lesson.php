@@ -43,6 +43,12 @@ class Lesson {
 	protected $lesson_rate;
 	
 	/**
+	 * @ORM\Column(type="integer")
+	 * @Assert\NotBlank() 
+	 */
+	protected $lesson_type;
+	
+	/**
 	 * @ORM\Column(type="text")
 	 */
 	protected $notes = '';
@@ -308,5 +314,14 @@ class Lesson {
 	
 	public function setTime($v) {
 		$this->time = $v;
+	}
+	
+	public function getLessonType() {
+		return $this->lesson_type;
+	}
+
+	public function setLessonType($lesson_type) {
+		$this->lesson_type = $lesson_type;
+		return $this;
 	}
 }

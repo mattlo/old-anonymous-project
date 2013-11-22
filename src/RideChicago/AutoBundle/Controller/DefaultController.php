@@ -10,7 +10,7 @@ class DefaultController extends Controller {
     }
 	
 	public function classesAction() {
-		return $this->render('RideChicagoAutoBundle:Pages/Public:homepage.html.twig');
+		return $this->render('RideChicagoAutoBundle:Pages/Public:classes.html.twig');
 	}
 	
 	public function scheduleAction() {
