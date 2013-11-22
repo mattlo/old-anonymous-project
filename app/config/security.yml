@@ -24,7 +24,7 @@ security:
             anonymous:  ~
 
         secured_area:
-            pattern:    ^(/admin(/|/*)|/api(/|/*))
+            pattern:    ^(?!/api/lesson$)(/admin(/|/*)|/api(/|/*))
             form_login:
                 success_handler: authentication_handler
                 failure_handler: authentication_handler
