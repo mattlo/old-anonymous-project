@@ -1,43 +1,24 @@
 <!DOCTYPE html>
 <html>
 
-	<head profile="http://www.w3.org/1999/xhtml/vocab">
+	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="shortcut icon" href="http://autoridechicago.com/sites/default/files/favicon.png" type="image/png" />
-		<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
 		<title>Chicago Driving School | Chicago Driving School</title>
-		<style type="text/css" media="all">@import url("http://autoridechicago.com/modules/system/system.base.css?msp5z6");
-			@import url("http://autoridechicago.com/modules/system/system.menus.css?msp5z6");
-			@import url("http://autoridechicago.com/modules/system/system.messages.css?msp5z6");
-			@import url("http://autoridechicago.com/modules/system/system.theme.css?msp5z6");</style>
-		<style type="text/css" media="all">@import url("http://autoridechicago.com/sites/all/modules/simplenews/simplenews.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/calendar/css/calendar_multiday.css?msp5z6");
-			@import url("http://autoridechicago.com/modules/comment/comment.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/date/date_api/date.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/date/date_popup/themes/datepicker.1.7.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/date/date_repeat_field/date_repeat_field.css?msp5z6");
-			@import url("http://autoridechicago.com/modules/field/theme/field.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/logintoboggan/logintoboggan.css?msp5z6");
-			@import url("http://autoridechicago.com/modules/node/node.css?msp5z6");
-			@import url("http://autoridechicago.com/modules/search/search.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/ubercart/uc_attribute/uc_attribute.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/ubercart/uc_order/uc_order.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/ubercart/uc_product/uc_product.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/ubercart/uc_roles/uc_roles.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/ubercart/uc_store/uc_store.css?msp5z6");
-			@import url("http://autoridechicago.com/modules/user/user.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/views/css/views.css?msp5z6");</style>
-		<style type="text/css" media="all">@import url("http://autoridechicago.com/sites/all/modules/ckeditor/ckeditor.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/libraries/colorbox/example1/colorbox.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/ctools/css/ctools.css?msp5z6");
+		
+		
+		<style type="text/css" media="all">
 			@import url("http://autoridechicago.com/sites/all/modules/superfish/css/superfish.css?msp5z6");
 			@import url("http://autoridechicago.com/sites/all/modules/superfish/css/superfish-vertical.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/superfish/css/superfish-navbar.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/views_slideshow/views_slideshow.css?msp5z6");
-			@import url("http://autoridechicago.com/sites/all/modules/views_slideshow/contrib/views_slideshow_cycle/views_slideshow_cycle.css?msp5z6");</style>
+			@import url("http://autoridechicago.com/sites/all/modules/superfish/css/superfish-navbar.css?msp5z6");</style>
 		<style type="text/css" media="all">@import url("http://autoridechicago.com/sites/all/themes/chicago_riders_wakensys/style.css?msp5z6");</style>
 		<style type="text/css" media="print">@import url("http://autoridechicago.com/sites/all/themes/chicago_riders_wakensys/print.css?msp5z6");</style>
 
+		{% stylesheets 
+			'@RideChicagoAutoBundle/Resources/public/css/site/main-v2.css'
+		%}
+			<link rel="stylesheet" href="{{ asset_url }}" />
+		{% endstylesheets %}
 	</head>
 	<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-338 node-type-page not-front not-logged-in no-sidebars" >
 

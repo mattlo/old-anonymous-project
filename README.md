@@ -41,6 +41,7 @@
 ## Production
 
 ## Misc.
+- HTML Layout was imported from Drupal generated pages. Refactor is highly advised.
 - HTTPS setup instructions: http://www.sitepoint.com/securing-apache-2-server-ssl/
 - Cert install: http://www.digicert.com/ssl-certificate-installation-apache.htm
 - Symfony2 performance optimizations: http://symfony.com/doc/current/book/performance.html
