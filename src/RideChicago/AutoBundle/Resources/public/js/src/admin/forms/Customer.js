@@ -39,7 +39,6 @@ Ridechicago.admin.forms.Customer = [{
 	name: 'driversLicense',
 	msgTarget: 'under',
 	validateOnChange: false,
-	allowBlank: false,
 	width: 300
 }, {
 	xtype: 'datefield',

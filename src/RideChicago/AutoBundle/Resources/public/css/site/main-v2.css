@@ -1,1 +1,65 @@
-// added styles on top of the imported site
+.column-ctl {
+	overflow: hidden;
+}
+
+.col-span6 {
+	width: 50%;
+	float: left;
+}
+
+.formv2 h2 {
+	font-size: 22px;
+	line-height: 26px;
+}
+
+.formv2 input[type="text"] {
+	padding: 4px;
+}
+
+.formv2-ctl-group {
+	overflow: hidden;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+h2 + .formv2-ctl-group,
+h2 + .column-ctl,
+h2 + h3,
+h3 + .formv2-ctl-group, 
+.formv2-ctl-group + .formv2-ctl-group {
+	padding-top: 15px;
+}
+
+.formv2-label,
+.formv2-input {
+	float: left;
+}
+
+.formv2-label {
+	padding-top: 4px;
+	width: 200px;
+	font-weight: bold;
+}
+
+.formv2-label:after {
+	content: ':';
+}
+
+.error-message {
+	background: #FE917A;
+	padding: 15px;
+	color: #520800;
+	display: none;
+}
+
+.error-message span {
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
+.success-message {
+	color: #005206;
+	padding: 15px;
+	background: #95FE91;
+	display: none;
+}
