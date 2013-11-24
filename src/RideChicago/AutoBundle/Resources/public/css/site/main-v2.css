@@ -63,3 +63,13 @@ h3 + .formv2-ctl-group,
 	background: #95FE91;
 	display: none;
 }
+
+/* Overrides */
+.submit_cart {
+	display: block !important;
+	position: static !important;
+}
+
+.submit_cart a {
+	margin-left: 0 !important;
+}

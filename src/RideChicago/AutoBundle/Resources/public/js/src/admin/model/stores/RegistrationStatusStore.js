@@ -6,6 +6,7 @@ Ridechicago.admin.model.stores.RegistrationStatusStore = Ext.create('Ext.data.St
 		{text: 'Booked', value: 0},
 		{text: 'Completed', value: 1},
 		{text: 'Checked In', value: 2},
+		{text: 'In Training', value: 12},
 		{text: 'Incomplete', value: 3},
 		{text: 'Cancelled', value: 4},
 		{text: 'No Show', value: 5},		

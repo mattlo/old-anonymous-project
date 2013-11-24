@@ -2,7 +2,7 @@ Ridechicago.admin.common.view.RegionCenter.setTitle('Add Lesson from existing St
 
 Ridechicago.admin.forms.Lesson.unshift({
 	xtype: 'combobox',
-	fieldLabel: 'Customer',
+	fieldLabel: 'Student',
 	store: Ridechicago.admin.model.stores.CustomerStore,
 	queryMode: 'local',
 	displayField: 'firstAndLastName',

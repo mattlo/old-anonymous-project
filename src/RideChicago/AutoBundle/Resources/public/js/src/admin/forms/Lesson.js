@@ -57,7 +57,7 @@ Ridechicago.admin.forms.Lesson = [{
 	width: 350
 }, {
 	xtype: 'textfield',
-	fieldLabel: 'Referral',
+	fieldLabel: 'Referral or School',
 	name: 'promotionCode',
 	msgTarget: 'under'
 }, {

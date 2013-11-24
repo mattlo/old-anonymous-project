@@ -11,6 +11,13 @@ Ridechicago.admin.forms.Customer = [{
 	width: 400
 }, {
 	xtype: 'textfield',
+	fieldLabel: 'Cell Number',
+	name: 'phone',
+	msgTarget: 'under',
+	validateOnChange: false,
+	width: 300
+}, {
+	xtype: 'textfield',
 	fieldLabel: 'First Name',
 	name: 'firstName',
 	msgTarget: 'under',
@@ -33,13 +40,6 @@ Ridechicago.admin.forms.Customer = [{
 	validateOnChange: false,
 	width: 200,
 	maxLength: 1
-}, {
-	xtype: 'textfield',
-	fieldLabel: 'Driver License',
-	name: 'driversLicense',
-	msgTarget: 'under',
-	validateOnChange: false,
-	width: 300
 }, {
 	xtype: 'datefield',
 	fieldLabel: 'Date of Birth',
@@ -98,16 +98,9 @@ Ridechicago.admin.forms.Customer = [{
 	width: 300
 }, {
 	xtype: 'textfield',
-	fieldLabel: 'Phone Number',
-	name: 'phone',
+	fieldLabel: 'Permit ID / Drivers License',
+	name: 'driversLicense',
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 300
-}, {
-	xtype: 'textfield',
-	fieldLabel: 'Alternative Phone Number',
-	name: 'phoneAlt',
-	msgTarget: 'under',
-	validateOnChange: false,
-	width: 400
 }];

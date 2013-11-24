@@ -52,12 +52,12 @@ $.fn.formHandler = (function (config) {
 				this.data.notes += '<br />';
 			}
 			
-			if (this.data.permitId) {
-				this.data.notes += 'Permit ID: ' + this.data.permitId + ' <br />';
+			if (this.data.promotionCode !== '' && this.data.highschool !== '') {
+				this.data.promotionCode += ', ';
 			}
 			
-			if (this.data.highschool) {
-				this.data.notes += 'Highschool: ' + this.data.highschool + ' <br />';
+			if (this.data.highschool !== '') {
+				this.data.promotionCode += 'Highschool: ' + this.data.highschool + ' <br />';
 			}
 		},
 		serverResponseCleanup: function (str) {

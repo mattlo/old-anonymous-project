@@ -45,7 +45,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			bodyPadding: 5
 		},
 		{
-			title: 'New Customer Form',
+			title: 'Student Information',
 			items: Ridechicago.admin.forms.Customer,
 			xtype: 'panel',
 			bodyPadding: 5,

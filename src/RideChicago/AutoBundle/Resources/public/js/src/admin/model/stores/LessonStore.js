@@ -6,6 +6,7 @@ Ridechicago.admin.model.stores.LessonStore = Ext.create('Ext.data.Store', {
 	listeners: {
 		load: function (store, records) {
 			store.each(function (record) {
+				record.set('driversLicense', record.get('customer').driversLicense);
 				record.set('email', record.get('customer').email);
 				record.set('name', record.get('customer').profile.firstName + ' ' + record.get('customer').profile.lastName);
 				record.set('phone', record.get('customer').profile.phone);
