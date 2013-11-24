@@ -2,7 +2,7 @@
 ## Application Stack
 - *nix OS (OS X, centOS, RHEL, etc...)
 - JDK 1.6.x or 1.7.x (needs to run the asset compression .jar)
-- Node Package Manager "NPM" (edge-stable). Handles all JavaScript related deps and builds.
+- (Optional) Node Package Manager "NPM" (edge-stable). Handles all JavaScript related deps and builds.
 - Apache 2.2.x+
 - PHP 5.3.3+
 - MySQL 5.5.x+
