@@ -32,7 +32,7 @@ Ridechicago.admin.forms.Customer = [{
 	validateOnChange: false,
 	allowBlank: false,
 	width: 400
-}, {
+}/*, {
 	xtype: 'textfield',
 	fieldLabel: 'Middle Initial',
 	name: 'middleInitial',
@@ -40,7 +40,7 @@ Ridechicago.admin.forms.Customer = [{
 	validateOnChange: false,
 	width: 200,
 	maxLength: 1
-}, {
+}*/, {
 	xtype: 'datefield',
 	fieldLabel: 'Date of Birth',
 	name: 'dateOfBirth',
