@@ -119,7 +119,6 @@ class Classroom {
 	
 	/**
 	 * @ORM\Column(type="text")
-	 * @Assert\NotBlank()
 	 */
 	protected $notes;
 	
