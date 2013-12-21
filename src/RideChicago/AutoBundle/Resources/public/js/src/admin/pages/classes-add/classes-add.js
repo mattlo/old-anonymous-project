@@ -14,12 +14,15 @@ function dayChkBoxConfigGenerator(name) {
 	for (i = 0; i < days.length; ++i) {
 		var onchange = (function (_i) {
 			return function () {
-				var timeCmp= Ext.getCmp(fieldName + _i);
+				var timeCmp= Ext.getCmp(fieldName + _i + '_start'),
+					timeCmpEnd = Ext.getCmp(fieldName + _i + '_end');
 				
 				if (this.checked === true) {
 					timeCmp.enable();
+					timeCmpEnd.enable();
 				} else {
 					timeCmp.disable();
+					timeCmpEnd.disable();
 				}
 			};
 		}(i));
@@ -34,12 +37,24 @@ function dayChkBoxConfigGenerator(name) {
 		});
 		
 		output.push({
-			fieldLabel: 'Time',
+			fieldLabel: 'Start Time',
 			xtype: 'timefield',
-			name: fieldName + i,
-			id: fieldName + i,
+			name: fieldName + i + '_start',
+			id: fieldName + i + '_start',
 			disabled: true,
-			labelWidth: 45,
+			labelWidth: 90,
+			minValue: Ext.Date.parse('05:00:00 AM', 'h:i:s A'),
+			maxValue: Ext.Date.parse('08:00:00 PM', 'h:i:s A'),
+			editable: false
+		});
+		
+		output.push({
+			fieldLabel: 'End Time',
+			xtype: 'timefield',
+			name: fieldName + i + '_end',
+			id: fieldName + i + '_end',
+			disabled: true,
+			labelWidth: 90,
 			minValue: Ext.Date.parse('05:00:00 AM', 'h:i:s A'),
 			maxValue: Ext.Date.parse('08:00:00 PM', 'h:i:s A'),
 			editable: false

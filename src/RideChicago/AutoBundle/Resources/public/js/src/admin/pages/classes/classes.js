@@ -18,7 +18,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 				data = [];
 		
 			for (var day in days) {
-				data.push(day + '@' + days[day]);
+				data.push(day + '@' + days[day].start + '-' + days[day].end);
 			}
 			
 			return data.join(', ');

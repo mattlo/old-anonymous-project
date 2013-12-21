@@ -84,15 +84,19 @@ class ClassesController extends Controller {
 				// iterate over class days
 				foreach ($classDays as $classDayKey) {
 					// get config of day
-					$class_day_config = $request->request->get('class_day_config_n' . $classDayKey);
+					$class_day_config_start = $request->request->get('class_day_config_n' . $classDayKey . '_start');
+					$class_day_config_end = $request->request->get('class_day_config_n' . $classDayKey . '_end');
 					
 					// validate
-					if ($class_day_config === null) {
+					if ($class_day_config_start === null || $class_day_config_end === null) {
 						throw new Exception('post variable class_day_config_n' . $classDayKey . ' not found');
 					}
 					
 					// assign and store
-					$classDayArray[DaysOfWeek::getDay($classDayKey)] = $class_day_config;
+					$classDayArray[DaysOfWeek::getDay($classDayKey)] = array(
+						'start' => $class_day_config_start,
+						'end' => $class_day_config_end
+					);
 				}
 				
 				// json encode result
