@@ -22,34 +22,34 @@ class Profile {
 	protected $id;
 	
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", length=255, nullable=true)
 	 * @Assert\NotBlank()
 	 */
 	protected $first_name;
 	
 	/**
-	 * @ORM\Column(type="string", length=1)
+	 * @ORM\Column(type="string", length=1, nullable=true)
 	 */
 	protected $middle_initial;
 	
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", length=255, nullable=true)
 	 * @Assert\NotBlank()
 	 */
 	protected $last_name;
 	
 	/**
-	 * @ORM\Column(type="text")
+	 * @ORM\Column(type="text", nullable=true)
 	 */
 	protected $address;
 	
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", length=255, nullable=true)
 	 */
 	protected $phone;
 	
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", length=255, nullable=true)
 	 */
 	protected $phone_alt;
 	
