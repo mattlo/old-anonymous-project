@@ -173,7 +173,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			width: 350
 		}, {
 			xtype: 'fieldcontainer',
-			fieldLabel: 'Lead Instructor',
+			fieldLabel: 'Location',
 			defaultType: 'radiofield',
 			defaults: {
 				flex: 1
