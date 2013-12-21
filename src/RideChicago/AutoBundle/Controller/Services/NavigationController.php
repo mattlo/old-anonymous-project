@@ -16,18 +16,24 @@ class NavigationController extends Controller {
 					static::mkLeaf('Dashboard', '/admin'),	
 					
 					static::mkLeaf(
-						'Student Management',
+						'New Students',
 						null,
-						array (
-							static::mkLeaf('Schedule a New Lesson', '/admin/lesson/add'),
-							static::mkLeaf('Schedule Lesson from Existing Student', '/admin/lesson/add-existing'),
-							static::mkLeaf('View Scheduled Lessons', '/admin/lesson'),
-							static::mkLeaf('View Registrations', '/admin/registration'),
-							static::mkLeaf('Register a New Student', '/admin/registration/add'),
-							static::mkLeaf('Register an Existing Student', '/admin/registration/add-existing'),
-							static::mkLeaf('Calendar', '/')
+						array(
+							static::mkLeaf('New Lesson', '/admin/lesson/add'),
+							static::mkLeaf('Classroom Enrollment', '/admin/registration/add'),
 						)
-					),	
+					),
+					
+					static::mkLeaf(
+						'Manage Students',
+						null,
+						array(
+							static::mkLeaf('New Lesson', '/admin/lesson/add-existing'),
+							static::mkLeaf('Classroom Enrollment', '/admin/registration/add-existing'),
+							static::mkLeaf('Scheduled Lessons', '/admin/lesson'),
+							static::mkLeaf('Registrations', '/admin/registration'),
+						)
+					),
 					
 					static::mkLeaf(
 						'Class Management Tools',
@@ -50,7 +56,7 @@ class NavigationController extends Controller {
 							static::mkLeaf('Create New User', '/admin/users/add'),
 							static::mkLeaf('Email List Tool', '/admin/emails')
 						)
-					),	
+					)/*,	
 					
 					static::mkLeaf(
 						'Content Management Tools',
@@ -60,7 +66,7 @@ class NavigationController extends Controller {
 							static::mkLeaf('Promotions', '/')
 						)
 					)
-					
+					*/
 				)
 			)
 		));
