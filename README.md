@@ -39,6 +39,8 @@
 ## Staging
 
 ## Production
+- Update the `src` directory and update config files.
+- Ensure `app/config/env.prod` exists. (File existence determines environment)
 
 ## Misc.
 - HTML Layout was imported from Drupal generated pages. Refactor is highly advised.

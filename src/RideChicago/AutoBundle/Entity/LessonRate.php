@@ -27,7 +27,13 @@ class LessonRate {
 	 * @ORM\Column(type="decimal", scale=2, precision=6)
 	 * @Assert\NotBlank()
 	 */
-	protected $price;
+	protected $price;	
+	
+	/**
+	 * @ORM\Column(type="decimal", scale=2, precision=6)
+	 * @Assert\NotBlank()
+	 */
+	protected $pickupfee = 0.00;
 	
 	protected $rate;
 
@@ -97,5 +103,14 @@ class LessonRate {
 		}
 		
 		return $duration . ' ' . $unit . ' for $' . $this->getPrice();
+	}
+	
+	public function getPickupfee() {
+		return $this->pickupfee;
+	}
+
+	public function setPickupfee($pickupfee) {
+		$this->pickupfee = $pickupfee;
+		return $this;
 	}
 }

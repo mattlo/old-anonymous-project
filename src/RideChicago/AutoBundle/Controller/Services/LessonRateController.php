@@ -33,7 +33,7 @@ class LessonRateController extends Controller {
 	 * @param \Symfony\Component\HttpFoundation\Request $request
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	public function updateAction() {
+	public function updateAction(Request $request) {
 		try {
 			// get item by id
 			$lessonRate = $this->getDoctrine()
@@ -43,6 +43,7 @@ class LessonRateController extends Controller {
 			// stage info
 			$lessonRate->setDuration($request->request->get('duration'));
 			$lessonRate->setPrice(floatval($request->request->get('price')));
+			$lessonRate->setPickUpFee(floatval($request->request->get('pickupfee')));
 			
 			// validate
 			$validator = $this->get('validator');
@@ -72,6 +73,7 @@ class LessonRateController extends Controller {
 			// stage info
 			$lessonRate->setDuration($request->request->get('duration'));
 			$lessonRate->setPrice(floatval($request->request->get('price')));
+			$lessonRate->setPrice(floatval($request->request->get('pickupfee')));
 			
 			// validate
 			$validator = $this->get('validator');

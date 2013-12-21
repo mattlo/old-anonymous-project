@@ -15,6 +15,9 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 		{text: 'Rate', dataIndex: 'lessonRate', width: 160, renderer: function (lessonrate, col, store) {
 			return lessonrate.rate;
 		}},
+		{text: 'Fees', dataIndex: 'lessonRate', width: 75, renderer: function (lessonrate, col, store) {
+			return '$' + lessonrate.pickupfee;
+		}},
 		{text: 'Status', dataIndex: 'status', width: 100, renderer: function (value) {
 			return Ridechicago.admin.model.stores.RegistrationStatusStore.findRecord('value', value).get('text');
 		}},

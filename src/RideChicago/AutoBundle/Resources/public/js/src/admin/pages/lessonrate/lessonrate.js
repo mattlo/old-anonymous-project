@@ -10,6 +10,9 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 		{text: 'Price', dataIndex: 'price', renderer: function (value) {
 			return '$' + value;
 		}},
+		{text: 'Pick Up Fee', dataIndex: 'pickupfee', renderer: function (value) {
+			return '$' + value;
+		}},
 		{text: '', dataIndex: 'utilities', flex: 1, renderer: function (value, col, store) {
 			return '<a class="users-edit" href="/admin/lessonrate/update/' + store.get('id') + '">Edit</a>';
 		}}

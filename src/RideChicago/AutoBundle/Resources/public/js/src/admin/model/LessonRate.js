@@ -7,7 +7,8 @@ Ext.regModel('Ridechicago.admin.model.LessonRate', {
 		'id',
 		'duration',
 		'price',
-		'rate'
+		'rate',
+		'pickupfee'
 	],
  
     proxy: {

@@ -22,4 +22,19 @@ Ridechicago.admin.forms.LessonRate = [{
 	keyNavEnabled: false,
 	allowBlank: false,
 	mouseWheelEnabled: false
+}, {
+	xtype: 'numberfield',
+	name: 'pickupfee',
+	msgTarget: 'under',
+	fieldLabel: 'Pick Up Fee',
+	maxValue: 9999.99,
+	minValue: 0.00,
+	width: 300,
+	hideTrigger: true,
+	keyNavEnabled: false,
+	allowBlank: false,
+	mouseWheelEnabled: false
+}, {
+	xtype: 'hiddenfield',
+	name: 'id'
 }];
