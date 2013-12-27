@@ -178,7 +178,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			defaults: {
 				flex: 1
 			},
-			width: 500,
+			width: 600,
 			layout: 'hbox',
 			items: [
 				{
@@ -196,6 +196,12 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 					name: 'instructor_id',
 					inputValue: '3',
 					id: 'radio3'
+				}
+, {
+					boxLabel: 'Ravenwoods',
+					name: 'instructor_id',
+					inputValue: '4',
+					id: 'radio4'
 				}
 			]
 		}, 	{
