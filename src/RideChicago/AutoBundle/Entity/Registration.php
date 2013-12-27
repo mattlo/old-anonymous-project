@@ -43,8 +43,7 @@ class Registration {
 	protected $class_status = 0;
 	
 	/**
-	 * @ORM\Column(type="string", length=255)
-	 * @Assert\NotBlank()
+	 * @ORM\Column(type="string", length=255, nullable=true)
 	 */
 	protected $promotion_code;
 	

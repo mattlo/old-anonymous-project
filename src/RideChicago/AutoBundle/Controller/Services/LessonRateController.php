@@ -73,7 +73,7 @@ class LessonRateController extends Controller {
 			// stage info
 			$lessonRate->setDuration($request->request->get('duration'));
 			$lessonRate->setPrice(floatval($request->request->get('price')));
-			$lessonRate->setPrice(floatval($request->request->get('pickupfee')));
+			$lessonRate->setPickUpFee(floatval($request->request->get('pickupfee')));
 			
 			// validate
 			$validator = $this->get('validator');

@@ -55,6 +55,7 @@ Ridechicago.admin.forms.Customer = [{
 	queryMode: 'local',
 	displayField: 'text',
 	valueField: 'value',
+	allowBlank: false,
 	editable: false,
 	name: 'gender',
 	width: 250
