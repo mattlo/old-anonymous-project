@@ -39,8 +39,12 @@
 ## Staging
 
 ## Production
-- Update the `src` directory and update config files.
+- Update the `src` directory and update config files (sh /opt/git/export, cd tmp, copy `src` to /var/www/src).
 - Ensure `app/config/env.prod` exists. (File existence determines environment)
+- Run `php app/console doctrine:schema:update --force`
+- Remove app/cache/prod
+- Run `sudo php app/console cache:clear --env=prod --no-debug`
+- Run `sudo php app/console assetic:dump --env=prod --no-debug`
 
 ## Misc.
 - HTML Layout was imported from Drupal generated pages. Refactor is highly advised.
