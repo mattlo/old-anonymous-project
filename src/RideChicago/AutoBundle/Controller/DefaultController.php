@@ -10,7 +10,14 @@ class DefaultController extends Controller {
     }
 	
 	public function classesAction() {
-		return $this->render('RideChicagoAutoBundle:Pages/Public:classes.html.twig');
+		// get all rates
+		$lessonRates = $this->getDoctrine()
+			->getRepository('RideChicagoAutoBundle:LessonRate')
+			->findBy(array(), array('duration' => 'ASC'));
+		
+		return $this->render('RideChicagoAutoBundle:Pages/Public:classes.html.twig', array(
+			'lessonRates' => $lessonRates
+		));
 	}
 	
 	public function scheduleAction() {

@@ -72,9 +72,18 @@ h3 + .formv2-ctl-group,
 
 .submit_cart a {
 	margin-left: 0 !important;
+	margin-top: 0;
 }
 
 .contact-middle-content {
 	width: 45%;
 	float: left;
+}
+
+.lesson-rate-reg-btn + .lesson-rate-reg-btn {
+	margin-left: 10px;
+}
+
+.enroll-title {
+	padding: 5px 0;
 }
