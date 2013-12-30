@@ -24,8 +24,8 @@ rca_faq:
     defaults: { _controller: RideChicagoAutoBundle:Default:faq }
 
 rca_contact:
-    pattern:  /contact
-    defaults: { _controller: RideChicagoAutoBundle:Default:contact }
+    pattern:  /contact-us
+    defaults: { _controller: RideChicagoAutoBundle:Default:rcaContact }
     
 rca_registration:
     pattern: /register

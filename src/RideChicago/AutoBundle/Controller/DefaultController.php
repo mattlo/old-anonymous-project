@@ -29,8 +29,8 @@ class DefaultController extends Controller {
 		return $this->render('RideChicagoAutoBundle:Pages/Public:faq.html.twig');
 	}
 	
-	public function rcaContact() {
-		return $this->render('RideChicagoAutoBundle:Pages/Public:homepage.html.twig');
+	public function rcaContactAction() {
+		return $this->render('RideChicagoAutoBundle:Pages/Public:contact.html.twig');
 	}
 }
 
