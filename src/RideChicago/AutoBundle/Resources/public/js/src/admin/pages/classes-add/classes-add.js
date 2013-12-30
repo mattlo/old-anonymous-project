@@ -198,7 +198,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 					id: 'radio3'
 				}
 , {
-					boxLabel: 'Ravenwoods',
+					boxLabel: 'Ravenwood',
 					name: 'instructor_id',
 					inputValue: '4',
 					id: 'radio4'

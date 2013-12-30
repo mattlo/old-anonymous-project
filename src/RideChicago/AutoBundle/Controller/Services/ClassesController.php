@@ -17,21 +17,27 @@ use \DateTime;
 class ClassesController extends Controller {
 	
 	/**
-	 * 
+	 * @param \Symfony\Component\HttpFoundation\Request $request
 	 * @param type $id
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	public function getAction ($id = null) {
+	public function getAction (Request $request, $id = null) {
+		$orderDirection = 'DESC';
+		
 		if ($id !== null) {
 			$query = array('id' => $id);
 		} else {
 			$query = array();
 		}
 		
+		if ($request->query->get('descendingOrder') == false) {
+			$orderDirection = 'ASC';
+		}
+		
 		// get class
 		$classTypes = $this->getDoctrine()
 			->getRepository('RideChicagoAutoBundle:Classroom')
-			->findBy($query, array('class_start_date' => 'DESC'));
+			->findBy($query, array('class_start_date' => $orderDirection));
 		
 		Logger::info($this, 'fetching ' . count($classTypes) . ' classes');
 		return ServiceOutput::render($this, Serialize::getArrayFromObject($classTypes));
