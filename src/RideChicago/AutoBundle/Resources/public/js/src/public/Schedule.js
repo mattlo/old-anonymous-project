@@ -27,8 +27,7 @@ function populateSchedules() {
 	
 	// using AJAX instead of calling within view will be more versatile for manipulation
 	$.ajax({
-		url: '/api/classes',
-		data: {descendingOrder: false}
+		url: '/api/classes'
 	}).success(function (response) {
 		var i;
 		
