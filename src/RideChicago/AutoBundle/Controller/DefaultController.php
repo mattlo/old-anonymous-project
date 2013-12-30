@@ -14,11 +14,11 @@ class DefaultController extends Controller {
 	}
 	
 	public function scheduleAction() {
-		return $this->render('RideChicagoAutoBundle:Pages/Public:homepage.html.twig');
+		return $this->render('RideChicagoAutoBundle:Pages/Public:schedule.html.twig');
 	}
 	
 	public function permitsAction() {
-		return $this->render('RideChicagoAutoBundle:Pages/Public:homepage.html.twig');
+		return $this->render('RideChicagoAutoBundle:Pages/Public:permits.html.twig');
 	}
 	
 	public function pricingAction() {
