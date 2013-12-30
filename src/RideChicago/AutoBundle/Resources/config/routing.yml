@@ -282,6 +282,11 @@ lessonrates_update:
   pattern: /api/lessonrate/update
   defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:update, _format: json}    
   methods: [POST]
+  
+lessonrates_delete:
+  pattern: /api/lessonrate/delete
+  defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:delete, _format: json}    
+  methods: [POST]
     
 lessonrates_create:
   pattern: /api/lessonrate/create

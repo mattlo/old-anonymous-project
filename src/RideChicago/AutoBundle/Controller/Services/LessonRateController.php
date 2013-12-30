@@ -91,6 +91,24 @@ class LessonRateController extends Controller {
 		
 		return ServiceOutput::render($this);
 	}
+	
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function deleteAction(Request $request) {
+		$user = $this->getDoctrine()
+			->getRepository('RideChicagoAutoBundle:LessonRate')
+			->findOneById($request->request->get('id'));
+
+		// get ORM manager
+		$ormManager = $this->getDoctrine()->getManager();
+		// save
+		$ormManager->remove($user);
+		$ormManager->flush();
+		
+		return ServiceOutput::render($this);
+	}
 }
 
 ?>
