@@ -44,7 +44,7 @@ function dayChkBoxConfigGenerator(name) {
 			disabled: true,
 			labelWidth: 90,
 			minValue: Ext.Date.parse('05:00:00 AM', 'h:i:s A'),
-			maxValue: Ext.Date.parse('08:00:00 PM', 'h:i:s A'),
+			maxValue: Ext.Date.parse('09:00:00 PM', 'h:i:s A'),
 			editable: false
 		});
 		
@@ -56,7 +56,7 @@ function dayChkBoxConfigGenerator(name) {
 			disabled: true,
 			labelWidth: 90,
 			minValue: Ext.Date.parse('05:00:00 AM', 'h:i:s A'),
-			maxValue: Ext.Date.parse('08:00:00 PM', 'h:i:s A'),
+			maxValue: Ext.Date.parse('09:00:00 PM', 'h:i:s A'),
 			editable: false
 		});
 	}
