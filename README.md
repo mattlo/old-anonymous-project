@@ -41,10 +41,13 @@
 ## Production
 - Update the `src` directory and update config files (sh /opt/git/export, cd tmp, copy `src` to /var/www/src).
 - Ensure `app/config/env.prod` exists. (File existence determines environment)
-- Run `php app/console doctrine:schema:update --force`
+- Run `sudo php app/console doctrine:schema:update --force`
 - Remove app/cache/prod
+- Remove web/1
+- Run `sudo composer install --no-dev --optimize-autoloader`
 - Run `sudo php app/console cache:clear --env=prod --no-debug`
 - Run `sudo php app/console assetic:dump --env=prod --no-debug`
+- Allow read/write permissions on all directorys `sudo chmod -R 777 /var/www`
 
 ## Misc.
 - HTML Layout was imported from Drupal generated pages. Refactor is highly advised.
