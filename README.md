@@ -38,7 +38,7 @@
 
 ## Staging
 
-## Production
+## Production (EXPERIMENTAL: deploy.sh on the production box)
 - Update the `src` directory and update config files (sh /opt/git/export, cd tmp, copy `src` to /var/www/src).
 - Ensure `app/config/env.prod` exists. (File existence determines environment)
 - Run `sudo php app/console doctrine:schema:update --force`
