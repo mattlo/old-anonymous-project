@@ -44,3 +44,9 @@ label.fieldDescription {
 .enable-multirow .x-grid-row-over .x-grid-cell-inner {
     white-space: normal;
 }
+
+html,
+body {
+	overflow: hidden;
+	height: 100%;
+}
