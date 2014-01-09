@@ -16,7 +16,7 @@ function instructorIdMap(value) {
 			return 'United';
 		break;
 		case 4:
-			return 'Ravenwood';
+			return 'Ravenswood';
 		break;
 	}
 }
