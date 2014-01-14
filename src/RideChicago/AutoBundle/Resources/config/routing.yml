@@ -65,6 +65,10 @@ auto_admin_classes_add:
     pattern:  /admin/classes/add
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classAdd }
         
+auto_admin_classes_update:
+    pattern:  /admin/classes/edit/{id}
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classUpdate }
+        
 auto_admin_classestypes_view:
     pattern:  /admin/class-types
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:classTypesView }
@@ -193,14 +197,25 @@ classrooms_get:
   pattern: /api/classes
   defaults: {_controller: RideChicagoAutoBundle:Services\Classes:get, _format: json}  
   
+classrooms_get_single:
+  pattern: /api/classes/{id}
+  defaults: {_controller: RideChicagoAutoBundle:Services\Classes:get, _format: json}  
+  requirements:
+    id: \d+
+  
 classrooms_create:
   pattern: /api/classes/create
   defaults: {_controller: RideChicagoAutoBundle:Services\Classes:create, _format: json}    
   methods: [POST]
   
-classrooms_create:
+classrooms_delete:
   pattern: /api/classes/delete
   defaults: {_controller: RideChicagoAutoBundle:Services\Classes:delete, _format: json}    
+  methods: [POST]  
+  
+classrooms_update:
+  pattern: /api/classes/update
+  defaults: {_controller: RideChicagoAutoBundle:Services\Classes:update, _format: json}    
   methods: [POST]
   
 registration_get:

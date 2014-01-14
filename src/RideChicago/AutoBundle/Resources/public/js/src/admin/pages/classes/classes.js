@@ -42,7 +42,7 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 		{text: 'Instructor', dataIndex: 'instructorId', width: 80},
 		{text: 'Notes', dataIndex: 'notes', width: 120, sortable: false},
 		{text: '', sortable: false, dataIndex: 'utilities', width: 130, renderer: function (value, col, store) {
-			return '<a href="/admin/class-types/edit/' + store.get('id') + '">Edit</a> | <a class="removeAction" data-name="' + store.get('code') + '" data-id="' + store.get('id') + '" href="">Delete</a> | <a class="removeAction" href="">Duplicate</a>';
+			return '<a href="/admin/classes/edit/' + store.get('id') + '">Edit</a> | <a class="removeAction" data-name="' + store.get('code') + '" data-id="' + store.get('id') + '" href="">Delete</a> | <a class="removeAction" href="">Duplicate</a>';
 		}}
     ]
 }));

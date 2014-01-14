@@ -2,12 +2,17 @@
 
 {% block pageJavaScript %}
 	{% javascripts 
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/Classes.js'
 		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/EnableStore.js'
 		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/StatusStore.js'
 		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/ClassTypes.js'
 		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/Classroom.js'
-		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/classes-add/classes-add.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/classes-update/classes-update.js'
 	%}
 		<script type="text/javascript" src="{{ asset_url }}"></script>
 	{% endjavascripts %}
+{% endblock %}
+		
+{% block content %}
+	<script type="application/json" id="pageContentData">{{ staticData|raw }}</script>
 {% endblock %}

@@ -55,24 +55,24 @@ class ClassesController extends Controller {
 			
 			// stage info
 			$classroom->setLastModified();
-			$classroom->setClassStartDate(new DateTime($request->request->get('class_start_date')));
-			$classroom->setClassEndDate(new DateTime($request->request->get('class_end_date')));
+			$classroom->setClassStartDate(new DateTime($request->request->get('classStartDate')));
+			$classroom->setClassEndDate(new DateTime($request->request->get('classEndDate')));
 			
-			$classroom->setClassRegistrationStartDate(new DateTime($request->request->get('class_registration_start_date')));
+			$classroom->setClassRegistrationStartDate(new DateTime($request->request->get('classRegistrationStartDate')));
 			$classroom->setDeposit($request->request->get('deposit'));
-			$classroom->setEnrollmentSeats($request->request->get('enrollment_seats'));
-			$classroom->setEnrollmentWaitList($request->request->get('enrollment_wait_list'));
-			$classroom->setInstructorId($request->request->get('instructor_id'));
+			$classroom->setEnrollmentSeats($request->request->get('enrollmentSeats'));
+			$classroom->setEnrollmentWaitList($request->request->get('enrollmentWaitList'));
+			$classroom->setInstructorId($request->request->get('instructorId'));
 			$classroom->setNotes($request->request->get('notes'));
-			$classroom->setOnlineRegistrationStatus($request->request->get('online_registration_status'));
+			$classroom->setOnlineRegistrationStatus($request->request->get('onlineRegistrationStatus'));
 			$classroom->setPrice($request->request->get('price'));
-			$classroom->setPromotionLimit($request->request->get('promotion_limit'));
+			$classroom->setPromotionLimit($request->request->get('promotionLimit'));
 			$classroom->setStatus($request->request->get('status'));
 			
 			// get classType
 			$classtype = $this->getDoctrine()
 				->getRepository('RideChicagoAutoBundle:ClassType')
-				->findOneById($request->request->get('classtype_id'));
+				->findOneById($request->request->get('classtypeId'));
 			
 			$classroom->setClasstype($classtype);
 			$classroom->setClasstypeId($classtype->getId());
@@ -155,8 +155,104 @@ class ClassesController extends Controller {
 		return ServiceOutput::render($this);
 	}
 	
-	public function updateAction() {
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function updateAction(Request $request) {
+		Logger::info($this, 'Starting to update a classroom');
+		try {
+			
+			// get existing customer
+			$classroom = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:Classroom')
+				->findOneById($request->request->get('id'));
+			
+			Logger::info($this, 'Using classroom ID: ' . $classroom->getId());
+			
+			
+			// stage info
+			$classroom->setLastModified();
+			$classroom->setClassStartDate(new DateTime($request->request->get('classStartDate')));
+			$classroom->setClassEndDate(new DateTime($request->request->get('classEndDate')));
+			
+			$classroom->setClassRegistrationStartDate(new DateTime($request->request->get('classRegistrationStartDate')));
+			$classroom->setDeposit($request->request->get('deposit'));
+			$classroom->setEnrollmentSeats($request->request->get('enrollmentSeats'));
+			$classroom->setEnrollmentWaitList($request->request->get('enrollmentWaitList'));
+			$classroom->setInstructorId($request->request->get('instructorId'));
+			$classroom->setNotes($request->request->get('notes'));
+			$classroom->setOnlineRegistrationStatus($request->request->get('onlineRegistrationStatus'));
+			$classroom->setPrice($request->request->get('price'));
+			$classroom->setPromotionLimit($request->request->get('promotionLimit'));
+			$classroom->setStatus($request->request->get('status'));
+			
+			// get classType
+			$classtype = $this->getDoctrine()
+				->getRepository('RideChicagoAutoBundle:ClassType')
+				->findOneById($request->request->get('classtypeId'));
+			
+			$classroom->setClasstype($classtype);
+			$classroom->setClasstypeId($classtype->getId());
+			
+			// set class room days
+			// iterate over checked days
+			$classDays = $request->request->get('class_day_keys');
+			
+			// check if this exists
+			if ($classDays !== null) {
+				$classDayArray = array();
+				
+				Logger::debug($this, print_r($classDays, true));
+				
+				// iterate over class days
+				foreach ($classDays as $classDayKey) {
+					// get config of day
+					$class_day_config_start = $request->request->get('class_day_config_n' . $classDayKey . '_start');
+					$class_day_config_end = $request->request->get('class_day_config_n' . $classDayKey . '_end');
+					
+					// validate
+					if ($class_day_config_start === null || $class_day_config_end === null) {
+						throw new Exception('post variable class_day_config_n' . $classDayKey . ' not found');
+					}
+					
+					// assign and store
+					$classDayArray[DaysOfWeek::getDay($classDayKey)] = array(
+						'start' => $class_day_config_start,
+						'end' => $class_day_config_end
+					);
+				}
+				
+				// json encode result
+				$classDaysEncoded = json_encode($classDayArray);
+				
+				// save
+				Logger::debug($this, 'saving days encoded: ' . $classDaysEncoded);
+				$classroom->setClassDays($classDaysEncoded);
+				
+				Logger::debug($this, 'found class_day_keys');
+			} else {
+				// the validator will throw an error when its hits it
+				// may not be a good idea to have the same exception thrown here as well
+				// to kill the process slightly earlier
+				Logger::debug($this, '`class_day_keys` not posted');
+			}
+			
+			// validate
+			$validator = $this->get('validator');
+			ValidationThrower::check($validator->validate($classroom));
+
+			// get ORM manager
+			$ormManager = $this->getDoctrine()->getManager();
+
+			// save
+			$ormManager->persist($classroom);
+			$ormManager->flush();
+		} catch (ContraintViolationException $e) {
+			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
+		}
 		
+		return ServiceOutput::render($this);
 	}
 }
 
