@@ -1,3 +1,12 @@
+#v1.3.0
+- Resolved IE8 Date output bug (IE8 does not resolve timezones natively)
+- Opened up `lesson/create` service from the firewall (blocking registration requests)
+- Added Date validation on the public lesson registration (invalid formats were throwing server exceptions)
+- Fixed defect where all lessons were registered as an adult by default on the public creation form
+- Enabled delete button on classrooms
+- Fixed classroom update functionality
+- Fixed double scrolling issue on admin
+
 #v1.2.0
 - Added Google Site Verification meta data
 - Added available Classrooms on the Schedule page
