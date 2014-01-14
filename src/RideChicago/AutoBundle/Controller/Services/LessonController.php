@@ -168,6 +168,8 @@ class LessonController extends Controller {
 			// bind customer to registration
 			$lesson->setCustomer($customer);
 			
+			Logger::debug($this, print_r($lesson, true));
+			
 			// validate
 			$validator = $this->get('validator');
 			ValidationThrower::check($validator->validate($mainProfile));
