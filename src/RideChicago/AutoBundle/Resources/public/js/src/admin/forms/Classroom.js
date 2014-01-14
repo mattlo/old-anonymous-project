@@ -148,7 +148,6 @@ Ridechicago.admin.forms.Classroom = [{
 	fieldLabel: 'Registration Opens',
 	name: 'classRegistrationStartDate',
 	msgTarget: 'under',
-	minValue: new Date(), // limited to the current date or prior
 	allowBlank: false,
 	width: 350
 }, {
@@ -156,7 +155,6 @@ Ridechicago.admin.forms.Classroom = [{
 	fieldLabel: 'Class Start Date',
 	name: 'classStartDate',
 	msgTarget: 'under',
-	minValue: new Date(), // limited to the current date or prior
 	allowBlank: false,
 	width: 350
 }, {
