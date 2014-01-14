@@ -9,8 +9,20 @@ $.fn.formHandler = (function (config) {
 	
 	FormHandler.prototype = {
 		validate: function () {
+			var output = true;
+			
 			this.serializeData();
-			return true;
+			
+			try {
+				if (/^\d{1,2}[\/-]\d{1,2}[\/-]\d{4}$/.test(this.data.dateOfBirth) === false) {
+					throw new Error('Date of birth must be in MM/DD/YYYY format.');
+				}
+			} catch (e) {
+				this.showError([e.message]);
+				output = false;
+			}
+		
+			return output;
 		},
 		showError: function (errorMsg) {
 			$('html, body').animate({scrollTop: 150}, 600);
