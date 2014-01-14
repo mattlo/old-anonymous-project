@@ -13,7 +13,8 @@ class RegistrationController extends Controller {
 			->findBy(array(), array('duration' => 'ASC'));
 		
 		return $this->render('RideChicagoAutoBundle:Pages/Public:lesson-registration.html.twig', array(
-			'lessonRates' => $lessonRates
+			'lessonRates' => $lessonRates,
+			'date' => date('m/d/Y')
 		));
 	}
 	

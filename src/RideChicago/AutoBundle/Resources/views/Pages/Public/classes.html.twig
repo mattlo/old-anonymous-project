@@ -97,7 +97,7 @@
 																			
 																			<h4 class="enroll-title">Enroll For:</h4>
 																			{% for lessonRate in lessonRates %}
-																			 <div class="submit_cart lesson-rate-reg-btn"><a href="/register?rate={{lessonRate.id}}">{{lessonRate.duration}} hours</a></div>
+																			 <div class="submit_cart lesson-rate-reg-btn"><a href="/register?rate={{lessonRate.id}}&lessontype={{constant('RideChicago\\AutoBundle\\Enum\\LessonType::Adult')}}">{{lessonRate.duration}} hours</a></div>
 																			{% endfor %}
 																		</div>
 																	</div>
@@ -124,7 +124,7 @@
 																			
 																			<h4 class="enroll-title">Enroll For:</h4>
 																			{% for lessonRate in lessonRates %}
-																			 <div class="submit_cart lesson-rate-reg-btn"><a href="/register?rate={{lessonRate.id}}">{{lessonRate.duration}} hours</a></div>
+																			 <div class="submit_cart lesson-rate-reg-btn"><a href="/register?rate={{lessonRate.id}}&lessontype={{constant('RideChicago\\AutoBundle\\Enum\\LessonType::Teen')}}">{{lessonRate.duration}} hours</a></div>
 																			{% endfor %}
 																		</div>
 																	</div>
@@ -153,7 +153,7 @@
 																				8 hours -$360</h4>
 																			<h4 class="enroll-title">Enroll For:</h4>
 																			{% for lessonRate in lessonRates %}
-																			 <div class="submit_cart lesson-rate-reg-btn"><a href="/register?rate={{lessonRate.id}}">{{lessonRate.duration}} hours</a></div>
+																			 <div class="submit_cart lesson-rate-reg-btn"><a href="/register?rate={{lessonRate.id}}&lessontype={{constant('RideChicago\\AutoBundle\\Enum\\LessonType::Extended')}}">{{lessonRate.duration}} hours</a></div>
 																			{% endfor %}
 																		</div>
 																	</div>

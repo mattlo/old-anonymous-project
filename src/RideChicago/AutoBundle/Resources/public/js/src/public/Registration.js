@@ -2,6 +2,10 @@ $(document).ready(function () {
 	if ($('.registration-form').length > 0) {
 		if (getParameterByName('rate') !== null) {
 			$('[name="lessonRateId"]').val(getParameterByName('rate'));
+		}		
+		
+		if (getParameterByName('lessontype') !== null) {
+			$('[name="lessonType"]').val(getParameterByName('lessontype'));
 		}
 	}
 });
