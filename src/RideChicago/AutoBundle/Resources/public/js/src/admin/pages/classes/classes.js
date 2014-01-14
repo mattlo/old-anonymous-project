@@ -42,11 +42,48 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 		{text: 'Instructor', dataIndex: 'instructorId', width: 80},
 		{text: 'Notes', dataIndex: 'notes', width: 120, sortable: false},
 		{text: '', sortable: false, dataIndex: 'utilities', width: 130, renderer: function (value, col, store) {
-			return '<a href="/admin/class-types/edit/' + store.get('id') + '">Edit</a> | <a class="removeAction" href="">Delete</a> | <a class="removeAction" href="">Duplicate</a>';
+			return '<a href="/admin/class-types/edit/' + store.get('id') + '">Edit</a> | <a class="removeAction" data-name="' + store.get('code') + '" data-id="' + store.get('id') + '" href="">Delete</a> | <a class="removeAction" href="">Duplicate</a>';
 		}}
     ]
 }));
 
+
+
+Ext.onReady(function () {
+	Ext.getBody().on('click', function(event, target) {
+		event.preventDefault();
+		
+		// element clicked
+		var a = Ext.get(target),
+			name = a.getAttribute('data-name'),
+			id = a.getAttribute('data-id');
+		
+		Ext.MessageBox.confirm('Confirm', 'Are you sure you want to delete <strong>' + name + '</strong>?', function (btn) {
+			if (btn === 'yes') {
+				Ext.Ajax.request({
+					url: '/api/classes/delete',
+					method: 'POST',
+					params: {
+						id: id
+					},
+					success: function(){
+						Ext.MessageBox.show({
+							title: 'Class Type Management',
+							msg: name + ' was successfully removed from the system.',
+							icon: Ext.MessageBox.INFO,
+							buttons: Ext.MessageBox.OK,
+							fn: function() {
+								window.location = '/admin/classes';
+							}
+						});
+					}
+				});
+			}
+		});
+	}, null, {
+		delegate: '.removeAction'
+	});
+});
 //usersStore.load({params: {
 //	id: 1
 //}});

@@ -198,6 +198,11 @@ classrooms_create:
   defaults: {_controller: RideChicagoAutoBundle:Services\Classes:create, _format: json}    
   methods: [POST]
   
+classrooms_create:
+  pattern: /api/classes/delete
+  defaults: {_controller: RideChicagoAutoBundle:Services\Classes:delete, _format: json}    
+  methods: [POST]
+  
 registration_get:
   pattern: /api/registration
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:get, _format: json}  

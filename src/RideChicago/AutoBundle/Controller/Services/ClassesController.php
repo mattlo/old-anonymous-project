@@ -137,8 +137,22 @@ class ClassesController extends Controller {
 		return ServiceOutput::render($this);
 	}
 	
-	public function deleteAction() {
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function deleteAction(Request $request) {
+		$classroom = $this->getDoctrine()
+			->getRepository('RideChicagoAutoBundle:Classroom')
+			->findOneById($request->request->get('id'));
+
+		// get ORM manager
+		$ormManager = $this->getDoctrine()->getManager();
+		// save
+		$ormManager->remove($classroom);
+		$ormManager->flush();
 		
+		return ServiceOutput::render($this);
 	}
 	
 	public function updateAction() {
