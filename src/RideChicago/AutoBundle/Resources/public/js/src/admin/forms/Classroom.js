@@ -162,7 +162,6 @@ Ridechicago.admin.forms.Classroom = [{
 	fieldLabel: 'Class End Date',
 	name: 'classEndDate',
 	msgTarget: 'under',
-	minValue: new Date(), // limited to the current date or prior
 	allowBlank: false,
 	width: 350
 }, {
