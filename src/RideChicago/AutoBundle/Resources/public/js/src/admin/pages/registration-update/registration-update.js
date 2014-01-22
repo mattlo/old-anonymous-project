@@ -28,6 +28,18 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.form.Panel', {
 			items: Ridechicago.admin.forms.Registration,
 			xtype: 'panel',
 			bodyPadding: 5
+		},
+		{
+			xtype: 'form',
+			waitMsgTarget: true,
+			id: 'customerInfo',
+			items: [{
+				title: 'Customer Info',
+				items: Ridechicago.admin.forms.Customer,
+				xtype: 'panel',
+				bodyPadding: 5,
+				margin: '10 0 0 0'
+			}]
 		}
 	],
 	
@@ -65,13 +77,33 @@ Ext.onReady(function () {
 	
 	// get model
 	var registration = Ridechicago.admin.model.Registration;
+	var customer = Ridechicago.admin.model.Customer;
 
 	// preload form
 	registration.load(data.id, {
 		success: function(registration) {
+			var customerId = parseInt(registration.get('customerId'), 10);
+			
 			Ext.getCmp('registrationUpdateForm').loadRecord(registration);
-			Ext.getCmp('customerId').setValue(parseInt(registration.get('customerId'), 10));
+			Ext.getCmp('customerId').setValue(customerId);
 			Ext.getCmp('classroomId').setValue(parseInt(registration.get('classroomId'), 10));
+			
+			customer.load(customerId, {
+				success: function(customer) {
+					var profile = Ext.create('Ridechicago.admin.model.Profile', customer.get('profile')),
+						address = Ext.create('Ridechicago.admin.model.Address', profile.get('address'));
+					
+					Ext.getCmp('customerInfo').loadRecord(customer);
+					Ext.getCmp('customerInfo').loadRecord(profile);
+					Ext.getCmp('customerInfo').loadRecord(address);
+				}
+			});
+		}
+	});
+	
+	Ext.getCmp('customerInfo').query('.field').forEach(function (c){
+		if (c.id !== 'billingFormTrigger') {
+			c.setDisabled(true);
 		}
 	});
 });

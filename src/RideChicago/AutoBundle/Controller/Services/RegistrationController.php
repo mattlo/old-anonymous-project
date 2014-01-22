@@ -57,7 +57,7 @@ class RegistrationController extends Controller {
 			// get classroom instance
 			$classroom = $this->getDoctrine()
 				->getRepository('RideChicagoAutoBundle:Classroom')
-				->findOneById($request->request->get('classroom_id'));
+				->findOneById($request->request->get('classroomId'));
 			
 			Logger::debug($this, 'Current enrollment seats on target: ' . $classroom->getEnrollmentSeatsUsed() 
 				. ' out of ' . $classroom->getEnrollmentSeats());

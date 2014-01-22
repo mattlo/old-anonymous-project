@@ -1,3 +1,8 @@
+#v1.4.0
+- Updated schedule table data on public side
+- Refactored unique code on classrooms
+- Added customer display information on update screens
+
 #v1.3.0
 - Resolved IE8 Date output bug (IE8 does not resolve timezones natively)
 - Opened up `lesson/create` service from the firewall (blocking registration requests)
