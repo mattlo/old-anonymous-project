@@ -493,10 +493,7 @@ class Classroom {
 	}
 	
 	public function getCode() {
-		$code = substr($this->classtype->getTitle(), 0, 3);
-		$code = $code . '-' . $this->class_start_date->format('Mt');
-		$code = $code . '-' . $this->class_end_date->format('t');
-		$code = strtoupper($code);
+		$code = substr(strtoupper(md5($this->getId())), 0, 7);
 		
 		return $code;
 	}
