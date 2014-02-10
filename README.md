@@ -34,11 +34,9 @@
    `register_globals = Off`	
    `session.auto_start = Off`	
 
-## Deployment
-
 ## Staging
 
-## Production (EXPERIMENTAL: deploy.sh on the production box)
+## Production Deployment (EXPERIMENTAL: deploy.sh on the production box)
 - Update the `src` directory and update config files (sh /opt/git/export, cd tmp, copy `src` to /var/www/src).
 - Ensure `app/config/env.prod` exists. (File existence determines environment)
 - Run `sudo php app/console doctrine:schema:update --force`
@@ -54,7 +52,3 @@
 - HTTPS setup instructions: http://www.sitepoint.com/securing-apache-2-server-ssl/
 - Cert install: http://www.digicert.com/ssl-certificate-installation-apache.htm
 - Symfony2 performance optimizations: http://symfony.com/doc/current/book/performance.html
-
-## @TODO
-- Add database configuration steps
-- Add staging and production deployment procedures after hosting selection is complete
