@@ -1,3 +1,10 @@
+#v1.5.0
+- Changed code to be date based
+- Added schedule link on teen section
+- Added functionality for the contact form
+- Corrected footer address
+- Added registration delete functionality
+
 #v1.4.0
 - Updated schedule table data on public side
 - Refactored unique code on classrooms
