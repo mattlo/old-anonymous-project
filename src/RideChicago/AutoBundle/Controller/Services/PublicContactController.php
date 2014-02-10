@@ -16,7 +16,7 @@ class PublicContactController extends Controller {
     $message = \Swift_Message::newInstance()
 			->setSubject('RideChicago Contact Request')
 			->setFrom($request->request->get('email'))
-			->setTo('drive@ridechicago.com') // @TODO make this configable
+			->setTo('drive@ridechicago.com') // @TODO make this configurable
 			->setBody(
 				$this->renderView(
 					'RideChicagoAutoBundle:Default:contact-form.txt.twig',
