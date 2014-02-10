@@ -134,6 +134,10 @@ auto_admin_lessonrate_view:
 
 # API routes    
 
+mailer_service:
+  pattern: /mail/send
+  defaults: {_controller: RideChicagoAutoBundle:Services\PublicContact:send}  
+
 navigation:
   pattern: /api/navigation
   defaults: {_controller: RideChicagoAutoBundle:Services\Navigation:index, _format: json}
