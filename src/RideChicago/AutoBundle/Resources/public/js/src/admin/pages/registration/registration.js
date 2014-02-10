@@ -37,7 +37,44 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 		}},
 		{text: 'Notes', dataIndex: 'notes', width: 150},
 		{text: '', sortable: false, dataIndex: 'utilities', width: 80, renderer: function (value, col, store) {
-			return '<a href="/admin/registration/update/' + store.get('id') + '">Edit</a>';
+			return '<a href="/admin/registration/update/' + store.get('id') + '">Edit</a> | ' +
+				'<a href="#/" class="reg-delete" data-id="' + store.get('id') + '" data-username="' + store.get('customer').profile.firstName + ' ' + store.get('customer').profile.lastName + '">Delete</a>';
 		}}
     ]
 }));
+
+Ext.onReady(function () {
+	Ext.getBody().on('click', function(event, target){
+		event.preventDefault();
+		
+		// element clicked
+		var a = Ext.get(target),
+			username = a.getAttribute('data-username'),
+			id = a.getAttribute('data-id');
+		
+		Ext.MessageBox.confirm('Confirm', 'Are you sure you want to delete <strong>' + username + '</strong>\'s registration?', function (btn) {
+			if (btn === 'yes') {
+				Ext.Ajax.request({
+					url: '/api/registration/delete',
+					method: 'POST',
+					params: {
+						id: id
+					},
+					success: function(){
+						Ext.MessageBox.show({
+							title: 'Registration',
+							msg: username + ' was successfully removed from the system.',
+							icon: Ext.MessageBox.INFO,
+							buttons: Ext.MessageBox.OK,
+							fn: function() {
+								window.location = '/admin/registration';
+							}
+						});
+					}
+				});
+			}
+		});
+	}, null, {
+		delegate: '.reg-delete'
+	});
+});

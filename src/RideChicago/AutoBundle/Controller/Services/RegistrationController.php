@@ -302,8 +302,22 @@ class RegistrationController extends Controller {
 		return ServiceOutput::render($this);
 	}
 	
-	public function deleteAction() {
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function deleteAction(Request $request) {
+		$registration = $this->getDoctrine()
+			->getRepository('RideChicagoAutoBundle:Registration')
+			->findOneById($request->request->get('id'));
+
+		// get ORM manager
+		$ormManager = $this->getDoctrine()->getManager();
+		// save
+		$ormManager->remove($registration);
+		$ormManager->flush();
 		
+		return ServiceOutput::render($this);
 	}
 }
 

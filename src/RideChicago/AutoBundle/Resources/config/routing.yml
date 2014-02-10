@@ -230,6 +230,11 @@ registrations_create:
   pattern: /api/registration/create
   defaults: {_controller: RideChicagoAutoBundle:Services\Registration:create, _format: json}    
   methods: [POST]
+   
+registrations_delete:
+  pattern: /api/registration/delete
+  defaults: {_controller: RideChicagoAutoBundle:Services\Registration:delete, _format: json}    
+  methods: [POST]
   
 registrations_createFromExistingStudent:
   pattern: /api/registration/createFromExistingStudent
