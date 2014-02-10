@@ -493,7 +493,9 @@ class Classroom {
 	}
 	
 	public function getCode() {
-		$code = substr(strtoupper(md5($this->getId())), 0, 7);
+		$dateFormat = 'm/d';
+		
+		$code = $this->class_start_date->format($dateFormat) . '-' . $this->class_end_date->format($dateFormat);
 		
 		return $code;
 	}
