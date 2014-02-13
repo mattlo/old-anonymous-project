@@ -311,6 +311,11 @@ lessons_createFromExistingStudent:
   defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:createFromExistingStudent, _format: json}    
   methods: [POST]
     
+lessons_delete:
+  pattern: /api/lesson/delete
+  defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:delete, _format: json}    
+  methods: [POST]
+    
 lessonrates_get:
   pattern: /api/lessonrate
   defaults: {_controller: RideChicagoAutoBundle:Services\LessonRate:get, _format: json}  
