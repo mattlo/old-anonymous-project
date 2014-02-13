@@ -18,7 +18,8 @@ Ridechicago.admin.common.view.RegionCenter.add(Ext.create('Ext.grid.Panel', {
 		}},
 		{text: 'Phone', dataIndex: 'phone'},
 		{text: '', dataIndex: 'utilities', flex: 1, renderer: function (value, col, store) {
-			return '<a class="users-edit" href="/admin/lesson/update/' + store.get('id') + '">Edit</a>';
+			return '<a class="users-edit" href="/admin/lesson/update/' + store.get('id') + '">Edit</a> | ' +
+				'<a href="/admin/customers/' + store.get('customer').id + '">Edit Student</a>';
 		}}
     ]
 }));
