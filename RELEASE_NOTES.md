@@ -1,3 +1,10 @@
+#v1.6.0
+- Added "Student Profiles" for customer modifications 
+- Added links to modify customer info in lessons and registration views
+- Added lesson delete button
+- Updated content on class page
+- Added notifications for lessons and registrations
+
 #v1.5.0
 - Changed code to be date based
 - Added schedule link on teen section
