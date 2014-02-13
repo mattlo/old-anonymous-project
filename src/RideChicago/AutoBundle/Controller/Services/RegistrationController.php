@@ -16,6 +16,7 @@ use RideChicago\AutoBundle\Helpers\ValidationThrower;
 use RideChicago\AutoBundle\Exceptions\ContraintViolationException;
 use RideChicago\AutoBundle\Exceptions\DataRejectedException;
 use RideChicago\AutoBundle\Commons\DaysOfWeek;
+use RideChicago\AutoBundle\Commons\Notifications;
 use \Exception;
 use \DateTime;
 
@@ -96,6 +97,19 @@ class RegistrationController extends Controller {
 			$ormManager->persist($classroom);
 			
 			$ormManager->flush();
+			
+			// silent fail on notifications
+			// @TODO add service for this
+			try {
+				Notifications::send(
+					$this,
+					'Registration', 
+					$customer->getProfile()->getFirstName(), 
+					$customer->getProfile()->getLastName(), 
+					'http://' . $_SERVER['HTTP_HOST'] . '/admin/registration'
+				);
+			} catch (Exception $ex) {}
+			
 		} catch (ContraintViolationException $e) {
 			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
 		} catch (DataRejectedException $e) {
@@ -227,6 +241,18 @@ class RegistrationController extends Controller {
 			
 			
 			$ormManager->flush();
+			
+			// silent fail on notifications
+			// @TODO add service for this
+			try {
+				Notifications::send(
+					$this,
+					'Registration', 
+					$mainProfile->getFirstName(), 
+					$mainProfile->getLastName(), 
+					'http://' . $_SERVER['HTTP_HOST'] . '/admin/registration'
+				);
+			} catch (Exception $ex) {}
 		} catch (ContraintViolationException $e) {
 			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
 		} catch (DataRejectedException $e) {

@@ -13,6 +13,7 @@ use RideChicago\AutoBundle\Entity\Lesson;
 use RideChicago\AutoBundle\Entity\Profile;
 use RideChicago\AutoBundle\Entity\Address;
 use RideChicago\AutoBundle\Entity\Customer;
+use RideChicago\AutoBundle\Commons\Notifications;
 
 use \Exception;
 use \DateTime;
@@ -190,8 +191,20 @@ class LessonController extends Controller {
 			$ormManager->persist($customer);
 			$ormManager->persist($lesson);
 			
-			
 			$ormManager->flush();
+			
+			// silent fail on notifications
+			// @TODO add service for this
+			try {
+				Notifications::send(
+					$this,
+					'Lesson', 
+					$mainProfile->getFirstName(), 
+					$mainProfile->getLastName(), 
+					'http://' . $_SERVER['HTTP_HOST'] . '/admin/lesson'
+				);
+			} catch (Exception $ex) {}
+			
 		} catch (ContraintViolationException $e) {
 			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
 		}
@@ -246,6 +259,18 @@ class LessonController extends Controller {
 			$ormManager->persist($lesson);
 			
 			$ormManager->flush();
+			
+			// silent fail on notifications
+			// @TODO add service for this
+			try {
+				Notifications::send(
+					$this,
+					'Lesson', 
+					$customer->getProfile()->getFirstName(), 
+					$customer->getProfile()->getLastName(), 
+					'http://' . $_SERVER['HTTP_HOST'] . '/admin/lesson'
+				);
+			} catch (Exception $ex) {}
 		} catch (ContraintViolationException $e) {
 			return ServiceOutput::render($this, $e->getErrorsWithProperties(), false);
 		}
