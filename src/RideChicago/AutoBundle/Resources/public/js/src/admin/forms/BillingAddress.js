@@ -3,7 +3,7 @@ Ext.namespace('Ridechicago.admin.forms');
 Ridechicago.admin.forms.BillingAddress = [{
 	xtype: 'textfield',
 	fieldLabel: 'First Name',
-	name: 'billing_FirstName',
+	name: 'billing_firstName',
 	msgTarget: 'under',
 	validateOnChange: false,
 	allowBlank: false,
@@ -11,7 +11,7 @@ Ridechicago.admin.forms.BillingAddress = [{
 }, {
 	xtype: 'textfield',
 	fieldLabel: 'Last Name',
-	name: 'billing_LastName',
+	name: 'billing_lastName',
 	msgTarget: 'under',
 	validateOnChange: false,
 	allowBlank: false,
@@ -23,6 +23,7 @@ Ridechicago.admin.forms.BillingAddress = [{
 	msgTarget: 'qtip',
 	validateOnChange: false,
 	width: 200,
+	id: 'billing_middleInitial',
 	maxLength: 1
 }, {
 	xtype: 'textfield',
@@ -69,4 +70,8 @@ Ridechicago.admin.forms.BillingAddress = [{
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 400
+}, {
+	xtype: 'hiddenfield',
+	name: 'billing_customerIdx',
+	id: 'billing_customerIdx'
 }];

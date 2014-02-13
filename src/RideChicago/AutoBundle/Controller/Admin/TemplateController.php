@@ -109,6 +109,16 @@ class TemplateController extends Controller {
 		$data = json_encode(array('id' => $id));
 		return $this->render('RideChicagoAutoBundle:Pages/Admin:lessonrate-update.html.twig', array('staticData' => $data));
 	}
+	
+	# Customer
+	public function customerViewAction() {
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:customer.html.twig');
+	}
+	
+	public function customerEditAction($id) {
+		$data = json_encode(array('id' => $id));
+		return $this->render('RideChicagoAutoBundle:Pages/Admin:customer-edit.html.twig', array('staticData' => $data));
+	}
 }
 
 ?>

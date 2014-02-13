@@ -20,7 +20,7 @@ class NavigationController extends Controller {
 						null,
 						array(
 							static::mkLeaf('New Lesson', '/admin/lesson/add'),
-							static::mkLeaf('Classroom Enrollment', '/admin/registration/add'),
+							static::mkLeaf('Classroom Enrollment', '/admin/registration/add')
 						)
 					),
 					
@@ -32,6 +32,7 @@ class NavigationController extends Controller {
 							static::mkLeaf('Classroom Enrollment', '/admin/registration/add-existing'),
 							static::mkLeaf('Scheduled Lessons', '/admin/lesson'),
 							static::mkLeaf('Registrations', '/admin/registration'),
+							static::mkLeaf('Student Profiles', '/admin/customers')
 						)
 					),
 					

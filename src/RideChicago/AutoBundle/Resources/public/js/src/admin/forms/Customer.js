@@ -104,4 +104,8 @@ Ridechicago.admin.forms.Customer = [{
 	msgTarget: 'under',
 	validateOnChange: false,
 	width: 300
+}, {
+	xtype: 'hiddenfield',
+	name: 'customerIdx',
+	id: 'customerIdx'
 }];

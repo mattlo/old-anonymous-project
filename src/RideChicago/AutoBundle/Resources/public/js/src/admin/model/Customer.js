@@ -58,3 +58,25 @@ Ext.regModel('Ridechicago.admin.model.Address', {
 		'state'
 	]
 });
+
+Ext.regModel('Ridechicago.admin.model.BillingProfile', {
+    fields: [
+		'billing_firstName',
+		'billing_lastName',
+		'billing_id',
+		'billing_middleInitials',
+		'billing_phone',
+		'billing_phoneAlt',
+		'billing_address'
+	]
+});
+
+Ext.regModel('Ridechicago.admin.model.BillingAddress', {
+    fields: [
+		'billing_addressLine1',
+		'billing_addressLine2',
+		'billing_city',
+		'billing_postalCode',
+		'billing_state'
+	]
+});

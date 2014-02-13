@@ -130,7 +130,16 @@ auto_admin_lessonrate_update:
 auto_admin_lessonrate_view:
     pattern: /admin/lessonrate
     defaults: { _controller: RideChicagoAutoBundle:Admin\Template:lessonRateView }
-
+   
+auto_admin_customer_view:
+    pattern: /admin/customers
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:customerView }
+    
+auto_admin_customer_edit:
+    pattern: /admin/customers/{id}
+    defaults: { _controller: RideChicagoAutoBundle:Admin\Template:customerEdit }
+    requirements:
+        id: \d+
 
 # API routes    
 
@@ -271,7 +280,12 @@ customers_get_single:
   defaults: {_controller: RideChicagoAutoBundle:Services\Customer:get, _format: json}    
   requirements:
     id: \d+
-    
+        
+customers_update:
+  pattern: /api/customer/update
+  defaults: {_controller: RideChicagoAutoBundle:Services\Customer:update, _format: json}    
+  methods: [POST]
+  
 lessons_get:
   pattern: /api/lesson
   defaults: {_controller: RideChicagoAutoBundle:Services\Lesson:get, _format: json}    

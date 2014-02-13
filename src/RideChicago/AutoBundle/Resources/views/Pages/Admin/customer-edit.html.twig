@@ -1,0 +1,19 @@
+{% extends "RideChicagoAutoBundle::Pages/Admin/Templates/layout.html.twig" %}
+
+{% block pageJavaScript %}
+	{% javascripts 
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/Customer.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/CustomerStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/GenderStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/model/stores/UsStatesStore.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/Customer.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/forms/BillingAddress.js'
+		'@RideChicagoAutoBundle/Resources/public/js/src/admin/pages/customer-edit/customer-edit.js'
+	%}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
+
+{% block content %}
+	<script type="application/json" id="pageContentData">{{ staticData|raw }}</script>
+{% endblock %}
