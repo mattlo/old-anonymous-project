@@ -10,10 +10,10 @@
 ## Environment Setup
 - Install a LAMP stack using `yum` or another package manager (or WAMP if your on windows). If you're on OS X you can either activate each package or download MAMP.
  - configure PHP (read below to where it says _PHP Configuration_)
-- `cd` into your project directory `git clone git@github.com:ridechicago/autoridechicago-com.git`
+- `cd` into your project directory `git clone git@github.com:******`
 - Create an Apache Virtual Host under port `9062` and point it your your `******` project directory. (Optional: you can point any port or simply `localhost` to the directory)
 - Install Composer and set `composer` as a service (http://getcomposer.org/)
-- Run `composer install` at your `autoridechicago-com` project directory
+- Run `composer install` at your `******` project directory
 - Run http://localhost:9062/config.php to ensure your environment is setup correct
 
 #### PHP Configuration
